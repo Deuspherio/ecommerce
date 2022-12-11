@@ -1,0 +1,68 @@
+@use "../custom" as *;
+
+.product-card {
+  position: relative;
+  background-color: $white;
+  height: 100%;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 0.5rem 0 rgba($dark, 0.5);
+  }
+
+  & .card-link:hover {
+    font-weight: bold;
+    color: $primary;
+  }
+
+  & img {
+    height: 100%;
+    border-radius: 0.25rem;
+    transition: all 200ms ease-in-out;
+  }
+
+  & a {
+    height: 100%;
+  }
+}
+
+.product-img {
+  position: relative;
+  overflow: hidden;
+
+  & .sale-discount {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    & h4 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.discount {
+  background-color: $dark;
+  color: $light;
+  width: 50%;
+  z-index: 5;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.sale {
+  background-color: $danger;
+  color: $light;
+  width: 50%;
+  z-index: 5;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.product-page {
+  gap: 0.125rem;
+}
+
+.form-select {
+  line-height: 1.3;
+}

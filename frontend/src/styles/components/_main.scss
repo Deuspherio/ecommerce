@@ -1,0 +1,105 @@
+@use "../custom" as *;
+
+.main {
+  position: relative;
+  height: 100%;
+  min-height: 85vh;
+  margin-top: 5.625rem;
+
+  & h2 {
+    justify-content: center;
+  }
+
+  & h2,
+  h3 {
+    display: flex;
+    align-items: center;
+
+    & svg {
+      color: $dark;
+      font-size: 4rem;
+    }
+  }
+}
+
+.tabs-ul {
+  @include media-breakpoint-down(sm) {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: 2rem;
+
+    &::-webkit-scrollbar {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: $dark;
+  font-weight: bold;
+  background-color: $primary;
+  border-color: $primary $primary $light;
+  transition: all 200ms ease-in-out;
+}
+
+.nav-tabs .nav-link {
+  color: $dark;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    background-color: $primary;
+    font-weight: bold;
+    border-color: $primary $primary $light;
+  }
+}
+
+.checkout-guide {
+  & svg {
+    color: $light;
+    font-size: 1.5rem;
+  }
+
+  & .col {
+    border-bottom: 0.25rem solid $dark;
+  }
+
+  & small {
+    color: $dark;
+  }
+
+  & .icons {
+    border-radius: 50%;
+    background-color: $dark;
+    width: 3rem;
+    height: 3rem;
+    transition: all 200ms ease-in-out;
+  }
+
+  & .active {
+    border-bottom: 0.25rem solid $primary;
+
+    & small {
+      color: $primary;
+      font-weight: bold;
+    }
+
+    & .icons {
+      background-color: $primary;
+
+      & svg {
+        color: $light;
+      }
+    }
+  }
+}

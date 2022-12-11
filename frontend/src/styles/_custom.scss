@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;700&display=swap");
+
+$dark: #01345b;
+$primary: #ffb600;
+$secondary: #0049ff;
+$light: #f6f9fc;
+
+$font-family: "Roboto", sans-serif;
+$title-font-family: "Libre Baskerville", serif;
+$brand-font-family: "Allura", cursive;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

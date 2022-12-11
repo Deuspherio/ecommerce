@@ -1,0 +1,7 @@
+@use "../custom" as *;
+
+.footer-brand {
+  font-family: $brand-font-family;
+  font-size: 2rem;
+  transition: all 200ms ease-in-out;
+}

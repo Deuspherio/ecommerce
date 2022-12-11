@@ -1,0 +1,455 @@
+@use "../custom" as *;
+
+.header {
+  position: relative;
+}
+
+.navbar {
+  box-shadow: 0 0 0.5rem 0 rgba($dark, 0.4);
+}
+
+.nav-menu {
+  gap: 0.875rem;
+
+  & .sign {
+    & a {
+      color: $dark;
+      border-bottom: 0.25rem solid $light;
+      transition: all 150ms ease-in-out;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  & .user-btn {
+    color: $dark;
+    background: none;
+    border: 0;
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+      color: $primary;
+      box-shadow: 0 0 0 0.25rem rgba($primary, 0.5);
+    }
+  }
+
+  .btn-check:checked + .btn-primary:focus,
+  .btn-check:active + .btn-primary:focus,
+  .btn-primary:active:focus,
+  .btn-primary.active:focus,
+  .show > .btn-primary.dropdown-toggle:focus {
+    background-color: none;
+    color: $primary;
+    box-shadow: 0 0 0 0.25rem rgba($primary, 0.5);
+  }
+}
+
+.cover {
+  display: block;
+  content: "";
+  position: fixed;
+  background-image: linear-gradient(rgba($dark, 0.8), rgba($dark, 0.4));
+  top: 0;
+  z-index: -5;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+
+.active-cover {
+  visibility: visible;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  z-index: 9998;
+  pointer-events: all;
+}
+
+.navbar-brand {
+  font-family: $brand-font-family;
+  font-size: 2rem;
+  transition: all 200ms ease-in-out;
+}
+
+.sign {
+  gap: 1rem;
+
+  & a {
+    color: $light;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.nav-btn {
+  gap: 1rem;
+  transition: all 200ms ease-in-out;
+
+  & svg {
+    font-size: 1.5rem;
+  }
+
+  & button {
+    background: none;
+    border: 0;
+
+    &:hover {
+      background: none;
+      color: $primary;
+      border: 0;
+      box-shadow: 0 0 0 0.25rem rgba($primary, 0.5);
+    }
+
+    &:focus {
+      background: none;
+      border: 0;
+    }
+
+    &:checked {
+      background: none;
+      border: 0;
+    }
+  }
+}
+
+.sidebar-menu {
+  position: absolute;
+  top: 0;
+  left: -20rem;
+  background-color: $dark;
+  width: 16rem;
+  padding: 1rem;
+  transition: all 200ms ease-in-out;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  overflow-y: scroll;
+  height: 100vh;
+  scrollbar-width: none;
+  box-shadow: 0 0 0.5rem 0 rgba($dark, 0.4);
+  z-index: 9995;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .close {
+    position: relative;
+
+    & button {
+      margin: 0.125rem 0;
+      margin-bottom: 0.875rem;
+      color: $light;
+      height: 3rem;
+      padding: 0.5rem;
+      background: none;
+      border: 0;
+      border-radius: 0.25rem;
+
+      & svg {
+        font-size: 2rem;
+        color: $light;
+      }
+
+      &:focus {
+        background: none;
+        border: 0;
+      }
+
+      &:checked {
+        background: none;
+        border: 0;
+      }
+    }
+
+    & .btn-check:checked + .btn-primary:focus,
+    .btn-check:active + .btn-primary:focus,
+    .btn-primary:active:focus,
+    .btn-primary.active:focus,
+    .show > .btn-primary.dropdown-toggle:focus {
+      box-shadow: none;
+    }
+  }
+
+  & svg {
+    color: $light;
+    font-size: 1.5rem;
+    transition: all 150ms ease-in-out;
+  }
+
+  & a {
+    margin: 0.125rem 0;
+    color: $light;
+    height: 3rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    border-radius: 0.25rem;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      border-left: 4px solid $primary;
+      font-weight: 700;
+      color: $primary;
+    }
+
+    &:hover svg {
+      color: $primary;
+    }
+  }
+
+  & .active-menu {
+    border-left: 4px solid $primary;
+    color: $primary;
+    font-weight: 700;
+
+    & svg {
+      color: $primary;
+    }
+  }
+}
+
+.active-sidebar-menu {
+  position: fixed;
+  z-index: 9999;
+  left: 0rem;
+}
+
+.sidebar-cart {
+  width: 25rem;
+  position: absolute;
+  top: 0;
+  right: -30rem;
+  background-color: $light;
+  color: $dark;
+  padding: 1rem;
+  border-radius: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  pointer-events: none;
+  max-height: 100vh;
+  transition: all 200ms ease-in-out;
+  box-shadow: 0 0 0.5rem 0 rgba($dark, 0.4);
+  z-index: 9995;
+
+  @include media-breakpoint-down(sm) {
+    width: 90%;
+    right: -100%;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & .close {
+    & button {
+      padding: 0;
+      background: none;
+      border: 0;
+      border-radius: 0.25rem;
+
+      & svg {
+        color: $dark;
+        font-size: 2rem;
+        transition: all 150ms ease-in-out;
+      }
+
+      &:focus {
+        background: none;
+        border: 0;
+      }
+
+      &:checked {
+        background: none;
+        border: 0;
+      }
+    }
+  }
+
+  & .cart-items {
+    max-height: 22rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+  }
+
+  & .btn-check:checked + .btn-primary:focus,
+  .btn-check:active + .btn-primary:focus,
+  .btn-primary:active:focus,
+  .btn-primary.active:focus,
+  .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+  }
+}
+
+.active-sidebar-cart {
+  right: 0;
+  pointer-events: all;
+  z-index: 9999;
+}
+
+.sidebar-icons {
+  background-color: $dark;
+  padding: 1rem;
+  transition: all 200ms ease-in-out;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  z-index: 9997;
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  box-shadow: 0 0 0.5rem 0 rgba($dark, 0.4);
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & .menu {
+    & button {
+      margin: 0.125rem 0;
+      margin-bottom: 0.875rem;
+      height: 3rem;
+      padding: 0.5rem;
+      background: none;
+      border: 0;
+      border-radius: 0.25rem;
+
+      & svg {
+        font-size: 2rem;
+        color: $light;
+      }
+
+      &:focus {
+        background: none;
+        border: 0;
+      }
+
+      &:checked {
+        background: none;
+        border: 0;
+      }
+    }
+
+    & .btn-check:checked + .btn-primary:focus,
+    .btn-check:active + .btn-primary:focus,
+    .btn-primary:active:focus,
+    .btn-primary.active:focus,
+    .show > .btn-primary.dropdown-toggle:focus {
+      box-shadow: none;
+    }
+  }
+
+  & svg {
+    color: $light;
+    font-size: 1.5rem;
+    border-left: 4px solid $dark;
+    transition: all 150ms ease-in-out;
+  }
+
+  & a {
+    margin: 0.125rem 0;
+    color: $light;
+    height: 3rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.25rem;
+    border-left: 4px solid $dark;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      border-left: 4px solid $primary;
+      color: $primary;
+    }
+
+    &:hover svg {
+      color: $primary;
+    }
+  }
+
+  & .active-menu {
+    border-left: 4px solid $primary;
+    color: $primary;
+    font-weight: 700;
+
+    & svg {
+      color: $primary;
+    }
+  }
+}
+
+.menu-toggle {
+  & svg {
+    font-size: 2rem;
+    color: $dark;
+  }
+
+  &:focus,
+  &:focus-visible {
+    color: $primary;
+    border-color: $primary;
+  }
+}
+
+.sm-menu {
+  display: none;
+
+  @include media-breakpoint-down(md) {
+    display: flex;
+
+    & button {
+      width: 3.5rem;
+      height: 2.5rem;
+      padding: 0.5rem;
+      background: none;
+      border: 1px solid rgba($dark, 0.1);
+      border-radius: 0.25rem;
+      transition: all 200ms ease-in-out;
+
+      & svg {
+        font-size: 2rem;
+        color: $dark;
+      }
+
+      &:focus {
+        background: none;
+        border: 0;
+      }
+
+      &:checked {
+        background: none;
+        border: 0;
+      }
+    }
+  }
+}
+
+.search-lg {
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+
+.search-md {
+  display: none;
+  @include media-breakpoint-down(lg) {
+    display: block;
+  }
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
