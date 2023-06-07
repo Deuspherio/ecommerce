@@ -7,7 +7,7 @@ export const getProduct = async (id) => {
 
 export const patchProduct = async (product, id, userData) => {
   const { data } = await axios.patch(`/api/products/id/${id}`, product, {
-    Headers: { Authorization: `Bearer ${userData.token}` },
+    headers: { Authorization: `Bearer ${userData.token}` },
   });
   return data;
 };

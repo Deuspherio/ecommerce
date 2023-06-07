@@ -6,6 +6,8 @@ import { deleteOrder, getOrders } from "./orders.api";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
+import { BsCheck2, BsInfo } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const PAGE_SIZE = 10;
 const OrdersListPage = () => {
@@ -19,7 +21,6 @@ const OrdersListPage = () => {
     data: orders,
     isLoading,
     isError,
-    isSuccess,
     error,
   } = useQuery(["orders"], () => getOrders(userData));
 
@@ -73,7 +74,7 @@ const OrdersListPage = () => {
                 {orders
                   .slice(firstProductIndex, lastProductIndex)
                   .map((order) => (
-                    <tr key={order._id}>
+                    <tr key={order._id} className="hover:bg-gray-50">
                       <td>
                         {order.user ? (
                           <>
@@ -85,7 +86,7 @@ const OrdersListPage = () => {
                         )}
                       </td>
                       <td>{order.createdAt.substring(0, 10)}</td>
-                      <td>{`₱ ${order.totalPrice.toLocaleString()}`}</td>
+                      <td>{`$ ${order.totalPrice.toLocaleString()}`}</td>
                       <td>
                         {order.isPaid
                           ? order.paidAt.substring(0, 10)
@@ -99,18 +100,22 @@ const OrdersListPage = () => {
                       <td>
                         {!order.isPaid ? (
                           <>
-                            <button type="button" className="btn-primary">
-                              Paid
+                            <button
+                              type="button"
+                              title="ORDER PAID?"
+                              className="btn-primary text-2xl bg-green-600"
+                            >
+                              <BsCheck2 />
                             </button>
                           </>
                         ) : (
                           <>
                             <button
                               type="button"
-                              className="btn-primary"
+                              className="btn-primary text-2xl bg-green-600"
                               disabled
                             >
-                              Paid
+                              <BsCheck2 />
                             </button>
                           </>
                         )}
@@ -118,21 +123,23 @@ const OrdersListPage = () => {
                       <td>
                         <button
                           type="button"
-                          className="btn-primary"
+                          title="ORDER INFO"
+                          className="btn-primary text-2xl"
                           onClick={() => {
                             navigate(`/user/order/${order._id}`);
                           }}
                         >
-                          Details
+                          <BsInfo />
                         </button>
                       </td>
                       <td className="py-3 px-6">
                         <button
                           type="button"
-                          className="btn-primary"
+                          title="DELETE"
+                          className="btn-primary bg-red-600 text-2xl"
                           onClick={() => deleteHandler(order._id)}
                         >
-                          Delete
+                          <AiOutlineDelete className="text-xl" />
                         </button>
                       </td>
                     </tr>

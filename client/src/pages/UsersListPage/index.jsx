@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { getUsers } from "./users.api";
 import { Helmet } from "react-helmet-async";
 import Pagination from "../../components/Pagination";
+import { AiOutlineDelete } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
 
 const PAGE_SIZE = 10;
 const UsersListPage = () => {
@@ -38,8 +40,8 @@ const UsersListPage = () => {
         <div className="custom-container">
           <h1 className="text-center">List of Users</h1>
           <div className="overflow-x-auto relative">
-            <table className="w-full text-left rounded border">
-              <thead className="text-lg w-full text-gray-700 uppercase">
+            <table className="w-full rounded border">
+              <thead className="text-lg w-full uppercase">
                 <tr>
                   <th scope="col">FIRST NAME</th>
                   <th scope="col">LAST NAME</th>
@@ -56,7 +58,7 @@ const UsersListPage = () => {
                 {users
                   .slice(firstProductIndex, lastProductIndex)
                   .map((user) => (
-                    <tr key={user._id}>
+                    <tr key={user._id} className="hover:bg-gray-50">
                       <td>{user.firstName}</td>
                       <td>{user.lastName}</td>
                       <td>{user.email}</td>
@@ -66,23 +68,25 @@ const UsersListPage = () => {
                       <td>
                         <button
                           type="button"
-                          className="btn-primary"
-                          onClick={() =>
-                            user.isAdmin
-                              ? navigate("/user/profile")
-                              : navigate(`/admin/users/${user._id}`)
-                          }
+                          title="EDIT"
+                          className="btn-primary text-2xl"
+                          // onClick={() =>
+                          //   user.isAdmin
+                          //     ? navigate("/user/profile")
+                          //     : navigate(`/admin/users/${user._id}`)
+                          // }
                         >
-                          Update
+                          <FiEdit />
                         </button>
                       </td>
                       <td>
                         <button
                           type="button"
-                          className="btn-primary"
+                          title="DELETE"
+                          className="btn-primary bg-red-600 text-2xl"
                           disabled={user.isAdmin}
                         >
-                          Delete
+                          <AiOutlineDelete className="text-xl" />
                         </button>
                       </td>
                     </tr>

@@ -1,25 +1,25 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const prices = [
   {
-    option: "1 to 100",
+    option: "$1 - $100",
     value: "1-100",
   },
   {
-    option: "101 to 200",
+    option: "$101 - $200",
     value: "101-200",
   },
   {
-    option: "201 to 300",
+    option: "$201 - $300",
     value: "201-300",
   },
   {
-    option: "301 to 1000",
+    option: "$301 - $1000",
     value: "301-1000",
   },
   {
-    option: "1001 to 2000",
+    option: "$1001 - $2000",
     value: "1001-2000",
   },
 ];
@@ -62,7 +62,7 @@ const SidebarMenu = ({
         >
           <option value="all">All</option>
           {data.productCategories.map((c) => (
-            <option value={c} key={c}>
+            <option className="capitalize" value={c} key={c}>
               {c}
             </option>
           ))}

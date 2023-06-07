@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Loading from "../../components/Loading";
@@ -6,12 +6,13 @@ import MessageBox from "../../components/MessageBox";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { Store } from "../../context";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { schema } from "./product.validation";
 import { getProduct, patchProduct } from "./product.api";
 
 const UpdateProductPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const {
     state: {
       user: { userData },
@@ -20,13 +21,21 @@ const UpdateProductPage = () => {
 
   const {
     data: product,
-    isSuccess: getIsSuccess,
     isLoading: getIsLoading,
     isError: getIsError,
     error: getError,
   } = useQuery(["product"], () => getProduct(id));
-  const { mutate, isLoading } = useMutation(["product"], (product) =>
-    patchProduct(product, id, userData)
+
+  const queryClient = useQueryClient();
+  const { mutate, isLoading, isSuccess } = useMutation(
+    ["product"],
+    (product) => patchProduct(product, id, userData),
+    {
+      onSuccess: (data) =>
+        queryClient.setQueryData(["product"], (old) => {
+          return { ...old, stocks: data.stocks };
+        }),
+    }
   );
 
   const {
@@ -38,7 +47,7 @@ const UpdateProductPage = () => {
   });
 
   const submitHandler = (value) => {
-    console.log(value);
+    mutate(value);
   };
 
   return (
@@ -68,6 +77,7 @@ const UpdateProductPage = () => {
                   className="border rounded p-2"
                   placeholder="Update the product name"
                   name="name"
+                  disabled
                 />
                 {errors.name?.message && (
                   <p className="border rounded p-2">{errors.name?.message}</p>
@@ -79,6 +89,7 @@ const UpdateProductPage = () => {
                   type="file"
                   {...register("images")}
                   className="border rounded p-2"
+                  disabled
                   placeholder="Update the product images"
                   name="image"
                 />
@@ -90,6 +101,7 @@ const UpdateProductPage = () => {
                 <label>Product Images</label>
                 <input
                   type="file"
+                  disabled
                   {...register("images")}
                   className="border rounded p-2"
                   placeholder="Update the product images"
@@ -105,11 +117,9 @@ const UpdateProductPage = () => {
                   {...register("category", {
                     value: product.category,
                   })}
+                  disabled
                 >
-                  <option value="face-cream">Face Cream</option>
-                  <option value="lipstick">Lipstick</option>
-                  <option value="lotion">Lotion</option>
-                  <option value="powder">Powder</option>
+                  <option value="electronics">Electronics</option>
                 </select>
                 {errors.category?.message && (
                   <p className="">{errors.category?.message}</p>
@@ -119,12 +129,14 @@ const UpdateProductPage = () => {
                 <label>Product Price</label>
                 <input
                   type="number"
+                  step=".01"
                   {...register("price", {
                     value: product.price,
                   })}
                   className="border rounded p-2"
                   placeholder="Update the product price"
                   name="price"
+                  disabled
                 />
                 {errors.price?.message && (
                   <p className="">{errors.price?.message}</p>
@@ -140,15 +152,20 @@ const UpdateProductPage = () => {
                   className="border rounded p-2"
                   placeholder="Update the product stocks"
                   name="stocks"
+                  min="0"
                 />
                 {errors.stocks?.message && (
-                  <p className="">{errors.stocks?.message}</p>
+                  <p className="yup-error">{errors.stocks?.message}</p>
                 )}
               </div>
               <button type="submit" className="btn-primary">
                 Update Product
               </button>
-              {isLoading ? <Loading /> : null}
+              {isLoading ? (
+                <Loading />
+              ) : isSuccess ? (
+                navigate("/admin/products")
+              ) : null}
             </form>
           </div>
         </>

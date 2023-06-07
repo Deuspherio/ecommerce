@@ -33,7 +33,7 @@ const OrderPage = () => {
         <Loading />
       ) : isError ? (
         <p>{error.message}</p>
-      ) : isSuccess ? (
+      ) : (
         <div className="custom-container">
           <h1 className="text-center">Order Information</h1>
           <div className="grid grid-cols-12 gap-4 items-start">
@@ -75,7 +75,7 @@ const OrderPage = () => {
                     </div>
                     <div className="col-span-4">{item.name}</div>
                     <div className="col-span-2">x{item.quantity}</div>
-                    <div className="col-span-4">{`₱ ${(
+                    <div className="col-span-4">{`$ ${(
                       item.discountedPrice * item.quantity
                     ).toLocaleString()}`}</div>
                   </div>
@@ -86,15 +86,15 @@ const OrderPage = () => {
               <h2 className="text-center">Order Summary</h2>
               <div className="flex justify-between">
                 <p className="font-bold">Items</p>
-                <p>{`₱ ${order.itemsPrice.toLocaleString()}`}</p>
+                <p>{`$ ${order.itemsPrice.toLocaleString()}`}</p>
               </div>
               <div className="flex justify-between">
                 <p className="font-bold">Shipping</p>
-                <p>{`₱ ${roundToTwo(order.shippingPrice).toLocaleString()}`}</p>
+                <p>{`$ ${roundToTwo(order.shippingPrice).toLocaleString()}`}</p>
               </div>
               <div className="flex justify-between">
                 <p className="font-bold">Order Total</p>
-                <p>{`₱ ${roundToTwo(order.totalPrice).toLocaleString()}`}</p>
+                <p>{`$ ${roundToTwo(order.totalPrice).toLocaleString()}`}</p>
               </div>
               <button
                 type="button"
@@ -110,7 +110,7 @@ const OrderPage = () => {
             </div>
           </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 };

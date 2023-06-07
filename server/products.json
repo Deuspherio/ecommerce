@@ -1,1062 +1,344 @@
-[{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6267"
-  },
-  "name": "Avon Care",
-  "slug": "avon-care",
-  "image": "/images/face-cream/avon-care.jpg",
-  "category": "face-cream",
-  "price": 480,
-  "pricePrediction": 432,
-  "discountedPrice": 480,
-  "stocks": 100,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 100,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043117991"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880659531"
-    }
-  },
-  "totalSoldItems": 100,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6268"
-  },
-  "name": "Nivea Creme",
-  "slug": "nivea-creme",
-  "image": "/images/face-cream/nivea-creme.jpg",
-  "category": "face-cream",
-  "price": 480,
-  "pricePrediction": 432,
-  "discountedPrice": 432,
-  "stocks": 0,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 0,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043117995"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880656815"
-    }
-  },
-  "totalSoldItems": 100,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6269"
-  },
-  "name": "Nivea Soft Creme",
-  "slug": "nivea-soft-creme",
-  "image": "/images/face-cream/nivea-soft-creme.jpg",
-  "category": "face-cream",
-  "price": 200,
-  "pricePrediction": 180,
-  "discountedPrice": 180,
-  "stocks": 0,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 0,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043117996"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880655808"
-    }
-  },
-  "totalSoldItems": 100,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b626a"
-  },
-  "name": "Olay Regenerist",
-  "slug": "olay-regenerist",
-  "image": "/images/face-cream/olay-regenerist.jpg",
-  "category": "face-cream",
-  "price": 1000,
-  "pricePrediction": 900,
-  "discountedPrice": 900,
-  "stocks": 0,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 0,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043117997"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880657613"
-    }
-  },
-  "totalSoldItems": 100,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b626b"
-  },
-  "name": "Olay Total Effects",
-  "slug": "olay-total-effects",
-  "image": "/images/face-cream/olay-total-effects.jpg",
-  "category": "face-cream",
-  "price": 1000,
-  "pricePrediction": 900,
-  "discountedPrice": 900,
-  "stocks": 100,
-  "rating": 4,
-  "numReviews": 2,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 100,
-  "salesPercentage": 0,
-  "reviews": [
-    {
-      "firstName": "sample",
-      "lastName": "admin",
-      "email": "admin@email.com",
-      "rating": 5,
-      "comments": "",
-      "_id": {
-        "$oid": "636cc8c7aaf49255bf9473fc"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1668073670978"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1668073670978"
-        }
-      }
-    },
-    {
-      "firstName": "customer",
-      "lastName": "one",
-      "email": "customerone@email.com",
-      "rating": 3,
-      "comments": "good",
-      "_id": {
-        "$oid": "6384898bff98acef51468ca0"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669630347034"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669630347034"
-        }
-      }
-    }
-  ],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043117997"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880656821"
-    }
-  },
-  "totalSoldItems": 99,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b626c"
-  },
-  "name": "Pond's Bright Beauty",
-  "slug": "ponds-bright-beauty",
-  "image": "/images/face-cream/ponds-bright-beauty.jpg",
-  "category": "face-cream",
-  "price": 630,
-  "pricePrediction": 567,
-  "discountedPrice": 567,
-  "stocks": 0,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 0,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118004"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880655562"
-    }
-  },
-  "totalSoldItems": 100,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b626d"
-  },
-  "name": "Pond's Dry Skin",
-  "slug": "ponds-dry-skin",
-  "image": "/images/face-cream/ponds-dry-skin.jpg",
-  "category": "face-cream",
-  "price": 1100,
-  "pricePrediction": 990,
-  "discountedPrice": 990,
-  "stocks": 0,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 0,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118005"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880659447"
-    }
-  },
-  "totalSoldItems": 100,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b626e"
-  },
-  "name": "Mac Matte Lipstick Fab Pink",
-  "slug": "mac-matte-lipstick-fab-pink",
-  "image": "/images/lipstick/mac-matte-lipstick-fab-pink.jpg",
-  "category": "lipstick",
-  "price": 150,
-  "pricePrediction": 135,
-  "discountedPrice": 135,
-  "stocks": 1,
-  "rating": 4.5,
-  "numReviews": 2,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 1,
-  "salesPercentage": 0,
-  "reviews": [
-    {
-      "firstName": "sample",
-      "lastName": "admin",
-      "email": "admin@email.com",
-      "rating": 5,
-      "comments": "",
-      "_id": {
-        "$oid": "638485aeff98acef51468a1b"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669629358552"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669629358552"
-        }
-      }
-    },
-    {
-      "firstName": "customer",
-      "lastName": "one",
-      "email": "customerone@email.com",
-      "rating": 4,
-      "comments": "",
-      "_id": {
-        "$oid": "63848972ff98acef51468c7b"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669630322925"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669630322925"
-        }
-      }
-    }
-  ],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118005"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880655635"
-    }
-  },
-  "totalSoldItems": 198,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b626f"
-  },
-  "name": "Mac Matte Lipstick Natural",
-  "slug": "mac-matte-lipstick-natural",
-  "image": "/images/lipstick/mac-matte-lipstick-natural.jpg",
-  "category": "lipstick",
-  "price": 150,
-  "pricePrediction": 135,
-  "discountedPrice": 135,
-  "stocks": 83,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 83,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118006"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880655552"
-    }
-  },
-  "totalSoldItems": 17,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6270"
-  },
-  "name": "Mac Matte Lipstick",
-  "slug": "mac-matte-lipstick",
-  "image": "/images/lipstick/mac-matte-lipstick.jpg",
-  "category": "lipstick",
-  "price": 150,
-  "pricePrediction": 135,
-  "discountedPrice": 135,
-  "stocks": 78,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 78,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118007"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880655560"
-    }
-  },
-  "totalSoldItems": 22,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6271"
-  },
-  "name": "Maybelline 685 Craving Coral",
-  "slug": "maybelline-685-craving-coral",
-  "image": "/images/lipstick/maybelline-685-craving-coral.jpg",
-  "category": "lipstick",
-  "price": 180,
-  "pricePrediction": 162,
-  "discountedPrice": 162,
-  "stocks": 25,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 25,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118008"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880659003"
-    }
-  },
-  "totalSoldItems": 75,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6272"
-  },
-  "name": "Maybelline 690 Siren in Scarlet",
-  "slug": "maybelline-690-siren-in-scarlet",
-  "image": "/images/lipstick/maybelline-690-siren-in-scarlet.jpg",
-  "category": "lipstick",
-  "price": 180,
-  "pricePrediction": 162,
-  "discountedPrice": 162,
-  "stocks": 3,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 3,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118009"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880655557"
-    }
-  },
-  "totalSoldItems": 97,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6273"
-  },
-  "name": "Maybelline Thriller Nude",
-  "slug": "maybelline-thriller-nude)",
-  "image": "/images/lipstick/maybelline-thriller-nude.jpg",
-  "category": "lipstick",
-  "price": 180,
-  "pricePrediction": 162,
-  "discountedPrice": 162,
-  "stocks": 1,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 1,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118010"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880657606"
-    }
-  },
-  "totalSoldItems": 99,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6274"
-  },
-  "name": "Myra Classic Moisturizing",
-  "slug": "myra-classic-moisturizing",
-  "image": "/images/lotion/myra-classic-moisturizing.jpg",
-  "category": "lotion",
-  "price": 280,
-  "pricePrediction": 252,
-  "discountedPrice": 252,
-  "stocks": 4,
-  "rating": 4,
-  "numReviews": 3,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 4,
-  "salesPercentage": 0,
-  "reviews": [
-    {
-      "firstName": "sample",
-      "lastName": "admin",
-      "email": "admin@email.com",
-      "rating": 4,
-      "comments": "",
-      "_id": {
-        "$oid": "638487acff98acef51468a6e"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669629868325"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669629868325"
-        }
-      }
-    },
-    {
-      "firstName": "customer",
-      "lastName": "one",
-      "email": "customerone@email.com",
-      "rating": 3,
-      "comments": "good\n",
-      "_id": {
-        "$oid": "638489bcff98acef51468cca"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669630396638"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669630396638"
-        }
-      }
-    },
-    {
-      "firstName": "customer",
-      "lastName": "two",
-      "email": "customertwo@email.com",
-      "rating": 5,
-      "comments": "ey",
-      "_id": {
-        "$oid": "63876f825faa991c9272602f"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669820290809"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669820290809"
-        }
-      }
-    }
-  ],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118011"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880659873"
-    }
-  },
-  "totalSoldItems": 96,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6275"
-  },
-  "name": "Myra Classic Whitening",
-  "slug": "myra-classic-whitening",
-  "image": "/images/lotion/myra-classic-whitening.jpg",
-  "category": "lotion",
-  "price": 330,
-  "pricePrediction": 297,
-  "discountedPrice": 297,
-  "stocks": 1,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 1,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118012"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880661046"
-    }
-  },
-  "totalSoldItems": 99,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6276"
-  },
-  "name": "Myra Moisturizing Plus",
-  "slug": "myra-moisturizing-plus",
-  "image": "/images/lotion/myra-moisturizing-plus.jpg",
-  "category": "lotion",
-  "price": 300,
-  "pricePrediction": 270,
-  "discountedPrice": 270,
-  "stocks": 1,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 1,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118013"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880658539"
-    }
-  },
-  "totalSoldItems": 99,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6277"
-  },
-  "name": "Nivea Extra White",
-  "slug": "nivea-extra-white",
-  "image": "/images/lotion/nivea-extra-white.jpg",
-  "category": "lotion",
-  "price": 400,
-  "pricePrediction": 360,
-  "discountedPrice": 360,
-  "stocks": 100,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 100,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118014"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880658939"
-    }
-  },
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6278"
-  },
-  "name": "Nivea Intense Moisture",
-  "slug": "nivea-intense-moisture",
-  "image": "/images/lotion/nivea-intense-moisture.jpg",
-  "category": "lotion",
-  "price": 340,
-  "pricePrediction": 306,
-  "discountedPrice": 306,
-  "stocks": 97,
-  "rating": 4,
-  "numReviews": 1,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 97,
-  "salesPercentage": 0,
-  "reviews": [
-    {
-      "firstName": "sample",
-      "lastName": "admin",
-      "email": "admin@email.com",
-      "rating": 4,
-      "comments": "",
-      "_id": {
-        "$oid": "63848741ff98acef51468a45"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669629761179"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669629761179"
-        }
-      }
-    }
-  ],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118020"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880658374"
-    }
-  },
-  "discount": 0.1,
-  "totalSoldItems": 3
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6279"
-  },
-  "name": "Olay Bodyscience",
-  "slug": "olay-bodyscience",
-  "image": "/images/lotion/olay-bodyscience.jpg",
-  "category": "lotion",
-  "price": 350,
-  "pricePrediction": 315,
-  "discountedPrice": 315,
-  "stocks": 2,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 2,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118021"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880660112"
-    }
-  },
-  "totalSoldItems": 98,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b627a"
-  },
-  "name": "Olay Quench",
-  "slug": "olay-quench",
-  "image": "/images/lotion/olay-quench.jpg",
-  "category": "lotion",
-  "price": 200,
-  "pricePrediction": 180,
-  "discountedPrice": 180,
-  "stocks": 3,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 3,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118027"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880661098"
-    }
-  },
-  "totalSoldItems": 97,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b627b"
-  },
-  "name": "Johnson's Bedtime",
-  "slug": "johnsons-bedtime",
-  "image": "/images/powder/johnsons-bedtime.jpg",
-  "category": "powder",
-  "price": 300,
-  "pricePrediction": 270,
-  "discountedPrice": 270,
-  "stocks": 3,
-  "rating": 4,
-  "numReviews": 1,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 3,
-  "salesPercentage": 0,
-  "reviews": [
-    {
-      "firstName": "sample",
-      "lastName": "admin",
-      "email": "admin@email.com",
-      "rating": 4,
-      "comments": "",
-      "_id": {
-        "$oid": "636ccc39aaf49255bf9475d7"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1668074553101"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1668074553101"
-        }
-      }
-    }
-  ],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118028"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880656757"
-    }
-  },
-  "totalSoldItems": 97,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b627c"
-  },
-  "name": "Johnson's Blossoms",
-  "slug": "johnsons-blossoms",
-  "image": "/images/powder/johnsons-blossoms.jpg",
-  "category": "powder",
-  "price": 240,
-  "pricePrediction": 216,
-  "discountedPrice": 216,
-  "stocks": 1,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 1,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118029"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880660632"
-    }
-  },
-  "totalSoldItems": 99,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b627d"
-  },
-  "name": "Johnson's Original",
-  "slug": "johnsons-original",
-  "image": "/images/powder/johnsons-original.jpg",
-  "category": "powder",
-  "price": 200,
-  "pricePrediction": 180,
-  "discountedPrice": 180,
-  "stocks": 13,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 13,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118029"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880660527"
-    }
-  },
-  "totalSoldItems": 87,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b627e"
-  },
-  "name": "Lewis & Pearl Chill",
-  "slug": "lewis-and-pearl-chill",
-  "image": "/images/powder/lewis-and-pearl-chill.jpg",
-  "category": "powder",
-  "price": 24,
-  "pricePrediction": 21.6,
-  "discountedPrice": 21.6,
-  "stocks": 17,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 17,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118030"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880658276"
-    }
-  },
-  "totalSoldItems": 83,
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b627f"
-  },
-  "name": "Lewis & Pearl Rose & Lily",
-  "slug": "lewis-and-pearl-rose-and-lily",
-  "image": "/images/powder/lewis-and-pearl-rose-and-lily.jpg",
-  "category": "powder",
-  "price": 24,
-  "pricePrediction": 21.6,
-  "discountedPrice": 21.6,
-  "stocks": 100,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 100,
-  "salesPercentage": 0,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118037"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880660287"
-    }
-  },
-  "discount": 0.1
-},{
-  "_id": {
-    "$oid": "6310c3edfa21acccd82b6280"
-  },
-  "name": "Lewis & Pearl White Blush",
-  "slug": "lewis-and-pearl-white-blush",
-  "image": "/images/powder/lewis-and-pearl-white-blush.jpg",
-  "category": "powder",
-  "price": 24,
-  "pricePrediction": 21.6,
-  "discountedPrice": 21.6,
-  "stocks": 100,
-  "rating": 5,
-  "numReviews": 1,
-  "description": "",
-  "lowStocks": 15,
-  "soldItems": 0,
-  "pastStocks": 100,
-  "salesPercentage": 0,
-  "reviews": [
-    {
-      "firstName": "sample",
-      "lastName": "admin",
-      "email": "admin@email.com",
-      "rating": 5,
-      "comments": "",
-      "_id": {
-        "$oid": "638487f1ff98acef51468a98"
-      },
-      "updatedAt": {
-        "$date": {
-          "$numberLong": "1669629937066"
-        }
-      },
-      "createdAt": {
-        "$date": {
-          "$numberLong": "1669629937066"
-        }
-      }
-    }
-  ],
-  "__v": 0,
-  "createdAt": {
-    "$date": {
-      "$numberLong": "1662043118038"
-    }
-  },
-  "updatedAt": {
-    "$date": {
-      "$numberLong": "1669880661022"
-    }
-  },
-  "discount": 0.1
-}]
+[
+  {
+    "name": "20in Monitor",
+    "slug": "20in-monitor",
+    "image": "/images/electronics/20in-monitor.jpg",
+    "category": "electronics",
+    "price": 109.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "27in 4K Gaming Monitor",
+    "slug": "27in-4k-gaming-monitor",
+    "image": "/images/electronics/27in-4k-gaming-monitor.jpg",
+    "category": "electronics",
+    "price": 389.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "27in FHD Monitor",
+    "slug": "27in-fhd-monitor",
+    "image": "/images/electronics/27in-fhd-monitor.jpg",
+    "category": "electronics",
+    "price": 149.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "34in Ultrawide Monitor",
+    "slug": "34in-ultrawide-monitor",
+    "image": "/images/electronics/34in-ultrawide-monitor.jpg",
+    "category": "electronics",
+    "price": 379.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Energizer AA Batteries (4-pack)",
+    "slug": "energizer-aa-batteries-4-pack",
+    "image": "/images/electronics/energizer-max-aa-battery.jpg",
+    "category": "electronics",
+    "price": 3.84,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Energizer AAA Batteries (4-pack)",
+    "slug": "energizer-aaa-batteries-4-pack",
+    "image": "/images/electronics/energizer-max-aaa-battery.jpg",
+    "category": "electronics",
+    "price": 2.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Apple Airpods Headphones",
+    "slug": "apple-airpods-headphones",
+    "image": "/images/electronics/apple-airpods-headphones.jpg",
+    "category": "electronics",
+    "price": 150,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Bose SoundSport Headphones",
+    "slug": "bose-soundsport-headphones",
+    "image": "/images/electronics/bose-soundsport-headphones.jpg",
+    "category": "electronics",
+    "price": 99.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Flatscreen TV",
+    "slug": "flatscreen-tv",
+    "image": "/images/electronics/flatscreen-tv.jpg",
+    "category": "electronics",
+    "price": 300,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Google Phone",
+    "slug": "google-phone",
+    "image": "/images/electronics/google-phone.jpg",
+    "category": "electronics",
+    "price": 600,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "IPhone",
+    "slug": "iphone",
+    "image": "/images/electronics/iphone.jpg",
+    "category": "electronics",
+    "price": 700,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "LG Dryer",
+    "slug": "lg-dryer",
+    "image": "/images/electronics/lg-dryer.jpg",
+    "category": "electronics",
+    "price": 600,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "LG Washing Machine",
+    "slug": "lg-washing-machien",
+    "image": "/images/electronics/lg-washing-machine.jpg",
+    "category": "electronics",
+    "price": 600,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Lightning Charging Cable",
+    "slug": "lightning-charging-cable",
+    "image": "/images/electronics/lightning-charging-cable.jpg",
+    "category": "electronics",
+    "price": 14.95,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "MacBook Pro Laptop",
+    "slug": "macbook-pro-laptop",
+    "image": "/images/electronics/macbook-pro-laptop.jpg",
+    "category": "electronics",
+    "price": 1700,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "ThinkPad Laptop",
+    "slug": "thinkpad-laptop",
+    "image": "/images/electronics/thinkpad-laptop.jpg",
+    "category": "electronics",
+    "price": 999.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "USB-C Charging Cable",
+    "slug": "usb-c-charging-cable",
+    "image": "/images/electronics/usb-c-charging-cable.jpg",
+    "category": "electronics",
+    "price": 11.95,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  },
+  {
+    "name": "Wired Headphones",
+    "slug": "wired-headphones",
+    "image": "/images/electronics/wired-headphones.jpg",
+    "category": "electronics",
+    "price": 11.99,
+    "pricePrediction": 432,
+    "discountedPrice": 480,
+    "stocks": 100,
+    "rating": 0,
+    "numReviews": 0,
+    "description": "",
+    "sales": 0,
+    "soldItems": 100,
+    "totalSoldItems": 100,
+    "discount": 0.1,
+    "increase": 0.1,
+    "reviews": []
+  }
+]

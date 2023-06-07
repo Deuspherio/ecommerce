@@ -46,7 +46,7 @@ const ShippingPage = () => {
   return (
     <>
       <Helmet>
-        <title>Shipment Information</title>
+        <title>Shipping Information</title>
       </Helmet>
       <div className="custom-container">
         {userData ? (
@@ -64,9 +64,10 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your first name"
                   name="firstName"
+                  disabled
                 />
                 {errors.firstName?.message && (
-                  <p className="">{errors.firstName?.message}</p>
+                  <p className="yup-error">{errors.firstName?.message}</p>
                 )}
               </div>
               <div className="flex flex-col">
@@ -77,9 +78,10 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your last name"
                   name="lastName"
+                  disabled
                 />
                 {errors.lastName?.message && (
-                  <p className="">{errors.lastName?.message}</p>
+                  <p className="yup-error">{errors.lastName?.message}</p>
                 )}
               </div>
               <div className="flex flex-col">
@@ -90,9 +92,10 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your email"
                   name="email"
+                  disabled
                 />
                 {errors.email?.message && (
-                  <p className="">{errors.email?.message}</p>
+                  <p className="yup-error">{errors.email?.message}</p>
                 )}
               </div>
               <div className="flex flex-col">
@@ -103,9 +106,10 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your address"
                   name="address"
+                  disabled
                 />
                 {errors.address?.message && (
-                  <p className="">{errors.address?.message}</p>
+                  <p className="yup-error">{errors.address?.message}</p>
                 )}
               </div>
               <div className="flex flex-col mb-6">
@@ -120,10 +124,11 @@ const ShippingPage = () => {
                     className="border rounded p-2 flex-1"
                     placeholder="Update your phone number"
                     name="phoneNumber"
+                    disabled
                   />
                 </div>
                 {errors.phoneNumber?.message && (
-                  <p className="text-red">{errors.phoneNumber?.message}</p>
+                  <p className="yup-error">{errors.phoneNumber?.message}</p>
                 )}
               </div>
               <p>Payment Method</p>
@@ -146,7 +151,7 @@ const ShippingPage = () => {
                 </option>
               </select>
               {errors.paymentMethod?.message && (
-                <p className="">{errors.paymentMethod?.message}</p>
+                <p className="yup-error">{errors.paymentMethod?.message}</p>
               )}
               <button type="submit" className="btn-primary">
                 Save

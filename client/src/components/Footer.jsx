@@ -1,17 +1,11 @@
 import { Link } from "react-router-dom";
 import { BsDiscord, BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 
-const categoriesItems = [
-  { name: "Face Cream", to: "/" },
-  { name: "Lipstick", to: "/" },
-  { name: "Lotion", to: "/" },
-  { name: "Powder", to: "/" },
-];
+const categoriesItems = [{ name: "Electronics", to: "/" }];
 const linksItems = [
   { name: "FAQ", to: "/" },
   { name: "Pages", to: "/" },
   { name: "Stores", to: "/" },
-  { name: "Compare", to: "/" },
   { name: "Cookies", to: "/" },
 ];
 

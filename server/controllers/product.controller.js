@@ -115,22 +115,13 @@ const updateProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (product) {
     await Product.updateOne(
-      { _id: product.id },
+      { _id: product._id },
       {
-        name: req.body.name,
-        slug: req.body.slug,
-        category: req.body.category,
-        price: req.body.price,
-        discountedPrice: req.body.price,
-        pricePrediction: req.body.price,
         stocks: req.body.stocks,
-        pastStocks: req.body.stocks,
-        salesPercentage: 0,
-        soldItems: 0,
-        description: req.body.description,
       }
     );
-    return res.send({ message: "Product Updated" });
+    const newProduct = await Product.findById(product._id);
+    return res.send(newProduct);
   }
   res.status(404).send({ message: "Product Not Found" });
 });
@@ -153,7 +144,6 @@ const createProduct = asyncHandler(async (req, res) => {
     discount: 0,
     pricePrediction: req.body.price,
     stocks: req.body.stocks,
-    pastStocks: req.body.stocks,
     description: "",
     soldItems: 0,
     totalSoldItems: 0,
@@ -296,11 +286,26 @@ const search = asyncHandler(async (req, res) => {
 
 const updateProductsDiscount = asyncHandler(async (req, res) => {
   const products = await Product.find();
-  const fixedDiscount = parseFloat(req.body.discount / 100);
+  const newDiscount = parseFloat(req.body.discount / 100);
 
   await Promise.all(
     products.map(async (x) => {
-      await applyDiscountPerProduct(x._id, fixedDiscount);
+      await applyDiscountPerProduct(x._id, newDiscount);
+      await setPrediction(x._id);
+    })
+  );
+  const updatedProducts = await Product.find();
+
+  res.send(updatedProducts);
+});
+
+const updateProductsIncrease = asyncHandler(async (req, res) => {
+  const products = await Product.find();
+  const newIncrease = parseFloat(req.body.increase / 100);
+
+  await Promise.all(
+    products.map(async (x) => {
+      await applyDiscountPerProduct(x._id, newDiscount);
       await setPrediction(x._id);
     })
   );
@@ -316,61 +321,9 @@ const updateProductsPrice = asyncHandler(async (req, res) => {
     products.map(async (x) => {
       await applyPrediction(x._id);
       await setPastData(x._id);
-      await salesPercentagePerProduct(x._id);
       await setPrediction(x._id);
     })
   );
-  const updatedProducts = await Product.find();
-  res.send(updatedProducts);
-});
-
-const updateProductsDiscountByCategory = asyncHandler(async (req, res) => {
-  const products = await Product.find({ category: req.body.category });
-  const fixedDiscount = parseFloat(req.body.discount / 100);
-
-  await Promise.all(
-    products.map(async (x) => {
-      await applyDiscountPerProduct(x._id, fixedDiscount);
-      await setPrediction(x._id);
-    })
-  );
-  const updatedProducts = await Product.find();
-  res.send(updatedProducts);
-});
-
-const updateProductsPriceByCategory = asyncHandler(async (req, res) => {
-  const products = await Product.find({ category: req.body.category });
-
-  await Promise.all(
-    products.map(async (x) => {
-      await applyPrediction(x._id);
-      await setPastData(x._id);
-      await salesPercentagePerProduct(x._id);
-      await setPrediction(x._id);
-    })
-  );
-  const updatedProducts = await Product.find();
-  res.send(updatedProducts);
-});
-
-const updateProductDiscountById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
-  const fixedDiscount = parseFloat(req.body.discount / 100);
-
-  await applyDiscountPerProduct(product._id, fixedDiscount);
-  await setPrediction(product._id);
-  const updatedProducts = await Product.find();
-  res.send(updatedProducts);
-});
-
-const updateProductPriceById = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
-
-  await applyPrediction(product._id);
-  await setPastData(product._id);
-  await salesPercentagePerProduct(product._id);
-  await setPrediction(product._id);
-
   const updatedProducts = await Product.find();
   res.send(updatedProducts);
 });
@@ -387,9 +340,6 @@ module.exports = {
   updateProductReviews,
   search,
   updateProductsDiscount,
+  updateProductsIncrease,
   updateProductsPrice,
-  updateProductsDiscountByCategory,
-  updateProductsPriceByCategory,
-  updateProductDiscountById,
-  updateProductPriceById,
 };

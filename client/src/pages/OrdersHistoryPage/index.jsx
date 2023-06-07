@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getOrders } from "./orders.api";
 import { Helmet } from "react-helmet-async";
 import Pagination from "../../components/Pagination";
+import { BsCheck2, BsInfo } from "react-icons/bs";
 
 const PAGE_SIZE = 10;
 const OrdersHistoryPage = () => {
@@ -36,38 +37,27 @@ const OrdersHistoryPage = () => {
         <Loading />
       ) : isError ? (
         <p>{error.message}</p>
-      ) : isSuccess ? (
+      ) : (
         <div className="custom-container">
           <h1 className="text-center">Orders History</h1>
           <div className="overflow-x-auto relative">
-            <table className="w-full text-left text-gray-500 rounded border">
-              <thead className="text-lg w-full text-gray-700 uppercase border">
+            <table className="w-full rounded border">
+              <thead className="text-lg w-full text-gray-700 uppercase">
                 <tr>
-                  <th scope="col" className="py-3 px-6 border">
-                    DATE
-                  </th>
-                  <th scope="col" className="py-3 px-6 border">
-                    TOTAL
-                  </th>
-                  <th scope="col" className="py-3 px-6 border">
-                    PAID
-                  </th>
-                  <th scope="col" className="py-3 px-6 border">
-                    DELIVERED
-                  </th>
-                  <th scope="col" className="py-3 px-6 border" colSpan={2}>
+                  <th scope="col">DATE</th>
+                  <th scope="col">TOTAL</th>
+                  <th scope="col">PAID</th>
+                  <th scope="col">DELIVERED</th>
+                  <th scope="col" colSpan={2}>
                     ACTIONS
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {orders.slice(firstOrderIndex, lastOrderIndex).map((order) => (
-                  <tr
-                    key={order._id}
-                    className="transition-bg hover:bg-slate-100"
-                  >
+                  <tr key={order._id} className="hover:bg-gray-50">
                     <td>{order.createdAt.substring(0, 10)}</td>
-                    <td>{`₱ ${roundToTwo(
+                    <td>{`$ ${roundToTwo(
                       order.totalPrice
                     ).toLocaleString()}`}</td>
                     <td>
@@ -81,26 +71,39 @@ const OrdersHistoryPage = () => {
                         : "Not yet delivered"}
                     </td>
                     <td>
-                      {!order.isDelivered ? (
-                        <button className="btn-primary" type="button">
-                          Order Received
-                        </button>
-                      ) : (
-                        <button className="btn-primary" type="button" disabled>
-                          Order Received
-                        </button>
-                      )}
+                      <div className="flex items-center justify-center">
+                        {!order.isDelivered ? (
+                          <button
+                            type="button"
+                            className="btn-primary bg-green-600 text-2xl w-auto"
+                            title="ORDER RECEIVED?"
+                          >
+                            <BsCheck2 />
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="btn-primary bg-green-600 text-2xl w-auto"
+                            title="ORDER RECEIVED"
+                          >
+                            <BsCheck2 />
+                          </button>
+                        )}
+                      </div>
                     </td>
                     <td>
-                      <button
-                        className="btn-primary"
-                        type="button"
-                        onClick={() => {
-                          navigate(`/user/order/${order._id}`);
-                        }}
-                      >
-                        Details
-                      </button>
+                      <div className="flex items-center justify-center">
+                        <button
+                          className="btn-primary text-2xl w-auto"
+                          type="button"
+                          title="ORDER INFO"
+                          onClick={() => {
+                            navigate(`/user/order/${order._id}`);
+                          }}
+                        >
+                          <BsInfo />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -114,7 +117,7 @@ const OrdersHistoryPage = () => {
             setCurrentPage={setCurrentPage}
           />
         </div>
-      ) : null}
+      )}
     </>
   );
 };

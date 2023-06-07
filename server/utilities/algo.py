@@ -126,31 +126,83 @@ def predict(summaries, row):
     return best_label
 
 
-# Locate the sample file (decrease.csv)
-filename = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
-csv_path = 'decrease.csv'
-dataset = load_csv(os.path.join(filename, csv_path))
+def locate_dataset(name):
+    match name:
+        case 0:
+            return 'product0.training.dataset.csv'
+        case 1:
+            return 'product1.training.dataset.csv'
+        case 2:
+            return 'product2.training.dataset.csv'
+        case 3:
+            return 'product3.training.dataset.csv'
+        case 4:
+            return 'product4.training.dataset.csv'
+        case 5:
+            return 'product5.training.dataset.csv'
+        case 6:
+            return 'product6.training.dataset.csv'
+        case 7:
+            return 'product7.training.dataset.csv'
+        case 8:
+            return 'product8.training.dataset.csv'
+        case 9:
+            return 'product9.training.dataset.csv'
+        case 10:
+            return 'product10.training.dataset.csv'
+        case 11:
+            return 'product11.training.dataset.csv'
+        case 12:
+            return 'product12.training.dataset.csv'
+        case 13:
+            return 'product13.training.dataset.csv'
+        case 14:
+            return 'product14.training.dataset.csv'
+        case 15:
+            return 'product15.training.dataset.csv'
+        case 16:
+            return 'product16.training.dataset.csv'
+        case 17:
+            return 'product17.training.dataset.csv'
 
-# Convert samples to float
-for i in range(len(dataset[0])):
-    str_column_to_float(dataset, i)
 
-# Convert last column(decrease) from float to int
-float_class_column_to_int(dataset, len(dataset[0])-1)
+def main():
+    # 4. Receive the data from the nodejs (database)
+    # row = [0, 5, 12, 9, 5]
+    product_name = sys.argv[1]
+    product_sold_items = sys.argv[2]
+    product_sales = sys.argv[3]
+    current_date = sys.argv[4]
+    current_month = sys.argv[5]
+    product_name = int(product_name)
+    product_sold_items = float(product_sold_items)
+    product_sales = float(product_sales)
+    current_date = float(current_date)
+    current_month = float(current_month)
+    row = [product_name, product_sold_items,
+           product_sales, current_date, current_month]
+    # Locate the dataset file
+    filename = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+    csv_path = locate_dataset(row[0])
+    dataset = load_csv(os.path.join(filename, csv_path))
 
-# 4. Receive the data from the nodejs (database)
-sales = sys.argv[1]
-stocks = sys.argv[2]
-sales = float(sales)
-stocks = float(stocks)
-row = [sales, stocks]
+    # Convert samples to float
+    for i in range(len(dataset[0])):
+        str_column_to_float(dataset, i)
 
-model = summarize_by_class(dataset)
-# row = [.35, 50]
-# Predict the result from a given row
-# 5. Use the received data (row), and the summarized class dataset (model) for prediction
-label = predict(model, row)
+    # Convert last column(decrease) from float to int
+    float_class_column_to_int(dataset, len(dataset[0])-1)
 
-# 10. Send the results to nodejs
-print(label)
+    model = summarize_by_class(dataset)
+    # row = [.35, 50]
+    # Predict the result from a given row
+    # 5. Use the received data (row), and the summarized class dataset (model) for prediction
+    label = predict(model, row)
+
+    # 10. Send the results to nodejs
+    return label
+
+
+label_predicted = main()
+print(label_predicted)
 sys.stdout.flush()

@@ -6,23 +6,29 @@ const absolutePath = path.resolve();
 require("dotenv").config();
 
 // 2. Connect nodejs to python
-const sendData = async (sales, stocks) => {
+const sendData = async (name, soldItems, sales, date, month) => {
   try {
-    const run = async (sales, stocks) =>
+    const run = async (name, soldItems, sales, date, month) =>
       new Promise((resolve, reject) => {
         let result = "";
         // 3. Send the necessary data to the algo
         const pythonProcess =
           process.env.NODE_ENV === "production"
             ? spawn("python", [
-                path.join(absolutePath, "/server/utilities/algo.py"),
+                path.join(absolutePath, "/backend/utilities/algo.py"),
+                name,
+                soldItems,
                 sales,
-                stocks,
+                date,
+                month,
               ])
             : spawn("python", [
                 path.join(absolutePath, "/utilities/algo.py"),
+                name,
+                soldItems,
                 sales,
-                stocks,
+                date,
+                month,
               ]);
         // 11. Receive the results from the algo
         pythonProcess.stdout.on("data", (data) => {
@@ -35,30 +41,15 @@ const sendData = async (sales, stocks) => {
           reject(err.toString());
         });
       });
-    const receivedData = asyncHandler(async (sales, stocks) => {
-      const value = await run(sales, stocks);
-      return value;
-    });
-    return receivedData(sales, stocks);
-  } catch (err) {
-    console.log(err.toString());
-  }
-};
-
-const salesPercentagePerProduct = async (id) => {
-  const product = await Product.findById(id);
-  if (product) {
-    const zeroStocks = product.pastStocks === 0 ? 1 : product.pastStocks;
-    await Product.updateOne(
-      { _id: product._id },
-      {
-        $set: {
-          salesPercentage:
-            (product.soldItems * product.discountedPrice) /
-            (zeroStocks * product.discountedPrice),
-        },
+    const receivedData = asyncHandler(
+      async (name, soldItems, sales, date, month) => {
+        const value = await run(name, soldItems, sales, date, month);
+        return value;
       }
     );
+    return receivedData(name, soldItems, sales, date, month);
+  } catch (err) {
+    console.log(err.toString());
   }
 };
 
@@ -76,13 +67,67 @@ const applyDiscountPerProduct = async (id, discount) => {
   }
 };
 
+const productName = (name) => {
+  switch (name) {
+    case "20in Monitor":
+      return 0;
+    case "27in 4K Gaming Monitor":
+      return 1;
+    case "27in FHD Monitor":
+      return 2;
+    case "34in Ultrawide Monitor":
+      return 3;
+    case "Energizer AA Batteries (4-pack)":
+      return 4;
+    case "Energizer AAA Batteries (4-pack)":
+      return 5;
+    case "Apple Airpods Headphones":
+      return 6;
+    case "Bose SoundSport Headphones":
+      return 7;
+    case "Flatscreen TV":
+      return 8;
+    case "Google Phone":
+      return 9;
+    case "IPhone":
+      return 10;
+    case "LG Dryer":
+      return 11;
+    case "LG Washing Machine":
+      return 12;
+    case "Lightning Charging Cable":
+      return 13;
+    case "MacBook Pro Laptop":
+      return 14;
+    case "ThinkPad Laptop":
+      return 15;
+    case "USB-C Charging Cable":
+      return 16;
+    case "Wired Headphones":
+      return 17;
+
+    default:
+      return 0;
+  }
+};
+
 const setPrediction = async (id) => {
   const product = await Product.findById(id);
   // 1. Get the data from the database
   const { salesPercentage, pastStocks, discount } = product;
+  const { name, soldItems, sales } = product;
+  const productCode = productName(name);
+  const date = new Date();
   // 12. Use the results from the algorithm to apply the discount
-  const result = await sendData(salesPercentage, pastStocks);
-  const predictionWithDiscount = result === 0 ? 0 : -discount;
+  const result = await sendData(
+    productCode,
+    soldItems,
+    sales,
+    date.getDate(),
+    date.getMonth() + 1
+  );
+  const predictionWithDiscount = result === 0 ? discount : -discount;
+  const priceSuggestion = result === 0 ? "increase" : "decrease";
   if (product) {
     // 13. Update the price prediction per product
     const totalPriceDiscount =
@@ -92,7 +137,8 @@ const setPrediction = async (id) => {
       { _id: product._id },
       {
         $set: {
-          pricePrediction: totalPriceDiscount,
+          priceSuggestion: priceSuggestion,
+          pricePrediction: roundToTwo(totalPriceDiscount),
         },
       }
     );
@@ -121,7 +167,7 @@ const setPastData = async (id) => {
       { _id: product._id },
       {
         $set: {
-          pastStocks: product.stocks,
+          sales: 0,
           soldItems: 0,
         },
       }
@@ -154,8 +200,9 @@ const incrementProductSold = async (id, productSold) => {
       { _id: product._id },
       {
         $inc: {
-          totalSoldItems: productSold,
+          sales: roundToTwo(product.price * productSold),
           soldItems: productSold,
+          totalSoldItems: productSold,
         },
       }
     );
@@ -164,7 +211,6 @@ const incrementProductSold = async (id, productSold) => {
 
 module.exports = {
   setPrediction,
-  salesPercentagePerProduct,
   applyPrediction,
   setPastData,
   applyDiscountPerProduct,

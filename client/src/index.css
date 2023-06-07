@@ -10,7 +10,10 @@
     @apply container mx-auto py-4 px-6 space-y-6 lg:px-20;
   }
   .btn-primary {
-    @apply w-full px-6 py-4 rounded bg-primary text-white transition-opacity hover:opacity-80;
+    @apply w-full flex items-center justify-center px-6 py-4 rounded bg-primary text-white transition-opacity hover:opacity-80;
+  }
+  .yup-error {
+    @apply text-red-600;
   }
 }
 

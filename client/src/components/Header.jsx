@@ -4,7 +4,6 @@ import { useContext } from "react";
 import SearchBar from "./SearchBar";
 import { Store } from "../context";
 import UserDropDown from "./UserDropDown";
-import MenuDropDown from "./MenuDropDown";
 
 const navItems = [
   {
@@ -60,18 +59,18 @@ const Header = () => {
           ))}
         </ul>
         <ul className="hidden lg:flex lg:space-x-6 lg:items-center lg:justify-between">
-          <li>
+          <li title="SEARCH">
             <SearchBar />
           </li>
           <li>
             <UserDropDown userData={userData} signoutHandler={signoutHandler} />
           </li>
-          <li>
+          <li title="WISHLIST">
             <Link to="/">
               <BsHeart className="text-xl" />
             </Link>
           </li>
-          <li className="relative">
+          <li className="relative" title="CART">
             <Link to="/products/cart">
               <BsCart className="text-xl" />
             </Link>
@@ -80,10 +79,13 @@ const Header = () => {
             </span>
           </li>
         </ul>
-        <ul className="flex space-x-4 text-xl items-center md:space-x-6 lg:hidden">
+        {/* <ul className="flex space-x-4 text-xl items-center md:space-x-6 lg:hidden">
           <li>
             <SearchBar />
           </li>
+          <li>
+            <AdminDropDown userData={userData} />
+          </li> 
           <li>
             <UserDropDown userData={userData} signoutHandler={signoutHandler} />
           </li>
@@ -98,7 +100,7 @@ const Header = () => {
           <li>
             <MenuDropDown navItems={navItems} />
           </li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

@@ -6,6 +6,6 @@ export const schema = yup
     name: yup.string().required(),
     category: yup.string().required(),
     price: yup.number().required(),
-    stocks: yup.number().required(),
+    stocks: yup.number("Must be a whole number").required(),
   })
   .required();

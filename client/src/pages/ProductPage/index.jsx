@@ -15,14 +15,14 @@ import Pagination from "../../components/Pagination";
 import { BsCartPlus } from "react-icons/bs";
 
 const ProductPage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const {
     isLoading,
     isError,
     isSuccess,
     error,
     data: product,
-  } = useQuery(["product"], () => getProduct(id));
+  } = useQuery(["product"], () => getProduct(slug));
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -128,11 +128,11 @@ const ProductPage = () => {
                   <div className="flex items-center  justify-between">
                     <h4 className="mb-0">Price</h4>
                     {product.discountedPrice >= product.price ? (
-                      <p>{`₱ ${product.discountedPrice}`}</p>
+                      <p>{`$ ${product.discountedPrice}`}</p>
                     ) : (
                       <div className="flex flex-col">
-                        <p className="text-sm line-through">{`₱ ${product.price}`}</p>
-                        <p className="font-bold">{`₱ ${product.discountedPrice}`}</p>
+                        <p className="text-sm line-through">{`$ ${product.price}`}</p>
+                        <p className="font-bold">{`$ ${product.discountedPrice}`}</p>
                       </div>
                     )}
                   </div>

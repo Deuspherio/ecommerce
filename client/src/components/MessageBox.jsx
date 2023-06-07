@@ -3,9 +3,9 @@ const MessageBox = ({ children, danger, info }) => {
     <div
       className={`${
         danger
-          ? "bg-red-500 border-red-600"
+          ? "bg-red-600 border-red-600 text-white"
           : info
-          ? "bg-blue-400 border-primary"
+          ? "text-white border-blue-600 bg-blue-600"
           : ""
       } custom-container text-white px-6 py-4 rounded border`}
     >

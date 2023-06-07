@@ -8,7 +8,7 @@ function ProtectedRoute({ children }) {
     user: { userData },
   } = state;
 
-  return userData ? children : <Navigate to="/" />;
+  return userData && userData.isAdmin ? children : <Navigate to="/" />;
 }
 
 export default ProtectedRoute;

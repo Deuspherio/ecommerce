@@ -26,7 +26,7 @@ const CartPage = () => {
       <div className="custom-container">
         <div className="grid grid-cols-12 gap-4 items-start">
           <div className="col-span-8 border rounded px-6 py-4">
-            <h1 className="text-center">Your Orders</h1>
+            <h1 className="text-center">Orders</h1>
             <div className="divide-y">
               {cartItems.length > 0 ? (
                 cartItems.map((item) => (
@@ -43,21 +43,21 @@ const CartPage = () => {
                       {item.name}
                     </Link>
                     <p className="col-span-1">x{item.quantity}</p>
-                    <div className="col-span-4">
+                    <div className="col-span-3">
                       {item.discountedPrice >= item.price ? (
-                        <p>{`₱ ${item.discountedPrice}`}</p>
+                        <p>{`$ ${item.discountedPrice}`}</p>
                       ) : (
                         <div className="flex items-center gap-4">
                           <p className="text-sm line-through">{`₱ ${item.price}`}</p>
-                          <p className="font-bold">{`₱ ${item.discountedPrice}`}</p>
+                          <p className="font-bold">{`$ ${item.discountedPrice}`}</p>
                         </div>
                       )}
                     </div>
                     <button
-                      className="col-span-1"
+                      className="col-span-2 btn-primary bg-red-600 text-2xl"
                       onClick={() => removeItemHandler(item)}
                     >
-                      <AiOutlineDelete className="text-xl" />
+                      <AiOutlineDelete />
                     </button>
                   </div>
                 ))
@@ -75,18 +75,39 @@ const CartPage = () => {
             <div className="flex justify-between items-center">
               <h4>Total Price:</h4>
               <div className="flex items-center space-x-2">
-                <p className="line-through text-sm">{`₱ ${cartItems
-                  .reduce((a, c) => a + c.price * c.quantity, 0)
-                  .toLocaleString()}`}</p>
-                <h4 className="mb-0">{`₱ ${cartItems
-                  .reduce(
-                    (a, c) =>
-                      a +
-                      (c.discountedPrice ? c.discountedPrice : c.price) *
-                        c.quantity,
-                    0
-                  )
-                  .toLocaleString()}`}</h4>
+                {cartItems.reduce((a, c) => a + c.price * c.quantity, 0) <=
+                cartItems.reduce(
+                  (a, c) =>
+                    a +
+                    (c.discountedPrice ? c.discountedPrice : c.price) *
+                      c.quantity,
+                  0
+                ) ? (
+                  <h4 className="mb-0">{`$ ${cartItems
+                    .reduce(
+                      (a, c) =>
+                        a +
+                        (c.discountedPrice ? c.discountedPrice : c.price) *
+                          c.quantity,
+                      0
+                    )
+                    .toLocaleString()}`}</h4>
+                ) : (
+                  <>
+                    <p className="line-through text-sm">{`$ ${cartItems
+                      .reduce((a, c) => a + c.price * c.quantity, 0)
+                      .toLocaleString()}`}</p>
+                    <h4 className="mb-0">{`$ ${cartItems
+                      .reduce(
+                        (a, c) =>
+                          a +
+                          (c.discountedPrice ? c.discountedPrice : c.price) *
+                            c.quantity,
+                        0
+                      )
+                      .toLocaleString()}`}</h4>
+                  </>
+                )}
               </div>
             </div>
             <button

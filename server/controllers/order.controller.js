@@ -25,7 +25,6 @@ const createOrder = asyncHandler(async (req, res) => {
     order.orderItems.map(async (x) => {
       await decrementProductQuantity(x._id, x.quantity);
       await incrementProductSold(x._id, x.quantity);
-      await salesPercentagePerProduct(x._id);
       await setPrediction(x._id);
     })
   );
@@ -109,45 +108,9 @@ const orderSummary = asyncHandler(async (req, res) => {
     },
   ]);
 
-  const availableFaceCream = await Product.aggregate([
+  const availableElectronics = await Product.aggregate([
     {
-      $match: { category: "face-cream" },
-    },
-    {
-      $group: {
-        _id: "$name",
-        stocks: { $sum: "$stocks" },
-      },
-    },
-  ]);
-
-  const availableLipstick = await Product.aggregate([
-    {
-      $match: { category: "lipstick" },
-    },
-    {
-      $group: {
-        _id: "$name",
-        stocks: { $sum: "$stocks" },
-      },
-    },
-  ]);
-
-  const availableLotion = await Product.aggregate([
-    {
-      $match: { category: "lotion" },
-    },
-    {
-      $group: {
-        _id: "$name",
-        stocks: { $sum: "$stocks" },
-      },
-    },
-  ]);
-
-  const availablePowder = await Product.aggregate([
-    {
-      $match: { category: "powder" },
+      $match: { category: "electronics" },
     },
     {
       $group: {
@@ -163,10 +126,7 @@ const orderSummary = asyncHandler(async (req, res) => {
     dailySales,
     monthlySales,
     totalSoldProducts,
-    availableFaceCream,
-    availableLipstick,
-    availableLotion,
-    availablePowder,
+    availableElectronics,
     totalProductCategories,
   });
 });

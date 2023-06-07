@@ -3,14 +3,25 @@ import { Store } from "../../context";
 import { useContext, useState } from "react";
 import Loading from "../../components/Loading";
 import { useNavigate } from "react-router-dom";
-import { deleteProduct, getProducts } from "./products.api";
+import {
+  deleteProduct,
+  getProducts,
+  patchProductsDiscount,
+  patchProductsPrice,
+  patchProductsIncrease,
+} from "./products.api";
 import { Helmet } from "react-helmet-async";
 import Pagination from "../../components/Pagination";
 import MessageBox from "../../components/MessageBox";
 import { toast } from "react-toastify";
+import { BsCheck2 } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
 
 const PAGE_SIZE = 10;
 const ProductsListPage = () => {
+  const [productsDiscount, setProductsDiscount] = useState(1);
+  const [productsIncrease, setProductsIncrease] = useState(1);
   const {
     state: {
       user: { userData },
@@ -20,7 +31,6 @@ const ProductsListPage = () => {
     data: products,
     isLoading,
     isError,
-    isSuccess,
     error,
   } = useQuery(["products"], () => getProducts(userData));
 
@@ -38,8 +48,52 @@ const ProductsListPage = () => {
   );
 
   const deleteSingleProduct = (id) => {
+    // if (window.confirm("Are you sure?")) {
+    //   mutate(id);
+    // }
+    console.log(id);
+  };
+
+  const { mutate: patchPriceMutate, isLoading: patchPriceIsLoading } =
+    useMutation(() => patchProductsPrice(userData), {
+      onSuccess: (data) => {
+        queryClient.setQueryData(["products"], () => data);
+      },
+    });
+
+  const updateProductsPriceHandler = () => {
     if (window.confirm("Are you sure?")) {
-      mutate(id);
+      patchPriceMutate();
+      setProductsDiscount(1);
+      setProductsIncrease(1);
+    }
+  };
+
+  const { mutate: patchDiscountMutate, isLoading: patchDiscountIsLoading } =
+    useMutation((discount) => patchProductsDiscount(discount, userData), {
+      onSuccess: (data) => {
+        queryClient.setQueryData(["products"], () => data);
+      },
+    });
+
+  const { mutate: patchIncreaseMutate, isLoading: patchIncreaseIsLoading } =
+    useMutation((increase) => patchProductsIncrease(increase, userData), {
+      onSuccess: (data) => queryClient.setQueryData(["products"], () => data),
+    });
+
+  const updateProductsDiscountHandler = (e) => {
+    e.preventDefault();
+    if (window.confirm("Are you sure?")) {
+      patchDiscountMutate(productsDiscount);
+      setProductsDiscount(1);
+    }
+  };
+
+  const updateProductsIncreaseHandler = (e) => {
+    e.preventDefault();
+    if (window.confirm("Are you sure?")) {
+      patchIncreaseMutate(productsIncrease);
+      setProductsIncrease(1);
     }
   };
 
@@ -53,7 +107,11 @@ const ProductsListPage = () => {
       <Helmet>
         <title>List Of Products</title>
       </Helmet>
-      {isLoading || deleteIsLoading ? (
+      {isLoading ||
+      deleteIsLoading ||
+      patchPriceIsLoading ||
+      patchDiscountIsLoading ||
+      patchIncreaseIsLoading ? (
         <Loading />
       ) : isError ? (
         <MessageBox>{error.message}</MessageBox>
@@ -61,13 +119,6 @@ const ProductsListPage = () => {
         <div className="custom-container">
           <div className="flex items-center justify-between">
             <h1 className="text-center flex-1">List of Products</h1>
-            <button
-              type="button"
-              className="btn-primary w-auto"
-              onClick={() => navigate("/admin/products/create")}
-            >
-              Create Product
-            </button>
           </div>
           <div className="overflow-x-auto relative">
             <table className="w-full rounded border">
@@ -76,14 +127,17 @@ const ProductsListPage = () => {
                   <th scope="col" rowSpan={2}>
                     NAME
                   </th>
-                  <th scope="col" className="text-center" colSpan={2}>
-                    PRICE
+                  <th scope="col" rowSpan={2}>
+                    CATEGORY
                   </th>
                   <th scope="col" rowSpan={2}>
                     STOCKS
                   </th>
-                  <th scope="col" rowSpan={2}>
-                    CATEGORY
+                  <th scope="col" className="text-center" colSpan={2}>
+                    PRICE
+                  </th>
+                  <th scope="col" className="text-center" colSpan={2}>
+                    PREDICTION
                   </th>
                   <th scope="col" rowSpan={2} colSpan={2}>
                     ACTIONS
@@ -92,6 +146,8 @@ const ProductsListPage = () => {
                 <tr>
                   <th scope="col">ORIGINAL</th>
                   <th scope="col">CURRENT</th>
+                  <th scope="col">SUGGESTION</th>
+                  <th scope="col">PRICE</th>
                 </tr>
               </thead>
               <tbody>
@@ -102,28 +158,30 @@ const ProductsListPage = () => {
                       <th className="text-start font-medium text-gray-900 whitespace-nowrap">
                         {product.name}
                       </th>
-                      <td>{`₱ ${product.price}`}</td>
-                      <td>{`₱ ${product.discountedPrice}`}</td>
-                      <td>{product.stocks}</td>
                       <td>{product.category}</td>
+                      <td>{product.stocks}</td>
+                      <td>{`$ ${product.price}`}</td>
+                      <td>{`$ ${product.discountedPrice}`}</td>
+                      <td className="capitalize">{product.priceSuggestion}</td>
+                      <td>{`$ ${product.pricePrediction}`}</td>
                       <td>
                         <button
                           type="button"
-                          className="btn-primary"
+                          className="btn-primary text-2xl"
                           onClick={() =>
                             navigate(`/admin/products/${product._id}`)
                           }
                         >
-                          Update
+                          <FiEdit />
                         </button>
                       </td>
                       <td>
                         <button
                           type="button"
-                          className="btn-primary"
+                          className="btn-primary bg-red-600 text-2xl"
                           onClick={() => deleteSingleProduct(product._id)}
                         >
-                          Delete
+                          <AiOutlineDelete />
                         </button>
                       </td>
                     </tr>
@@ -137,6 +195,48 @@ const ProductsListPage = () => {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
+          <div className="flex justify-center">
+            <div className="min-w-[250px] space-y-4 px-6 py-4 border rounded">
+              <h4 className="text-center">Update Discount</h4>
+              <form
+                className="flex items-center justify-center gap-4"
+                onSubmit={updateProductsDiscountHandler}
+              >
+                <select onChange={(e) => setProductsDiscount(+e.target.value)}>
+                  {[...Array(100).keys()].map((x) => (
+                    <option value={parseInt(x + 1)} key={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+                <button className="btn-primary text-2xl w-auto">
+                  <BsCheck2 />
+                </button>
+              </form>
+              <h4 className="text-center">Update Increase</h4>
+              <form
+                className="flex items-center justify-center gap-4"
+                onSubmit={updateProductsIncreaseHandler}
+              >
+                <select onChange={(e) => setProductsIncrease(+e.target.value)}>
+                  {[...Array(100).keys()].map((x) => (
+                    <option value={parseInt(x + 1)} key={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+                <button className="btn-primary text-2xl w-auto">
+                  <BsCheck2 />
+                </button>
+              </form>
+              <button
+                className="btn-primary"
+                onClick={updateProductsPriceHandler}
+              >
+                Update Prices
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>

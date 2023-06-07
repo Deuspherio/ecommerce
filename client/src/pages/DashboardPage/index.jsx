@@ -53,7 +53,7 @@ const DashboardPage = () => {
             </div>
             <div className="border rounded px-6 py-4">
               <h4 className="text-lg font-bold">Total of Profits:</h4>
-              <p>{`₱ ${
+              <p>{`$ ${
                 summary.orders &&
                 summary.orders[0] &&
                 summary.orders.length !== 0

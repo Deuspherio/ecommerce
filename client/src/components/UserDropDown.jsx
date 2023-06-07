@@ -5,12 +5,8 @@ import { Link } from "react-router-dom";
 
 const adminOptions = [
   {
-    option: "Overview",
+    option: "Dashboard",
     link: "/admin/dashboard",
-  },
-  {
-    option: "Prediction Table",
-    link: "/admin/prediction",
   },
   {
     option: "List of Products",
@@ -41,12 +37,15 @@ const UserDropDown = ({ userData, signoutHandler }) => {
   return (
     <>
       {!userData ? (
-        <Link to="/user/signin">
+        <Link to="/user/signin" title="SIGNIN">
           <BsPerson className="text-xl" />
         </Link>
       ) : (
         <Menu as="div" className="relative inline-block">
-          <Menu.Button className="inline-flex w-full justify-center focus:outline-none">
+          <Menu.Button
+            className="inline-flex w-full justify-center focus:outline-none"
+            title="MENU"
+          >
             <BsPerson className="text-xl" />
           </Menu.Button>
           <Transition
@@ -73,64 +72,27 @@ const UserDropDown = ({ userData, signoutHandler }) => {
                   </Menu.Item>
                 ) : null}
               </div>
-              <div className="px-1 py-1">
-                {userData.isAdmin ? (
-                  <>
-                    <Menu.Item>
-                      <Menu as="div" className="relative inline-block w-full">
-                        <Menu.Button className="inline-flex w-full items-center rounded px-2 py-2 transition-bg text-base hover:bg-primary hover:text-white focus:outline-none">
-                          Dashboard
-                        </Menu.Button>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
+              {userData.isAdmin ? (
+                <div className="px-1 py-1">
+                  {adminOptions.map((admin, i) => (
+                    <Menu.Item key={i}>
+                      {({ active }) => (
+                        <Link
+                          to={admin.link}
+                          className={`${
+                            active
+                              ? "bg-primary text-white transition-bg"
+                              : "text-gray-900 transition-bg"
+                          } group flex w-full items-center rounded px-2 py-2`}
                         >
-                          <Menu.Items className="absolute right-20 mt-2 w-44 text-center origin-top-right divide-y divide-gray-100 rounded bg-white shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none md:right-32">
-                            <div className="px-1 py-1">
-                              {adminOptions.map((admin, i) => (
-                                <Menu.Item key={i}>
-                                  {({ active }) => (
-                                    <Link
-                                      to={admin.link}
-                                      className={`${
-                                        active
-                                          ? "bg-primary text-white transition-bg"
-                                          : "text-gray-900 transition-bg"
-                                      } group flex w-full items-center rounded px-2 py-2 text-base`}
-                                    >
-                                      {admin.option}
-                                    </Link>
-                                  )}
-                                </Menu.Item>
-                              ))}
-                            </div>
-                          </Menu.Items>
-                        </Transition>
-                      </Menu>
+                          {admin.option}
+                        </Link>
+                      )}
                     </Menu.Item>
-                    {/* {adminOptions.map((admin, i) => (
-                      <Menu.Item key={i}>
-                        {({ active }) => (
-                          <Link
-                            to={admin.link}
-                            className={`${
-                              active
-                                ? "bg-primary text-white transition-bg"
-                                : "text-gray-900 transition-bg"
-                            } group flex w-full items-center rounded px-2 py-2`}
-                          >
-                            {admin.option}
-                          </Link>
-                        )}
-                      </Menu.Item>
-                    ))} */}
-                  </>
-                ) : null}
+                  ))}
+                </div>
+              ) : null}
+              <div className="px-1 py-1">
                 {userOptions.map((user, i) => (
                   <Menu.Item key={i}>
                     {({ active }) => (

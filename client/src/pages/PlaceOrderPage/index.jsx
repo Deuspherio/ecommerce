@@ -91,7 +91,7 @@ const PlaceOrderPage = () => {
                   </div>
                   <div className="col-span-4">{item.name}</div>
                   <div className="col-span-2">x{item.quantity}</div>
-                  <div className="col-span-4">{`₱ ${(
+                  <div className="col-span-4">{`$ ${(
                     item.discountedPrice * item.quantity
                   ).toLocaleString()}`}</div>
                 </div>
@@ -105,15 +105,15 @@ const PlaceOrderPage = () => {
             <h2 className="text-center">Order Summary</h2>
             <div className="flex justify-between">
               <p className="font-bold">Items</p>
-              <p>{`₱ ${itemsPrice.toLocaleString()}`}</p>
+              <p>{`$ ${itemsPrice.toLocaleString()}`}</p>
             </div>
             <div className="flex justify-between">
               <p className="font-bold">Shipping</p>
-              <p>{`₱ ${roundToTwo(shippingPrice).toLocaleString()}`}</p>
+              <p>{`$ ${roundToTwo(shippingPrice).toLocaleString()}`}</p>
             </div>
             <div className="flex justify-between">
               <p className="font-bold">Order Total</p>
-              <p>{`₱ ${roundToTwo(totalPrice).toLocaleString()}`}</p>
+              <p>{`$ ${roundToTwo(totalPrice).toLocaleString()}`}</p>
             </div>
             <button
               type="button"

@@ -13,3 +13,33 @@ export const deleteProduct = async (id, userData) => {
   });
   return data;
 };
+
+export const patchProductsPrice = async (userData) => {
+  const { data } = await axios.patch(
+    "/api/products/update/prices",
+    {},
+    {
+      headers: { Authorization: `Bearer ${userData.token}` },
+    }
+  );
+  return data;
+};
+export const patchProductsDiscount = async (discount, userData) => {
+  const { data } = await axios.patch(
+    "/api/products/update/discounts",
+    { discount: discount },
+    {
+      headers: { Authorization: `Bearer ${userData.token}` },
+    }
+  );
+  return data;
+};
+
+export const patchProductsIncrease = async (increase, userData) => {
+  const { data } = await axios.patch(
+    "/api/products/update/increase",
+    { increase: increase },
+    { headers: { Authorization: `Bearer ${userData.token}` } }
+  );
+  return data;
+};
