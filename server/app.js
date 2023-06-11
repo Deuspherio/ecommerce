@@ -24,9 +24,9 @@ app.use("/api/orders", orderRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const absolutePath = path.resolve();
-  app.use(express.static(path.join(absolutePath, "/frontend/build")));
+  app.use(express.static(path.join(absolutePath, "/client/build")));
   app.get("*", (req, res) =>
-    res.sendFile(path.join(absolutePath, "/frontend/build/index.html"))
+    res.sendFile(path.join(absolutePath, "/client/build/index.html"))
   );
 }
 
