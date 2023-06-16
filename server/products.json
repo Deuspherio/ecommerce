@@ -1,344 +1,595 @@
-[
-  {
-    "name": "20in Monitor",
-    "slug": "20in-monitor",
-    "image": "/images/electronics/20in-monitor.jpg",
-    "category": "electronics",
-    "price": 109.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
+[{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a90"
   },
-  {
-    "name": "27in 4K Gaming Monitor",
-    "slug": "27in-4k-gaming-monitor",
-    "image": "/images/electronics/27in-4k-gaming-monitor.jpg",
-    "category": "electronics",
-    "price": 389.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
+  "name": "20in Monitor",
+  "slug": "20in-monitor",
+  "image": "/images/electronics/20in-monitor.jpg",
+  "category": "electronics",
+  "price": 109.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953228"
+    }
   },
-  {
-    "name": "27in FHD Monitor",
-    "slug": "27in-fhd-monitor",
-    "image": "/images/electronics/27in-fhd-monitor.jpg",
-    "category": "electronics",
-    "price": 149.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "34in Ultrawide Monitor",
-    "slug": "34in-ultrawide-monitor",
-    "image": "/images/electronics/34in-ultrawide-monitor.jpg",
-    "category": "electronics",
-    "price": 379.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Energizer AA Batteries (4-pack)",
-    "slug": "energizer-aa-batteries-4-pack",
-    "image": "/images/electronics/energizer-max-aa-battery.jpg",
-    "category": "electronics",
-    "price": 3.84,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Energizer AAA Batteries (4-pack)",
-    "slug": "energizer-aaa-batteries-4-pack",
-    "image": "/images/electronics/energizer-max-aaa-battery.jpg",
-    "category": "electronics",
-    "price": 2.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Apple Airpods Headphones",
-    "slug": "apple-airpods-headphones",
-    "image": "/images/electronics/apple-airpods-headphones.jpg",
-    "category": "electronics",
-    "price": 150,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Bose SoundSport Headphones",
-    "slug": "bose-soundsport-headphones",
-    "image": "/images/electronics/bose-soundsport-headphones.jpg",
-    "category": "electronics",
-    "price": 99.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Flatscreen TV",
-    "slug": "flatscreen-tv",
-    "image": "/images/electronics/flatscreen-tv.jpg",
-    "category": "electronics",
-    "price": 300,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Google Phone",
-    "slug": "google-phone",
-    "image": "/images/electronics/google-phone.jpg",
-    "category": "electronics",
-    "price": 600,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "IPhone",
-    "slug": "iphone",
-    "image": "/images/electronics/iphone.jpg",
-    "category": "electronics",
-    "price": 700,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "LG Dryer",
-    "slug": "lg-dryer",
-    "image": "/images/electronics/lg-dryer.jpg",
-    "category": "electronics",
-    "price": 600,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "LG Washing Machine",
-    "slug": "lg-washing-machien",
-    "image": "/images/electronics/lg-washing-machine.jpg",
-    "category": "electronics",
-    "price": 600,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Lightning Charging Cable",
-    "slug": "lightning-charging-cable",
-    "image": "/images/electronics/lightning-charging-cable.jpg",
-    "category": "electronics",
-    "price": 14.95,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "MacBook Pro Laptop",
-    "slug": "macbook-pro-laptop",
-    "image": "/images/electronics/macbook-pro-laptop.jpg",
-    "category": "electronics",
-    "price": 1700,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "ThinkPad Laptop",
-    "slug": "thinkpad-laptop",
-    "image": "/images/electronics/thinkpad-laptop.jpg",
-    "category": "electronics",
-    "price": 999.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "USB-C Charging Cable",
-    "slug": "usb-c-charging-cable",
-    "image": "/images/electronics/usb-c-charging-cable.jpg",
-    "category": "electronics",
-    "price": 11.95,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
-  },
-  {
-    "name": "Wired Headphones",
-    "slug": "wired-headphones",
-    "image": "/images/electronics/wired-headphones.jpg",
-    "category": "electronics",
-    "price": 11.99,
-    "pricePrediction": 432,
-    "discountedPrice": 480,
-    "stocks": 100,
-    "rating": 0,
-    "numReviews": 0,
-    "description": "",
-    "sales": 0,
-    "soldItems": 100,
-    "totalSoldItems": 100,
-    "discount": 0.1,
-    "increase": 0.1,
-    "reviews": []
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953228"
+    }
   }
-]
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a91"
+  },
+  "name": "27in 4K Gaming Monitor",
+  "slug": "27in-4k-gaming-monitor",
+  "image": "/images/electronics/27in-4k-gaming-monitor.jpg",
+  "category": "electronics",
+  "price": 389.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953232"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953232"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a92"
+  },
+  "name": "27in FHD Monitor",
+  "slug": "27in-fhd-monitor",
+  "image": "/images/electronics/27in-fhd-monitor.jpg",
+  "category": "electronics",
+  "price": 149.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953232"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953232"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a93"
+  },
+  "name": "34in Ultrawide Monitor",
+  "slug": "34in-ultrawide-monitor",
+  "image": "/images/electronics/34in-ultrawide-monitor.jpg",
+  "category": "electronics",
+  "price": 379.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953233"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953233"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a94"
+  },
+  "name": "Energizer AA Batteries (4-pack)",
+  "slug": "energizer-aa-batteries-4-pack",
+  "image": "/images/electronics/energizer-max-aa-battery.jpg",
+  "category": "electronics",
+  "price": 3.84,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953238"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953238"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a95"
+  },
+  "name": "Energizer AAA Batteries (4-pack)",
+  "slug": "energizer-aaa-batteries-4-pack",
+  "image": "/images/electronics/energizer-max-aaa-battery.jpg",
+  "category": "electronics",
+  "price": 2.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953241"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953241"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a96"
+  },
+  "name": "Apple Airpods Headphones",
+  "slug": "apple-airpods-headphones",
+  "image": "/images/electronics/apple-airpods-headphones.jpg",
+  "category": "electronics",
+  "price": 150,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953242"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953242"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a97"
+  },
+  "name": "Bose SoundSport Headphones",
+  "slug": "bose-soundsport-headphones",
+  "image": "/images/electronics/bose-soundsport-headphones.jpg",
+  "category": "electronics",
+  "price": 99.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953243"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953243"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a98"
+  },
+  "name": "Flatscreen TV",
+  "slug": "flatscreen-tv",
+  "image": "/images/electronics/flatscreen-tv.jpg",
+  "category": "electronics",
+  "price": 300,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953243"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953243"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a99"
+  },
+  "name": "Google Phone",
+  "slug": "google-phone",
+  "image": "/images/electronics/google-phone.jpg",
+  "category": "electronics",
+  "price": 600,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953244"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953244"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a9a"
+  },
+  "name": "IPhone",
+  "slug": "iphone",
+  "image": "/images/electronics/iphone.jpg",
+  "category": "electronics",
+  "price": 700,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953245"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953245"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a9b"
+  },
+  "name": "LG Dryer",
+  "slug": "lg-dryer",
+  "image": "/images/electronics/lg-dryer.jpg",
+  "category": "electronics",
+  "price": 600,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953245"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953245"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a9c"
+  },
+  "name": "LG Washing Machine",
+  "slug": "lg-washing-machien",
+  "image": "/images/electronics/lg-washing-machine.jpg",
+  "category": "electronics",
+  "price": 600,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953247"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953247"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a9d"
+  },
+  "name": "Lightning Charging Cable",
+  "slug": "lightning-charging-cable",
+  "image": "/images/electronics/lightning-charging-cable.jpg",
+  "category": "electronics",
+  "price": 14.95,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953248"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953248"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a9e"
+  },
+  "name": "MacBook Pro Laptop",
+  "slug": "macbook-pro-laptop",
+  "image": "/images/electronics/macbook-pro-laptop.jpg",
+  "category": "electronics",
+  "price": 1700,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953249"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953249"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0a9f"
+  },
+  "name": "ThinkPad Laptop",
+  "slug": "thinkpad-laptop",
+  "image": "/images/electronics/thinkpad-laptop.jpg",
+  "category": "electronics",
+  "price": 999.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953249"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953249"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0aa0"
+  },
+  "name": "USB-C Charging Cable",
+  "slug": "usb-c-charging-cable",
+  "image": "/images/electronics/usb-c-charging-cable.jpg",
+  "category": "electronics",
+  "price": 11.95,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953250"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953250"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "648c0cf18e5346077cef0aa1"
+  },
+  "name": "Wired Headphones",
+  "slug": "wired-headphones",
+  "image": "/images/electronics/wired-headphones.png",
+  "category": "electronics",
+  "price": 11.99,
+  "pricePrediction": 432,
+  "discountedPrice": 480,
+  "discount": 0.1,
+  "increase": 0.1,
+  "priceSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldItems": 100,
+  "totalSoldItems": 100,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1686899953256"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1686899953256"
+    }
+  }
+}]
