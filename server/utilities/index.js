@@ -15,7 +15,7 @@ const sendData = async (name, soldItems, sales, date, month) => {
         const pythonProcess =
           process.env.NODE_ENV === "production"
             ? spawn("python", [
-                path.join(absolutePath, "/backend/utilities/algo.py"),
+                path.join(absolutePath, "/server/utilities/algo.py"),
                 name,
                 soldItems,
                 sales,
