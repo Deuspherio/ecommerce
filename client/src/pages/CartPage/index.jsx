@@ -44,12 +44,12 @@ const CartPage = () => {
                     </Link>
                     <p className="col-span-1">x{item.quantity}</p>
                     <div className="col-span-3">
-                      {item.discountedPrice >= item.price ? (
-                        <p>{`$ ${item.discountedPrice}`}</p>
+                      {item.currentPrice >= item.price ? (
+                        <p>{`$ ${item.currentPrice}`}</p>
                       ) : (
                         <div className="flex items-center gap-4">
                           <p className="text-sm line-through">{`₱ ${item.price}`}</p>
-                          <p className="font-bold">{`$ ${item.discountedPrice}`}</p>
+                          <p className="font-bold">{`$ ${item.currentPrice}`}</p>
                         </div>
                       )}
                     </div>
@@ -79,15 +79,14 @@ const CartPage = () => {
                 cartItems.reduce(
                   (a, c) =>
                     a +
-                    (c.discountedPrice ? c.discountedPrice : c.price) *
-                      c.quantity,
+                    (c.currentPrice ? c.currentPrice : c.price) * c.quantity,
                   0
                 ) ? (
                   <h4 className="mb-0">{`$ ${cartItems
                     .reduce(
                       (a, c) =>
                         a +
-                        (c.discountedPrice ? c.discountedPrice : c.price) *
+                        (c.currentPrice ? c.currentPrice : c.price) *
                           c.quantity,
                       0
                     )
@@ -101,7 +100,7 @@ const CartPage = () => {
                       .reduce(
                         (a, c) =>
                           a +
-                          (c.discountedPrice ? c.discountedPrice : c.price) *
+                          (c.currentPrice ? c.currentPrice : c.price) *
                             c.quantity,
                         0
                       )

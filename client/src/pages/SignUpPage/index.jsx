@@ -67,7 +67,7 @@ const SignUpPage = () => {
               name="firstName"
             />
             {errors.firstName?.message && (
-              <p className="">{errors.firstName?.message}</p>
+              <p className="yup-error">{errors.firstName?.message}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -80,7 +80,7 @@ const SignUpPage = () => {
               name="lastName"
             />
             {errors.lastName?.message && (
-              <p className="">{errors.lastName?.message}</p>
+              <p className="yup-error">{errors.lastName?.message}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -93,7 +93,7 @@ const SignUpPage = () => {
               name="email"
             />
             {errors.email?.message && (
-              <p className="">{errors.email?.message}</p>
+              <p className="yup-error">{errors.email?.message}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -106,7 +106,7 @@ const SignUpPage = () => {
               name="address"
             />
             {errors.address?.message && (
-              <p className="">{errors.address?.message}</p>
+              <p className="yup-error">{errors.address?.message}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -122,7 +122,7 @@ const SignUpPage = () => {
               />
             </div>
             {errors.phoneNumber?.message && (
-              <p className="text-red">{errors.phoneNumber?.message}</p>
+              <p className="yup-error">{errors.phoneNumber?.message}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -135,7 +135,7 @@ const SignUpPage = () => {
               name="password"
             />
             {errors.password?.message && (
-              <p className="">{errors.password?.message}</p>
+              <p className="yup-error">{errors.password?.message}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -148,7 +148,9 @@ const SignUpPage = () => {
               name="passwordConfirmation"
             />
             {errors.passwordConfirmation?.message && (
-              <p className="">{errors.passwordConfirmation?.message}</p>
+              <p className="yup-error">
+                {errors.passwordConfirmation?.message}
+              </p>
             )}
           </div>
           <button type="submit" className="btn-primary">

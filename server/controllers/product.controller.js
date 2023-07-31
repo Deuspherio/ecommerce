@@ -46,7 +46,7 @@ const getFilteredProducts = asyncHandler(async (req, res) => {
   const priceFilter =
     price && price !== "all"
       ? {
-          discountedPrice: {
+          currentPrice: {
             $gte: +price.split("-")[0],
             $lte: +price.split("-")[1],
           },
@@ -140,13 +140,13 @@ const createProduct = asyncHandler(async (req, res) => {
     slug: req.body.name.replace(/\s+/g, "-").toLowerCase(),
     category: req.body.category,
     price: req.body.price,
-    discountedPrice: req.body.price,
+    currentPrice: req.body.price,
     discount: 0,
     pricePrediction: req.body.price,
     stocks: req.body.stocks,
     description: "",
-    soldItems: 0,
-    totalSoldItems: 0,
+    soldProducts: 0,
+    totalSoldProducts: 0,
     rating: 0,
     numReviews: 0,
     salesPercentage: 0,
@@ -239,7 +239,7 @@ const search = asyncHandler(async (req, res) => {
   const priceFilter =
     price && price !== "all"
       ? {
-          discountedPrice: {
+          currentPrice: {
             $gte: +price.split("-")[0],
             $lte: +price.split("-")[1],
           },
@@ -305,7 +305,7 @@ const updateProductsIncrease = asyncHandler(async (req, res) => {
 
   await Promise.all(
     products.map(async (x) => {
-      await applyDiscountPerProduct(x._id, newDiscount);
+      await applyDiscountPerProduct(x._id, newIncrease);
       await setPrediction(x._id);
     })
   );

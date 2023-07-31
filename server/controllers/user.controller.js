@@ -111,7 +111,7 @@ const updateUser = asyncHandler(async (req, res) => {
 });
 
 const allUsers = asyncHandler(async (req, res) => {
-  const users = await User.find({});
+  const users = await User.find();
   res.send(users);
 });
 

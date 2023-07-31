@@ -14,7 +14,7 @@ const Product = ({ product }) => {
           Trending
         </p>
       ) : null}
-      {product.discountedPrice < product.price && product.stocks > 0 ? (
+      {product.currentPrice < product.price && product.stocks > 0 ? (
         <p className="absolute top-[18%] left-0 shadow-md text-sm bg-primary text-white rounded-r p-2 z-[1] md:text-base lg:top-[22%] lg:w-[90px]">
           {`${product.discount * 100}% off`}
         </p>
@@ -25,7 +25,7 @@ const Product = ({ product }) => {
           <Rating rating={product.rating} />
         </div>
         <div className="text-xs">
-          {product.totalSoldItems > 0 ? product.totalSoldItems : 0} sold
+          {product.totalSoldProducts > 0 ? product.totalSoldProducts : 0} sold
         </div>
       </div>
     </Link>

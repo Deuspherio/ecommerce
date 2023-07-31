@@ -28,7 +28,6 @@ const ProductsStocks = ({ summary }) => {
       data: summary.availablePowder,
     },
   ];
-  console.log(summary);
   return (
     <div className="border rounded px-6 py-4">
       <h2 className="text-center">Products Stocks</h2>

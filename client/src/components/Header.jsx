@@ -49,7 +49,7 @@ const Header = () => {
           <button>PHP</button>
         </div>
         <Link to="/" title="Home">
-          ecommerce
+          bayesian ecommerce
         </Link>
         <ul className="hidden lg:flex lg:space-x-6 lg:items-center">
           {navItems.map((item, i) => (
@@ -58,49 +58,42 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        <ul className="hidden lg:flex lg:space-x-6 lg:items-center lg:justify-between">
-          <li title="SEARCH">
-            <SearchBar />
-          </li>
-          <li>
-            <UserDropDown userData={userData} signoutHandler={signoutHandler} />
-          </li>
-          <li title="WISHLIST">
-            <Link to="/">
-              <BsHeart className="text-xl" />
-            </Link>
-          </li>
-          <li className="relative" title="CART">
-            <Link to="/products/cart">
-              <BsCart className="text-xl" />
-            </Link>
-            <span className="w-6 h-6 text-sm rounded-full bg-primary text-white absolute  top-[-10px] right-[-16px] flex items-center justify-center">
-              {cartItems.reduce((a, c) => a + c.quantity, 0)}
-            </span>
-          </li>
-        </ul>
-        {/* <ul className="flex space-x-4 text-xl items-center md:space-x-6 lg:hidden">
-          <li>
-            <SearchBar />
-          </li>
-          <li>
-            <AdminDropDown userData={userData} />
-          </li> 
-          <li>
-            <UserDropDown userData={userData} signoutHandler={signoutHandler} />
-          </li>
-          <li className="relative">
-            <Link to="/products/cart">
-              <BsCart className="text-xl" />
-            </Link>
-            <span className="w-6 h-6 text-sm rounded-full bg-primary text-white absolute top-[-10px] right-[-16px] flex items-center justify-center">
-              {cartItems.reduce((a, c) => a + c.quantity, 0)}
-            </span>
-          </li>
-          <li>
-            <MenuDropDown navItems={navItems} />
-          </li>
-        </ul> */}
+        {userData && userData.isAdmin ? (
+          <ul className="hidden lg:flex lg:space-x-6 lg:items-center lg:justify-between">
+            <li>
+              <UserDropDown
+                userData={userData}
+                signoutHandler={signoutHandler}
+              />
+            </li>
+          </ul>
+        ) : null}
+        {(userData && !userData.isAdmin) || !userData ? (
+          <ul className="hidden lg:flex lg:space-x-6 lg:items-center lg:justify-between">
+            <li title="SEARCH">
+              <SearchBar />
+            </li>
+            <li>
+              <UserDropDown
+                userData={userData}
+                signoutHandler={signoutHandler}
+              />
+            </li>
+            <li title="WISHLIST">
+              <Link to="/">
+                <BsHeart className="text-xl" />
+              </Link>
+            </li>
+            <li className="relative" title="CART">
+              <Link to="/products/cart">
+                <BsCart className="text-xl" />
+              </Link>
+              <span className="w-6 h-6 text-sm rounded-full bg-primary text-white absolute  top-[-10px] right-[-16px] flex items-center justify-center">
+                {cartItems.reduce((a, c) => a + c.quantity, 0)}
+              </span>
+            </li>
+          </ul>
+        ) : null}
       </div>
     </div>
   );

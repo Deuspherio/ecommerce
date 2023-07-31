@@ -12,17 +12,20 @@ const {
 
 const createOrder = asyncHandler(async (req, res) => {
   const order = await Order.create({
-    orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
-    totalOrderItems: req.body.totalOrderItems,
-    shippingData: req.body.shippingData,
-    itemsPrice: req.body.itemsPrice,
+    orderedProducts: req.body.orderedProducts.map((x) => ({
+      ...x,
+      product: x._id,
+    })),
+    totalOrderedProducts: req.body.totalOrderedProducts,
+    shippingInfo: { ...req.body.shippingInfo, id: req.user._id },
+    productsPrice: req.body.productsPrice,
     shippingPrice: req.body.shippingPrice,
     totalPrice: roundToTwo(req.body.totalPrice),
     user: req.user._id,
   });
 
   await Promise.all(
-    order.orderItems.map(async (x) => {
+    order.orderedProducts.map(async (x) => {
       await decrementProductQuantity(x._id, x.quantity);
       await incrementProductSold(x._id, x.quantity);
       await setPrediction(x._id);

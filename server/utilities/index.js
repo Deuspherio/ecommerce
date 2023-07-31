@@ -5,19 +5,17 @@ const path = require("path");
 const absolutePath = path.resolve();
 require("dotenv").config();
 
-// 2. Connect nodejs to python
-const sendData = async (name, soldItems, sales, date, month) => {
+const sendData = async (name, soldProducts, sales, date, month) => {
   try {
-    const run = async (name, soldItems, sales, date, month) =>
+    const run = async (name, soldProducts, sales, date, month) =>
       new Promise((resolve, reject) => {
         let result = "";
-        // 3. Send the necessary data to the algo
         const pythonProcess =
           process.env.NODE_ENV === "production"
             ? spawn("python", [
                 path.join(absolutePath, "/server/utilities/algo.py"),
                 name,
-                soldItems,
+                soldProducts,
                 sales,
                 date,
                 month,
@@ -25,12 +23,11 @@ const sendData = async (name, soldItems, sales, date, month) => {
             : spawn("python", [
                 path.join(absolutePath, "/utilities/algo.py"),
                 name,
-                soldItems,
+                soldProducts,
                 sales,
                 date,
                 month,
               ]);
-        // 11. Receive the results from the algo
         pythonProcess.stdout.on("data", (data) => {
           result += data.toString().replace(/(\r\n|\n\r)/gm, "");
         });
@@ -42,12 +39,12 @@ const sendData = async (name, soldItems, sales, date, month) => {
         });
       });
     const receivedData = asyncHandler(
-      async (name, soldItems, sales, date, month) => {
-        const value = await run(name, soldItems, sales, date, month);
+      async (name, soldProducts, sales, date, month) => {
+        const value = await run(name, soldProducts, sales, date, month);
         return value;
       }
     );
-    return receivedData(name, soldItems, sales, date, month);
+    return receivedData(name, soldProducts, sales, date, month);
   } catch (err) {
     console.log(err.toString());
   }
@@ -113,15 +110,13 @@ const productName = (name) => {
 
 const setPrediction = async (id) => {
   const product = await Product.findById(id);
-  // 1. Get the data from the database
   const { salesPercentage, pastStocks, discount } = product;
-  const { name, soldItems, sales } = product;
+  const { name, soldProducts, sales } = product;
   const productCode = productName(name);
   const date = new Date();
-  // 12. Use the results from the algorithm to apply the discount
   const result = await sendData(
     productCode,
-    soldItems,
+    soldProducts,
     sales,
     date.getDate(),
     date.getMonth() + 1
@@ -129,7 +124,6 @@ const setPrediction = async (id) => {
   const predictionWithDiscount = result === 0 ? discount : -discount;
   const priceSuggestion = result === 0 ? "increase" : "decrease";
   if (product) {
-    // 13. Update the price prediction per product
     const totalPriceDiscount =
       product.price * predictionWithDiscount + product.price;
 
@@ -147,13 +141,12 @@ const setPrediction = async (id) => {
 
 const applyPrediction = async (id) => {
   const product = await Product.findById(id);
-  // 14. Set the final price using the price prediction once the admin has decided
   if (product) {
     await Product.updateOne(
       { _id: product._id },
       {
         $set: {
-          discountedPrice: product.pricePrediction,
+          currentPrice: product.pricePrediction,
         },
       }
     );
@@ -168,7 +161,7 @@ const setPastData = async (id) => {
       {
         $set: {
           sales: 0,
-          soldItems: 0,
+          soldProducts: 0,
         },
       }
     );
@@ -201,8 +194,8 @@ const incrementProductSold = async (id, productSold) => {
       {
         $inc: {
           sales: roundToTwo(product.price * productSold),
-          soldItems: productSold,
-          totalSoldItems: productSold,
+          soldProducts: productSold,
+          totalSoldProducts: productSold,
         },
       }
     );

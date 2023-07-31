@@ -42,30 +42,30 @@ const OrderPage = () => {
               <div>
                 <p>
                   <span className="font-bold">Name: </span>
-                  {`${order.shippingData.firstName} ${order.shippingData.lastName}`}
+                  {`${order.shippingInfo.firstName} ${order.shippingInfo.lastName}`}
                 </p>
                 <p>
                   <span className="font-bold">Email: </span>
-                  {order.shippingData.email}
+                  {order.shippingInfo.email}
                 </p>
                 <p>
                   <span className="font-bold">Phone Number: </span>
-                  {order.shippingData.phoneNumber}
+                  {order.shippingInfo.phoneNumber}
                 </p>
                 <p>
                   <span className="font-bold">Address: </span>
-                  {order.shippingData.address}
+                  {order.shippingInfo.address}
                 </p>
                 <p>
                   <span className="font-bold">Payment Method: </span>
-                  {order.shippingData.paymentMethod}
+                  {order.shippingInfo.paymentMethod}
                 </p>
               </div>
               <div>
                 <h2 className="text-center">
                   {userData.isAdmin ? "Customer's Orders" : "Your Orders"}
                 </h2>
-                {order.orderItems.map((item) => (
+                {order.orderedProducts.map((item) => (
                   <div
                     className="grid grid-cols-12 items-center"
                     key={item._id}
@@ -76,7 +76,7 @@ const OrderPage = () => {
                     <div className="col-span-4">{item.name}</div>
                     <div className="col-span-2">x{item.quantity}</div>
                     <div className="col-span-4">{`$ ${(
-                      item.discountedPrice * item.quantity
+                      item.currentPrice * item.quantity
                     ).toLocaleString()}`}</div>
                   </div>
                 ))}
@@ -86,7 +86,7 @@ const OrderPage = () => {
               <h2 className="text-center">Order Summary</h2>
               <div className="flex justify-between">
                 <p className="font-bold">Items</p>
-                <p>{`$ ${order.itemsPrice.toLocaleString()}`}</p>
+                <p>{`$ ${order.productsPrice.toLocaleString()}`}</p>
               </div>
               <div className="flex justify-between">
                 <p className="font-bold">Shipping</p>

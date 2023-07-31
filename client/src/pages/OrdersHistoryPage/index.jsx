@@ -21,7 +21,6 @@ const OrdersHistoryPage = () => {
     data: orders,
     isLoading,
     isError,
-    isSuccess,
     error,
   } = useQuery(["orders"], () => getOrders(userData));
 
@@ -70,7 +69,7 @@ const OrdersHistoryPage = () => {
                         ? order.deliveredAt.substring(0, 10)
                         : "Not yet delivered"}
                     </td>
-                    <td>
+                    {/* <td>
                       <div className="flex items-center justify-center">
                         {!order.isDelivered ? (
                           <button
@@ -90,7 +89,7 @@ const OrdersHistoryPage = () => {
                           </button>
                         )}
                       </div>
-                    </td>
+                    </td> */}
                     <td>
                       <div className="flex items-center justify-center">
                         <button

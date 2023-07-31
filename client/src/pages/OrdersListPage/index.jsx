@@ -40,7 +40,6 @@ const OrdersListPage = () => {
       // mutate(id);
     }
   };
-  console.log(orders);
   const [currentPage, setCurrentPage] = useState(1);
   const lastProductIndex = currentPage * PAGE_SIZE;
   const firstProductIndex = lastProductIndex - PAGE_SIZE;
@@ -78,8 +77,8 @@ const OrdersListPage = () => {
                       <td>
                         {order.user ? (
                           <>
-                            {`${order.shippingData.firstName}
-                         ${order.shippingData.lastName}`}
+                            {`${order.shippingInfo.firstName}
+                         ${order.shippingInfo.lastName}`}
                           </>
                         ) : (
                           "Deleted User"
@@ -97,7 +96,7 @@ const OrdersListPage = () => {
                           ? order.deliveredAt.substring(0, 10)
                           : "Not yet"}
                       </td>
-                      <td>
+                      {/* <td>
                         {!order.isPaid ? (
                           <>
                             <button
@@ -119,7 +118,7 @@ const OrdersListPage = () => {
                             </button>
                           </>
                         )}
-                      </td>
+                      </td> */}
                       <td>
                         <button
                           type="button"

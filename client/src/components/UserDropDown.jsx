@@ -20,6 +20,10 @@ const adminOptions = [
     option: "List of Users",
     link: "/admin/users",
   },
+  {
+    option: "Update Profile",
+    link: "/user/profile",
+  },
 ];
 
 const userOptions = [
@@ -92,24 +96,26 @@ const UserDropDown = ({ userData, signoutHandler }) => {
                   ))}
                 </div>
               ) : null}
-              <div className="px-1 py-1">
-                {userOptions.map((user, i) => (
-                  <Menu.Item key={i}>
-                    {({ active }) => (
-                      <Link
-                        to={user.link}
-                        className={`${
-                          active
-                            ? "bg-primary text-white transition-bg"
-                            : "text-gray-900 transition-bg"
-                        } group flex w-full items-center rounded px-2 py-2 text-base`}
-                      >
-                        {user.option}
-                      </Link>
-                    )}
-                  </Menu.Item>
-                ))}
-              </div>
+              {!userData.isAdmin ? (
+                <div className="px-1 py-1">
+                  {userOptions.map((user, i) => (
+                    <Menu.Item key={i}>
+                      {({ active }) => (
+                        <Link
+                          to={user.link}
+                          className={`${
+                            active
+                              ? "bg-primary text-white transition-bg"
+                              : "text-gray-900 transition-bg"
+                          } group flex w-full items-center rounded px-2 py-2 text-base`}
+                        >
+                          {user.option}
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  ))}
+                </div>
+              ) : null}
               <div className="px-1 py-1">
                 <Menu.Item>
                   {({ active }) => (

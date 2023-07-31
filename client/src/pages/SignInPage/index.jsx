@@ -78,7 +78,7 @@ const SignInPage = () => {
               placeholder="Enter your email"
             />
             {errors.email?.message && (
-              <p className="">{errors.email?.message}</p>
+              <p className="yup-error">{errors.email?.message}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -90,7 +90,7 @@ const SignInPage = () => {
               placeholder="Enter your password"
             />
             {errors.password?.message && (
-              <p className="">{errors.password?.message}</p>
+              <p className="yup-error">{errors.password?.message}</p>
             )}
           </div>
           <button type="submit" className="btn-primary">

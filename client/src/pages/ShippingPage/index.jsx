@@ -140,15 +140,6 @@ const ShippingPage = () => {
                 <option id="cod" value="Cash on Delivery">
                   Cash on Delivery
                 </option>
-                <option id="gcash" value="Gcash" disabled>
-                  GCASH <span className="text-sm">(coming soon)</span>
-                </option>
-                <option id="paymaya" value="Paymaya" disabled>
-                  Paymaya <span className="text-sm">(coming soon)</span>
-                </option>
-                <option id="paypal" value="Paypal" disabled>
-                  Paypal <span className="text-sm">(coming soon)</span>
-                </option>
               </select>
               {errors.paymentMethod?.message && (
                 <p className="yup-error">{errors.paymentMethod?.message}</p>

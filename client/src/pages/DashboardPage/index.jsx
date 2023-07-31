@@ -23,7 +23,7 @@ const DashboardPage = () => {
   return (
     <>
       <Helmet>
-        <title>Overview</title>
+        <title>Dashboard Overview</title>
       </Helmet>
       {isLoading ? (
         <Loading />

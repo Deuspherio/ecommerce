@@ -48,9 +48,6 @@ const ProductsListPage = () => {
   );
 
   const deleteSingleProduct = (id) => {
-    // if (window.confirm("Are you sure?")) {
-    //   mutate(id);
-    // }
     console.log(id);
   };
 
@@ -58,6 +55,7 @@ const ProductsListPage = () => {
     useMutation(() => patchProductsPrice(userData), {
       onSuccess: (data) => {
         queryClient.setQueryData(["products"], () => data);
+        toast.success("Updated Prices Successfully");
       },
     });
 
@@ -73,12 +71,16 @@ const ProductsListPage = () => {
     useMutation((discount) => patchProductsDiscount(discount, userData), {
       onSuccess: (data) => {
         queryClient.setQueryData(["products"], () => data);
+        toast.success("Updated Discount Successfully");
       },
     });
 
   const { mutate: patchIncreaseMutate, isLoading: patchIncreaseIsLoading } =
     useMutation((increase) => patchProductsIncrease(increase, userData), {
-      onSuccess: (data) => queryClient.setQueryData(["products"], () => data),
+      onSuccess: (data) => {
+        queryClient.setQueryData(["products"], () => data);
+        toast.success("Updated Increase Successfully");
+      },
     });
 
   const updateProductsDiscountHandler = (e) => {
@@ -102,6 +104,7 @@ const ProductsListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const lastProductIndex = currentPage * PAGE_SIZE;
   const firstProductIndex = lastProductIndex - PAGE_SIZE;
+
   return (
     <>
       <Helmet>
@@ -133,6 +136,12 @@ const ProductsListPage = () => {
                   <th scope="col" rowSpan={2}>
                     STOCKS
                   </th>
+                  <th scope="col" rowSpan={2}>
+                    DEMAND
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    SALES
+                  </th>
                   <th scope="col" className="text-center" colSpan={2}>
                     PRICE
                   </th>
@@ -160,8 +169,10 @@ const ProductsListPage = () => {
                       </th>
                       <td>{product.category}</td>
                       <td>{product.stocks}</td>
+                      <td>{product.soldProducts}</td>
+                      <td>{product.sales}</td>
                       <td>{`$ ${product.price}`}</td>
-                      <td>{`$ ${product.discountedPrice}`}</td>
+                      <td>{`$ ${product.currentPrice}`}</td>
                       <td className="capitalize">{product.priceSuggestion}</td>
                       <td>{`$ ${product.pricePrediction}`}</td>
                       <td>

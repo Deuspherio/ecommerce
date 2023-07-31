@@ -19,7 +19,7 @@ const PlaceOrderPage = () => {
   } = useContext(Store);
 
   const itemsPrice = roundToTwo(
-    cartItems.reduce((a, c) => a + c.quantity * c.discountedPrice, 0)
+    cartItems.reduce((a, c) => a + c.quantity * c.currentPrice, 0)
   );
   const shippingPrice = itemsPrice > 100 ? roundToTwo(0) : roundToTwo(40);
   const totalPrice = itemsPrice + shippingPrice;
@@ -32,10 +32,10 @@ const PlaceOrderPage = () => {
 
   const submitHandler = () => {
     mutate({
-      totalOrderItems: totalItems,
-      orderItems: cartItems,
-      shippingData,
-      itemsPrice: itemsPrice,
+      totalOrderedProducts: totalItems,
+      orderedProducts: cartItems,
+      shippingInfo: shippingData,
+      productsPrice: itemsPrice,
       shippingPrice: shippingPrice,
       totalPrice: totalPrice,
     });
@@ -92,7 +92,7 @@ const PlaceOrderPage = () => {
                   <div className="col-span-4">{item.name}</div>
                   <div className="col-span-2">x{item.quantity}</div>
                   <div className="col-span-4">{`$ ${(
-                    item.discountedPrice * item.quantity
+                    item.currentPrice * item.quantity
                   ).toLocaleString()}`}</div>
                 </div>
               ))}

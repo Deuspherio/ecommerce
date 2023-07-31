@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex items-center flex-col flex-wrap justify-center space-y-4 mt-8 md:flex-row md:justify-between">
-        <Link to="/">ecommerce</Link>
+        <Link to="/">bayesian ecommerce</Link>
         <div className="md:order-3 flex gap-4">
           <Link to="/">
             <BsFacebook className="text-xl transition-color hover:text-primary" />

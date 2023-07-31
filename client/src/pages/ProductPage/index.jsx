@@ -61,7 +61,11 @@ const ProductPage = () => {
   } = useMutation((review) => postComments(product._id, userData, review), {
     onSuccess: (data) => {
       queryClient.setQueryData(["product"], (oldQueryData) => {
-        return { ...oldQueryData, reviews: data.reviews };
+        return {
+          ...oldQueryData,
+          reviews: data.reviews,
+          numReviews: data.numReviews,
+        };
       });
     },
   });
@@ -127,12 +131,12 @@ const ProductPage = () => {
                 <div className="px-6 py-2 space-y-4">
                   <div className="flex items-center  justify-between">
                     <h4 className="mb-0">Price</h4>
-                    {product.discountedPrice >= product.price ? (
-                      <p>{`$ ${product.discountedPrice}`}</p>
+                    {product.currentPrice >= product.price ? (
+                      <p>{`$ ${product.currentPrice}`}</p>
                     ) : (
                       <div className="flex flex-col">
                         <p className="text-sm line-through">{`$ ${product.price}`}</p>
-                        <p className="font-bold">{`$ ${product.discountedPrice}`}</p>
+                        <p className="font-bold">{`$ ${product.currentPrice}`}</p>
                       </div>
                     )}
                   </div>

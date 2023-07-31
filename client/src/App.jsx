@@ -22,8 +22,8 @@ import UpdateProfilePage from "./pages/UpdateProfilePage";
 import UpdateUserPage from "./pages/UpdateUserPage";
 import UsersListPage from "./pages/UsersListPage";
 import "react-toastify/dist/ReactToastify.css";
-import PredictionTablePage from "./pages/PredictionTablePage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CustomerRoute from "./components/CustomerRoute";
 
 const router = createBrowserRouter([
   {
@@ -32,19 +32,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomePage />,
+        element: (
+          <CustomerRoute>
+            <HomePage />
+          </CustomerRoute>
+        ),
       },
       {
         path: "/product/:slug",
-        element: <ProductPage />,
+        element: (
+          <CustomerRoute>
+            <ProductPage />
+          </CustomerRoute>
+        ),
       },
       {
         path: "/products/cart",
-        element: <CartPage />,
+        element: (
+          <CustomerRoute>
+            <CartPage />
+          </CustomerRoute>
+        ),
       },
       {
         path: "/products/search",
-        element: <SearchPage />,
+        element: (
+          <CustomerRoute>
+            <SearchPage />
+          </CustomerRoute>
+        ),
       },
     ],
   },
@@ -66,11 +82,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/order/shipping",
-        element: <ShippingPage />,
+        element: (
+          <CustomerRoute>
+            <ShippingPage />
+          </CustomerRoute>
+        ),
       },
       {
         path: "/user/order/place-order",
-        element: <PlaceOrderPage />,
+        element: (
+          <CustomerRoute>
+            <PlaceOrderPage />
+          </CustomerRoute>
+        ),
       },
       {
         path: "/user/order/:id",
@@ -78,7 +102,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/order/history",
-        element: <OrdersHistoryPage />,
+        element: (
+          <CustomerRoute>
+            <OrdersHistoryPage />
+          </CustomerRoute>
+        ),
       },
     ],
   },
@@ -91,14 +119,6 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <DashboardPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/prediction",
-        element: (
-          <ProtectedRoute>
-            <PredictionTablePage />
           </ProtectedRoute>
         ),
       },
