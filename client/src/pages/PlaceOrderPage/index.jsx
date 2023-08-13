@@ -25,9 +25,20 @@ const PlaceOrderPage = () => {
   const totalPrice = itemsPrice + shippingPrice;
   const totalItems = cartItems.reduce((a, c) => a + c.quantity, 0);
 
-  const { mutate, data, isSuccess, isError, error, isLoading } = useMutation(
+  const { mutate, error, isLoading } = useMutation(
     ["order"],
-    (order) => postOrder(order, userData)
+    (order) => postOrder(order, userData),
+    {
+      onSuccess: (data) => {
+        ctxDispatch({ type: "CART_CLEAR" });
+        localStorage.removeItem("cartItems");
+        toast.success(data.message);
+        navigate(`/user/order/${data.order._id}`);
+      },
+      onError: () => {
+        toast.error(error.message);
+      },
+    }
   );
 
   const submitHandler = () => {
@@ -40,15 +51,6 @@ const PlaceOrderPage = () => {
       totalPrice: totalPrice,
     });
   };
-
-  if (isSuccess) {
-    ctxDispatch({ type: "CART_CLEAR" });
-    localStorage.removeItem("cartItems");
-    toast.success(data.message);
-    navigate(`/user/order/${data.order._id}`);
-  } else if (isError) {
-    toast.error(error.message);
-  }
 
   return (
     <>
@@ -96,7 +98,7 @@ const PlaceOrderPage = () => {
                   ).toLocaleString()}`}</div>
                 </div>
               ))}
-              <Link to="/" className="text-primary">
+              <Link to="/products/cart" className="text-primary">
                 Edit
               </Link>
             </div>

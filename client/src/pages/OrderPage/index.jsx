@@ -19,7 +19,6 @@ const OrderPage = () => {
   const {
     data: order,
     error,
-    isSuccess,
     isLoading,
     isError,
   } = useQuery(["order"], () => getOrder(id, userData));

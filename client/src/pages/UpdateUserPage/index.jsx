@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Store } from "../../context";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import MessageBox from "../../components/MessageBox";
 import { Helmet } from "react-helmet-async";
@@ -12,7 +12,6 @@ import { getUser, updateUser } from "./user.api";
 
 const UpdateUserPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const {
     state: {
       user: { userData },
@@ -22,21 +21,18 @@ const UpdateUserPage = () => {
   const {
     data: getUserData,
     isLoading: getUserIsLoading,
-    isSuccess: getUserIsSuccess,
     isError: getUserIsError,
     error: getUserError,
   } = useQuery(["users"], () => getUser(id, userData));
 
-  const {
-    mutate,
-    isLoading: updateUserIsLoading,
-    isError: updateUserIsError,
-    error: updateUserError,
-  } = useMutation((user) => updateUser(user, id, userData), {
-    onSuccess: (data) => {
-      console.log(data);
-    },
-  });
+  const { isLoading: updateUserIsLoading } = useMutation(
+    (user) => updateUser(user, id, userData),
+    {
+      onSuccess: (data) => {
+        console.log(data);
+      },
+    }
+  );
 
   const {
     register,

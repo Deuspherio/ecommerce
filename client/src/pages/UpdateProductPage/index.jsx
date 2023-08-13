@@ -158,6 +158,9 @@ const UpdateProductPage = () => {
                   <p className="yup-error">{errors.stocks?.message}</p>
                 )}
               </div>
+              <p className="text-red-600 text-xs">
+                Note: Only stocks can be changed
+              </p>
               <button type="submit" className="btn-primary">
                 Update Product
               </button>

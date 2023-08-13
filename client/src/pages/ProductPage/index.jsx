@@ -19,7 +19,6 @@ const ProductPage = () => {
   const {
     isLoading,
     isError,
-    isSuccess,
     error,
     data: product,
   } = useQuery(["product"], () => getProduct(slug));
@@ -44,11 +43,7 @@ const ProductPage = () => {
     });
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 

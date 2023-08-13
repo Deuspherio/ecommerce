@@ -15,7 +15,7 @@ const CreateProductPage = () => {
     },
   } = useContext(Store);
 
-  const { mutate, isLoading } = useMutation(["products"], (product) =>
+  const { isLoading } = useMutation(["products"], (product) =>
     createProduct(product, userData)
   );
 
@@ -29,7 +29,6 @@ const CreateProductPage = () => {
 
   const submitHandler = (values) => {
     console.log(values);
-    // mutate(values);
   };
 
   return (

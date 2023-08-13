@@ -6,7 +6,7 @@ import { deleteOrder, getOrders } from "./orders.api";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
-import { BsCheck2, BsInfo } from "react-icons/bs";
+import { BsInfo } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const PAGE_SIZE = 10;
@@ -36,8 +36,7 @@ const OrdersListPage = () => {
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
-      console.log(id);
-      // mutate(id);
+      mutate(id);
     }
   };
   const [currentPage, setCurrentPage] = useState(1);
@@ -96,29 +95,6 @@ const OrdersListPage = () => {
                           ? order.deliveredAt.substring(0, 10)
                           : "Not yet"}
                       </td>
-                      {/* <td>
-                        {!order.isPaid ? (
-                          <>
-                            <button
-                              type="button"
-                              title="ORDER PAID?"
-                              className="btn-primary text-2xl bg-green-600"
-                            >
-                              <BsCheck2 />
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button
-                              type="button"
-                              className="btn-primary text-2xl bg-green-600"
-                              disabled
-                            >
-                              <BsCheck2 />
-                            </button>
-                          </>
-                        )}
-                      </td> */}
                       <td>
                         <button
                           type="button"

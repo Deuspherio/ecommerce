@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import SalesGraph from "../../components/SalesGraph";
 import Loading from "../../components/Loading";
-import ProductsStocks from "../../components/ProductsStocks";
 import { Store } from "../../context";
 import { roundToTwo } from "../../utilities";
 import { getSummaries } from "./summaries.api";
@@ -63,7 +62,6 @@ const DashboardPage = () => {
             </div>
           </div>
           <SalesGraph summary={summary} />
-          <ProductsStocks summary={summary} />
         </div>
       ) : null}
     </>

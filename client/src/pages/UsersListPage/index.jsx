@@ -2,16 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { Store } from "../../context";
 import { useContext, useState } from "react";
 import Loading from "../../components/Loading";
-import { useNavigate } from "react-router-dom";
 import { getUsers } from "./users.api";
 import { Helmet } from "react-helmet-async";
 import Pagination from "../../components/Pagination";
-import { AiOutlineDelete } from "react-icons/ai";
-import { FiEdit } from "react-icons/fi";
 
 const PAGE_SIZE = 10;
 const UsersListPage = () => {
-  const navigate = useNavigate();
   const {
     state: {
       user: { userData },
@@ -49,9 +45,6 @@ const UsersListPage = () => {
                   <th scope="col">PHONE NUMBER</th>
                   <th scope="col">ADDRESS</th>
                   <th scope="col">ADMIN</th>
-                  <th scope="col" colSpan={2}>
-                    ACTIONS
-                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -65,30 +58,6 @@ const UsersListPage = () => {
                       <td>{user.phoneNumber}</td>
                       <td>{user.address}</td>
                       <td>{user.isAdmin ? "Yes" : "No"}</td>
-                      <td>
-                        <button
-                          type="button"
-                          title="EDIT"
-                          className="btn-primary text-2xl"
-                          // onClick={() =>
-                          //   user.isAdmin
-                          //     ? navigate("/user/profile")
-                          //     : navigate(`/admin/users/${user._id}`)
-                          // }
-                        >
-                          <FiEdit />
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          title="DELETE"
-                          className="btn-primary bg-red-600 text-2xl"
-                          disabled={user.isAdmin}
-                        >
-                          <AiOutlineDelete className="text-xl" />
-                        </button>
-                      </td>
                     </tr>
                   ))}
               </tbody>

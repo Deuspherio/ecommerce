@@ -1,6 +1,6 @@
 import { Menu, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
-import { BsPerson } from "react-icons/bs";
+import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const adminOptions = [
@@ -41,16 +41,17 @@ const UserDropDown = ({ userData, signoutHandler }) => {
   return (
     <>
       {!userData ? (
-        <Link to="/user/signin" title="SIGNIN">
-          <BsPerson className="text-xl" />
-        </Link>
+        <div className="flex space-x-6">
+          <Link to="/user/signin">SignIn</Link>
+          <Link to="/user/signup">SignUp</Link>
+        </div>
       ) : (
         <Menu as="div" className="relative inline-block">
           <Menu.Button
             className="inline-flex w-full justify-center focus:outline-none"
             title="MENU"
           >
-            <BsPerson className="text-xl" />
+            <AiOutlineMenu className="text-xl" />
           </Menu.Button>
           <Transition
             as={Fragment}

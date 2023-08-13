@@ -2,12 +2,7 @@ import { Link } from "react-router-dom";
 import { BsDiscord, BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 
 const categoriesItems = [{ name: "Electronics", to: "/" }];
-const linksItems = [
-  { name: "FAQ", to: "/" },
-  { name: "Pages", to: "/" },
-  { name: "Stores", to: "/" },
-  { name: "Cookies", to: "/" },
-];
+const linksItems = [{ name: "FAQ", to: "/" }];
 
 const Footer = () => {
   return (
@@ -37,7 +32,7 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="space-y-4 col-span-2 md:col-span-1">
+        <div className="space-y-4 col-span-2 md:col-span-1" id="about">
           <h4 className="font-bold">About</h4>
           <p className="text-sm text-justify">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae fuga
@@ -46,7 +41,10 @@ const Footer = () => {
             sapiente accusamus voluptatum.
           </p>
         </div>
-        <div className="space-y-4 col-span-2 md:col-span-3 lg:col-span-1">
+        <div
+          className="space-y-4 col-span-2 md:col-span-3 lg:col-span-1"
+          id="contact"
+        >
           <h4 className="font-bold">Contact</h4>
           <p className="text-sm text-justify">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab fugit
@@ -58,7 +56,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex items-center flex-col flex-wrap justify-center space-y-4 mt-8 md:flex-row md:justify-between">
-        <Link to="/">bayesian ecommerce</Link>
+        <Link to="/" title="Home" className="font-logo text-2xl">
+          bayesian-ecommerce
+        </Link>
         <div className="md:order-3 flex gap-4">
           <Link to="/">
             <BsFacebook className="text-xl transition-color hover:text-primary" />

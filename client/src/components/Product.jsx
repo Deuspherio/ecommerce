@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { roundToTwo } from "../utilities";
 import Rating from "./Rating";
 
 const Product = ({ product }) => {

@@ -4,7 +4,6 @@ import AdminLayout from "./components/AdminLayout";
 import ProductLayout from "./components/ProductLayout";
 import UserLayout from "./components/UserLayout";
 import CartPage from "./pages/CartPage";
-import CreateProductPage from "./pages/CreateProductPage";
 import DashboardPage from "./pages/DashboardPage";
 import HomePage from "./pages/HomePage";
 import OrdersHistoryPage from "./pages/OrdersHistoryPage";
@@ -19,7 +18,6 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import UpdateProductPage from "./pages/UpdateProductPage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
-import UpdateUserPage from "./pages/UpdateUserPage";
 import UsersListPage from "./pages/UsersListPage";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -131,14 +129,6 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/admin/products/create",
-        element: (
-          <ProtectedRoute>
-            <CreateProductPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
         path: "/admin/products/:id",
         element: (
           <ProtectedRoute>
@@ -151,14 +141,6 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <UsersListPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/users/:id",
-        element: (
-          <ProtectedRoute>
-            <UpdateUserPage />
           </ProtectedRoute>
         ),
       },

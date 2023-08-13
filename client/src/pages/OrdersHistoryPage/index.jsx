@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getOrders } from "./orders.api";
 import { Helmet } from "react-helmet-async";
 import Pagination from "../../components/Pagination";
-import { BsCheck2, BsInfo } from "react-icons/bs";
+import { BsInfo } from "react-icons/bs";
 
 const PAGE_SIZE = 10;
 const OrdersHistoryPage = () => {

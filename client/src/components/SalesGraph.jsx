@@ -8,14 +8,13 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { roundToTwo } from "../utilities";
 
 const SalesGraph = ({ summary }) => {
   return (
     <div className="flex space-x-4">
       <div className="border rounded px-6 py-4 w-2/4">
         <h2 className="text-center">Daily Sales</h2>
-        <ResponsiveContainer width="100%" height={320}>
+        <ResponsiveContainer width="100%" height={250}>
           <AreaChart data={summary.dailySales}>
             <defs>
               <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
@@ -26,7 +25,9 @@ const SalesGraph = ({ summary }) => {
             <CartesianGrid stroke="#8884d8" strokeDasharray="5 5" />
             <XAxis dataKey="_id" />
             <YAxis />
-            <Tooltip formatter={(value) => new Intl.NumberFormat("en").format(value)} />
+            <Tooltip
+              formatter={(value) => new Intl.NumberFormat("en").format(value)}
+            />
             <Area
               type="monotone"
               dataKey="sales"
@@ -39,7 +40,7 @@ const SalesGraph = ({ summary }) => {
       </div>
       <div className="border rounded px-6 py-4 w-2/4">
         <h2 className="text-center">Monthly Sales</h2>
-        <ResponsiveContainer width="100%" height={320}>
+        <ResponsiveContainer width="100%" height={250}>
           <AreaChart data={summary.monthlySales}>
             <defs>
               <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { BsCart, BsHeart } from "react-icons/bs";
+import { BsCart } from "react-icons/bs";
 import { useContext } from "react";
 import SearchBar from "./SearchBar";
 import { Store } from "../context";
@@ -15,11 +15,7 @@ const navItems = [
     link: "/",
   },
   {
-    option: "Contact",
-    link: "/",
-  },
-  {
-    option: "Stores",
+    option: "Contact Us",
     link: "/",
   },
 ];
@@ -44,22 +40,20 @@ const Header = () => {
   return (
     <div className="w-full shadow-md fixed top-0 right-0 left-0 z-[999] bg-white">
       <div className="w-full container px-6 py-4 mx-auto flex items-center justify-between relative z-20">
-        <div className="hidden md:flex md:space-x-6">
-          <button>EN</button>
-          <button>PHP</button>
-        </div>
-        <Link to="/" title="Home">
-          bayesian ecommerce
+        <Link to="/" title="Home" className="font-logo text-2xl">
+          bayesian-ecommerce
         </Link>
-        <ul className="hidden lg:flex lg:space-x-6 lg:items-center">
-          {navItems.map((item, i) => (
-            <li key={i}>
-              <Link to={item.link}>{item.option}</Link>
-            </li>
-          ))}
-        </ul>
+        {(userData && !userData.isAdmin) || !userData ? (
+          <ul className="flex space-x-6 items-center">
+            {navItems.map((item, i) => (
+              <li key={i}>
+                <Link to={item.link}>{item.option}</Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {userData && userData.isAdmin ? (
-          <ul className="hidden lg:flex lg:space-x-6 lg:items-center lg:justify-between">
+          <ul className="flex space-x-6 items-center justify-between">
             <li>
               <UserDropDown
                 userData={userData}
@@ -69,20 +63,9 @@ const Header = () => {
           </ul>
         ) : null}
         {(userData && !userData.isAdmin) || !userData ? (
-          <ul className="hidden lg:flex lg:space-x-6 lg:items-center lg:justify-between">
+          <ul className="flex space-x-6 items-center justify-between">
             <li title="SEARCH">
               <SearchBar />
-            </li>
-            <li>
-              <UserDropDown
-                userData={userData}
-                signoutHandler={signoutHandler}
-              />
-            </li>
-            <li title="WISHLIST">
-              <Link to="/">
-                <BsHeart className="text-xl" />
-              </Link>
             </li>
             <li className="relative" title="CART">
               <Link to="/products/cart">
@@ -91,6 +74,12 @@ const Header = () => {
               <span className="w-6 h-6 text-sm rounded-full bg-primary text-white absolute  top-[-10px] right-[-16px] flex items-center justify-center">
                 {cartItems.reduce((a, c) => a + c.quantity, 0)}
               </span>
+            </li>
+            <li>
+              <UserDropDown
+                userData={userData}
+                signoutHandler={signoutHandler}
+              />
             </li>
           </ul>
         ) : null}
