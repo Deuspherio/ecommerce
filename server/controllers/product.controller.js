@@ -6,6 +6,7 @@ const {
   setPrediction,
   salesPercentagePerProduct,
   applyDiscountPerProduct,
+  applyIncreasePerProduct,
 } = require("../utilities");
 
 const getAllProducts = asyncHandler(async (req, res) => {
@@ -305,7 +306,7 @@ const updateProductsIncrease = asyncHandler(async (req, res) => {
 
   await Promise.all(
     products.map(async (x) => {
-      await applyDiscountPerProduct(x._id, newIncrease);
+      await applyIncreasePerProduct(x._id, newIncrease);
       await setPrediction(x._id);
     })
   );

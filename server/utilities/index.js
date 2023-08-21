@@ -64,6 +64,20 @@ const applyDiscountPerProduct = async (id, discount) => {
   }
 };
 
+const applyIncreasePerProduct = async (id, increase) => {
+  const product = await Product.findById(id);
+  if (product) {
+    await Product.updateOne(
+      { _id: product._id },
+      {
+        $set: {
+          increase: increase,
+        },
+      }
+    );
+  }
+};
+
 const productName = (name) => {
   switch (name) {
     case "20in Monitor":
@@ -110,7 +124,7 @@ const productName = (name) => {
 
 const setPrediction = async (id) => {
   const product = await Product.findById(id);
-  const { salesPercentage, pastStocks, discount } = product;
+  const { discount, increase } = product;
   const { name, soldProducts, sales } = product;
   const productCode = productName(name);
   const date = new Date();
@@ -121,18 +135,19 @@ const setPrediction = async (id) => {
     date.getDate(),
     date.getMonth() + 1
   );
-  const predictionWithDiscount = result === 0 ? discount : -discount;
+  const predictionWithDiscountOrIncrease = result === 0 ? increase : -discount;
   const priceSuggestion = result === 0 ? "increase" : "decrease";
   if (product) {
-    const totalPriceDiscount =
-      product.price * predictionWithDiscount + product.price;
+    const totalDiscountOrIncrease = roundToTwo(
+      product.price * predictionWithDiscountOrIncrease + product.price
+    );
 
     await Product.updateOne(
       { _id: product._id },
       {
         $set: {
           priceSuggestion: priceSuggestion,
-          pricePrediction: roundToTwo(totalPriceDiscount),
+          pricePrediction: roundToTwo(totalDiscountOrIncrease),
         },
       }
     );
@@ -207,6 +222,7 @@ module.exports = {
   applyPrediction,
   setPastData,
   applyDiscountPerProduct,
+  applyIncreasePerProduct,
   decrementProductQuantity,
   incrementProductSold,
   roundToTwo,

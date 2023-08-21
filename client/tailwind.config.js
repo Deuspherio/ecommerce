@@ -22,6 +22,7 @@ module.exports = {
     fontFamily: {
       serif: ["Montserrat", "sans-serif"],
       sans: ["Open Sans", "sans-serif"],
+      logo: ["Dancing Script", "cursive"],
     },
   },
   plugins: [],

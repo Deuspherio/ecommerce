@@ -15,7 +15,7 @@ const HomePage = () => {
   const order = searchParams.get("order") || "newest";
   const page = searchParams.get("page") || 1;
 
-  const { data, isLoading, isError, error, } = useQuery(
+  const { data, isLoading, isError, error } = useQuery(
     ["products", category, price, rating, order, page],
     () => getProducts(page, category, price, rating, order)
   );
@@ -44,17 +44,17 @@ const HomePage = () => {
           {data.notFilteredProducts.filter(
             (product) =>
               product.pricePrediction >= product.price &&
-              product.soldItems > 0 &&
+              product.soldProducts > 0 &&
               product.stocks > 0
           ).length > 0 ? (
             <>
               <h1>Trending Products</h1>
-              <div className="grid gap-4 grid-cols-2 mb-6 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid gap-4 mb-6 grid-cols-4">
                 {data.notFilteredProducts
                   .filter(
                     (product) =>
                       product.pricePrediction >= product.price &&
-                      product.soldItems > 0 &&
+                      product.soldProducts > 0 &&
                       product.stocks > 0
                   )
                   .splice(0, 4)
@@ -65,20 +65,9 @@ const HomePage = () => {
             </>
           ) : null}
           <div className="flex items-center space-x-4 mb-4">
-            {/* <button
-              type="button"
-              onClick={() => setOpenSideMenu(!openSideMenu)}
-            >
-              <BsList className="text-xl" />
-            </button> */}
             <h1 className="mb-0">Featured Products</h1>
           </div>
           <div className="grid grid-cols-12 gap-4 relative">
-            {/* <div
-              className={`${
-                openSideMenu ? "col-span-3 static" : "absolute left-[-999px]"
-              } transition-left`}
-            > */}
             <div className="col-span-3">
               <SidebarMenu
                 data={data}
@@ -89,12 +78,11 @@ const HomePage = () => {
                 order={order}
               />
             </div>
-            {/* </div> */}
             <div className="col-span-9 mb-4">
               {data.products.length === 0 ? (
                 <MessageBox danger>No Products Found</MessageBox>
               ) : (
-                <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
+                <div className="grid gap-4 grid-cols-3">
                   {data.products.map((product) => (
                     <Product product={product} key={product._id} />
                   ))}
