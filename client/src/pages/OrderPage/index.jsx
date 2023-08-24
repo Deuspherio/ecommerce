@@ -59,6 +59,18 @@ const OrderPage = () => {
                   <span className="font-bold">Payment Method: </span>
                   {order.shippingInfo.paymentMethod}
                 </p>
+                <p>
+                  <span className="font-bold">Payment Date: </span>
+                  {order.isPaid
+                    ? order.paidAt.substring(0, 10)
+                    : "Not yet paid"}
+                </p>
+                <p>
+                  <span className="font-bold">Delivered Date: </span>
+                  {order.isDelivered
+                    ? order.deliveredAt.substring(0, 10)
+                    : "Not yet delivered"}
+                </p>
               </div>
               <div>
                 <h2 className="text-center">
@@ -101,7 +113,7 @@ const OrderPage = () => {
                 onClick={() =>
                   userData.isAdmin
                     ? navigate("/admin/orders")
-                    : navigate("/user/order/history")
+                    : navigate("/user/orders/history")
                 }
               >
                 View Orders

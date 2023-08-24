@@ -58,7 +58,7 @@ const SignUpPage = () => {
         >
           <h1 className="text-center">Sign Up</h1>
           <div className="flex flex-col">
-            <label>First Name</label>
+            <label className="font-bold">First Name</label>
             <input
               type="text"
               {...register("firstName")}
@@ -71,7 +71,7 @@ const SignUpPage = () => {
             )}
           </div>
           <div className="flex flex-col">
-            <label>Last Name</label>
+            <label className="font-bold">Last Name</label>
             <input
               type="text"
               {...register("lastName")}
@@ -84,7 +84,7 @@ const SignUpPage = () => {
             )}
           </div>
           <div className="flex flex-col">
-            <label>Email</label>
+            <label className="font-bold">Email</label>
             <input
               type="email"
               {...register("email")}
@@ -97,7 +97,7 @@ const SignUpPage = () => {
             )}
           </div>
           <div className="flex flex-col">
-            <label>Address</label>
+            <label className="font-bold">Address</label>
             <input
               type="text"
               {...register("address")}
@@ -110,7 +110,7 @@ const SignUpPage = () => {
             )}
           </div>
           <div className="flex flex-col">
-            <label>Phone Number</label>
+            <label className="font-bold">Phone Number</label>
             <div className="flex items-cUpdate gap-4">
               <button disabled>+63</button>
               <input
@@ -126,7 +126,7 @@ const SignUpPage = () => {
             )}
           </div>
           <div className="flex flex-col">
-            <label>Password</label>
+            <label className="font-bold">Password</label>
             <input
               type="password"
               {...register("password")}
@@ -139,7 +139,7 @@ const SignUpPage = () => {
             )}
           </div>
           <div className="flex flex-col">
-            <label>Confirm Password</label>
+            <label className="font-bold">Confirm Password</label>
             <input
               type="password"
               {...register("passwordConfirmation")}

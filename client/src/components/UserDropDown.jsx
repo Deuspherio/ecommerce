@@ -33,7 +33,7 @@ const userOptions = [
   },
   {
     option: "Order History",
-    link: "/user/order/history",
+    link: "/user/orders/history",
   },
 ];
 

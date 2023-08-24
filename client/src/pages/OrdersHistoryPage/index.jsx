@@ -8,6 +8,8 @@ import { getOrders } from "./orders.api";
 import { Helmet } from "react-helmet-async";
 import Pagination from "../../components/Pagination";
 import { BsInfo } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const PAGE_SIZE = 10;
 const OrdersHistoryPage = () => {
@@ -43,13 +45,25 @@ const OrdersHistoryPage = () => {
             <table className="w-full rounded border">
               <thead className="text-lg w-full text-gray-700 uppercase">
                 <tr>
-                  <th scope="col">DATE</th>
-                  <th scope="col">TOTAL</th>
-                  <th scope="col">PAID</th>
-                  <th scope="col">DELIVERED</th>
+                  <th scope="col" rowSpan={2}>
+                    DATE
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    TOTAL
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    PAID
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    DELIVERED
+                  </th>
                   <th scope="col" colSpan={2}>
                     ACTIONS
                   </th>
+                </tr>
+                <tr>
+                  <th scope="col">UPDATE</th>
+                  <th scope="col">INFO</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,40 +83,33 @@ const OrdersHistoryPage = () => {
                         ? order.deliveredAt.substring(0, 10)
                         : "Not yet delivered"}
                     </td>
-                    {/* <td>
-                      <div className="flex items-center justify-center">
-                        {!order.isDelivered ? (
-                          <button
-                            type="button"
-                            className="btn-primary bg-green-600 text-2xl w-auto"
-                            title="ORDER RECEIVED?"
-                          >
-                            <BsCheck2 />
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            className="btn-primary bg-green-600 text-2xl w-auto"
-                            title="ORDER RECEIVED"
-                          >
-                            <BsCheck2 />
-                          </button>
-                        )}
-                      </div>
-                    </td> */}
-                    <td>
-                      <div className="flex items-center justify-center">
-                        <button
-                          className="btn-primary text-2xl w-auto"
-                          type="button"
-                          title="ORDER INFO"
-                          onClick={() => {
-                            navigate(`/user/order/${order._id}`);
-                          }}
-                        >
-                          <BsInfo />
-                        </button>
-                      </div>
+                    <td className="py-3 px-6">
+                      <button
+                        type="button"
+                        className="btn-primary bg-green-600 text-2xl"
+                        title="UPDATE ORDER DELIVERY"
+                        onClick={() => {
+                          !order.isDelivered
+                            ? navigate(
+                                `/user/orders/update/delivery/${order._id}`
+                              )
+                            : toast.info("Order Already Received");
+                        }}
+                      >
+                        <FiEdit />
+                      </button>
+                    </td>
+                    <td className="py-3 px-6">
+                      <button
+                        className="btn-primary text-2xl"
+                        type="button"
+                        title="INFO"
+                        onClick={() => {
+                          navigate(`/user/orders/${order._id}`);
+                        }}
+                      >
+                        <BsInfo />
+                      </button>
                     </td>
                   </tr>
                 ))}

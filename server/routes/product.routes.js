@@ -13,6 +13,7 @@ const {
   updateProductsDiscount,
   getFilteredProducts,
   updateProductsIncrease,
+  refreshPrediction,
 } = require("../controllers/product.controller");
 const router = express.Router();
 const { isAuth, isAdmin } = require("../middleware");
@@ -28,7 +29,7 @@ router
 router.get("/admin", isAuth, isAdmin, getAllProducts);
 router.get("/search", search);
 router.post("/reviews/id/:id", isAuth, updateProductReviews);
-
+router.patch("/update/prediction", isAuth, isAdmin, refreshPrediction);
 router.patch("/update/discounts", isAuth, isAdmin, updateProductsDiscount);
 router.patch("/update/increase", isAuth, isAdmin, updateProductsIncrease);
 router.patch("/update/prices", isAuth, isAdmin, updateProductsPrice);

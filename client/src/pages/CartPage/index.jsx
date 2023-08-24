@@ -117,7 +117,7 @@ const CartPage = () => {
               }
               disabled={cartItems.length === 0}
               onClick={() =>
-                navigate("/user/signin?redirect=/user/order/shipping")
+                navigate("/user/signin?redirect=/user/orders/shipping")
               }
             >
               Check Out

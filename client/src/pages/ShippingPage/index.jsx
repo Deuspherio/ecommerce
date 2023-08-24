@@ -34,12 +34,12 @@ const ShippingPage = () => {
       payload: value,
     });
     localStorage.setItem("shippingData", JSON.stringify(value));
-    navigate("/user/order/place-order");
+    navigate("/user/orders/place-order");
   };
 
   useEffect(() => {
     if (!userData) {
-      navigate("/user/signin?redirect=/user/order/shipping");
+      navigate("/user/signin?redirect=/user/orders/shipping");
     }
   }, [navigate, userData]);
 
@@ -57,7 +57,7 @@ const ShippingPage = () => {
             >
               <h1 className="text-center">Shipping Information</h1>
               <div className="flex flex-col">
-                <label>First Name</label>
+                <label className="font-bold">First Name</label>
                 <input
                   type="text"
                   {...register("firstName", { value: userData.firstName })}
@@ -71,7 +71,7 @@ const ShippingPage = () => {
                 )}
               </div>
               <div className="flex flex-col">
-                <label>Last Name</label>
+                <label className="font-bold">Last Name</label>
                 <input
                   type="text"
                   {...register("lastName", { value: userData.lastName })}
@@ -85,7 +85,7 @@ const ShippingPage = () => {
                 )}
               </div>
               <div className="flex flex-col">
-                <label>Email</label>
+                <label className="font-bold">Email</label>
                 <input
                   type="email"
                   {...register("email", { value: userData.email })}
@@ -99,7 +99,7 @@ const ShippingPage = () => {
                 )}
               </div>
               <div className="flex flex-col">
-                <label>Address</label>
+                <label className="font-bold">Address</label>
                 <input
                   type="text"
                   {...register("address", { value: userData.address })}
@@ -113,7 +113,7 @@ const ShippingPage = () => {
                 )}
               </div>
               <div className="flex flex-col mb-6">
-                <label>Phone Number</label>
+                <label className="font-bold">Phone Number</label>
                 <div className="flex items-cUpdate gap-4">
                   <button disabled>+63</button>
                   <input
@@ -131,7 +131,7 @@ const ShippingPage = () => {
                   <p className="yup-error">{errors.phoneNumber?.message}</p>
                 )}
               </div>
-              <p>Payment Method</p>
+              <p className="font-bold">Payment Method</p>
               <select
                 {...register("paymentMethod", {
                   value: paymentMethodName,

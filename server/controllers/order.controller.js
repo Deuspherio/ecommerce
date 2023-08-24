@@ -157,16 +157,19 @@ const updatePaymentStatus = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
   if (order) {
-    await Order.updateOne(
-      { _id: order._id },
-      {
-        $set: {
-          isPaid: true,
-          paidAt: Date.now(),
-        },
-      }
-    );
-    return res.send({ message: "Payment Status Updated" });
+    if (req.body.payment) {
+      await Order.updateOne(
+        { _id: order._id },
+        {
+          $set: {
+            isPaid: req.body.payment,
+            paidAt: Date.now(),
+          },
+        }
+      );
+      return res.send({ message: "Order Payment is Updated" });
+    }
+    return res.send({ message: "Please wait for the payment" });
   }
   res.status(404).send({ message: "Order Not Found" });
 });
@@ -175,16 +178,19 @@ const updateDelivery = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
   if (order) {
-    await Order.updateOne(
-      { _id: order._id },
-      {
-        $set: {
-          isDelivered: req.body.isDelivered,
-          deliveredAt: Date.now(),
-        },
-      }
-    );
-    return res.send({ message: "Order Deleivery is Updated" });
+    if (req.body.delivery) {
+      await Order.updateOne(
+        { _id: order._id },
+        {
+          $set: {
+            isDelivered: req.body.delivery,
+            deliveredAt: Date.now(),
+          },
+        }
+      );
+      return res.send({ message: "Order Delivery is Updated" });
+    }
+    return res.send({ message: "Please wait for your order" });
   }
   res.status(404).send({ message: "Order Not Found" });
 });

@@ -69,8 +69,8 @@ const SearchPage = () => {
                     : `${search.countProducts} results`}
                   {query !== "all" ? " : " + query : null}
                   {category !== "all" ? " : " + category : null}
-                  {price !== "all" ? " : " + price : null}
-                  {rating !== "all" ? " : " + rating : null}
+                  {price !== "all" ? " : $" + price : null}
+                  {rating !== "all" ? " : " + rating + " stars & up" : null}
                   {query !== "all" ||
                   category !== "all" ||
                   price !== "all" ||

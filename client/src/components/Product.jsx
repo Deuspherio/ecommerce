@@ -4,7 +4,7 @@ import Rating from "./Rating";
 const Product = ({ product }) => {
   return (
     <Link
-      to={`/product/${product.slug}`}
+      to={`/products/slug/${product.slug}`}
       className="flex flex-col items-center justify-between border rounded w-full px-6 py-4 text-center relative overflow-hidden transition-shadow hover:shadow-md"
     >
       <img src={product.image} alt={product.name} />

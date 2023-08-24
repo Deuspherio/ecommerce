@@ -70,7 +70,7 @@ const SignInPage = () => {
         >
           <h1 className="text-center">Sign In</h1>
           <div className="flex flex-col">
-            <label>Email</label>
+            <label className="font-bold">Email</label>
             <input
               type="email"
               {...register("email")}
@@ -82,7 +82,7 @@ const SignInPage = () => {
             )}
           </div>
           <div className="flex flex-col">
-            <label>Password</label>
+            <label className="font-bold">Password</label>
             <input
               type="password"
               {...register("password")}

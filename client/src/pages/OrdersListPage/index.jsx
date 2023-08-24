@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { BsInfo } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
+import { FiEdit } from "react-icons/fi";
 
 const PAGE_SIZE = 10;
 const OrdersListPage = () => {
@@ -29,7 +31,9 @@ const OrdersListPage = () => {
     (id) => deleteOrder(id, userData),
     {
       onSuccess: (data) => {
-        queryClient.setQueryData(["orders"], () => data);
+        queryClient.setQueryData(["orders"], () =>
+          data.sort((a, b) => b.createdAt - a.createdAt)
+        );
       },
     }
   );
@@ -58,14 +62,29 @@ const OrdersListPage = () => {
             <table className="w-full rounded border">
               <thead className="text-lg w-full text-gray-700 uppercase">
                 <tr>
-                  <th scope="col">USERS</th>
-                  <th scope="col">DATE</th>
-                  <th scope="col">TOTAL</th>
-                  <th scope="col">PAID</th>
-                  <th scope="col">DELIVERED</th>
+                  <th scope="col" rowSpan={2}>
+                    USERS
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    DATE
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    TOTAL
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    PAID
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    DELIVERED
+                  </th>
                   <th scope="col" colSpan={3}>
                     ACTIONS
                   </th>
+                </tr>
+                <tr>
+                  <th scope="col">UPDATE</th>
+                  <th scope="col">INFO</th>
+                  <th scope="col">DELETE</th>
                 </tr>
               </thead>
               <tbody>
@@ -88,20 +107,36 @@ const OrdersListPage = () => {
                       <td>
                         {order.isPaid
                           ? order.paidAt.substring(0, 10)
-                          : "Not yet"}
+                          : "Not yet paid"}
                       </td>
                       <td>
                         {order.isDelivered
                           ? order.deliveredAt.substring(0, 10)
-                          : "Not yet"}
+                          : "Not yet delivered"}
                       </td>
                       <td>
                         <button
                           type="button"
-                          title="ORDER INFO"
+                          className="btn-primary bg-green-600 text-2xl"
+                          title="UPDATE ORDER PAYMENT"
+                          onClick={() => {
+                            !order.isPaid
+                              ? navigate(
+                                  `/admin/orders/update/payment/${order._id}`
+                                )
+                              : toast.info("Order Already Paid");
+                          }}
+                        >
+                          <FiEdit />
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          title="INFO"
                           className="btn-primary text-2xl"
                           onClick={() => {
-                            navigate(`/user/order/${order._id}`);
+                            navigate(`/user/orders/${order._id}`);
                           }}
                         >
                           <BsInfo />

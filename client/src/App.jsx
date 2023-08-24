@@ -22,11 +22,19 @@ import UsersListPage from "./pages/UsersListPage";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CustomerRoute from "./components/CustomerRoute";
+import MainLayout from "./components/MainLayout";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import UpdateDeliveryPage from "./pages/UpdateDeliveryPage";
+import UpdatePaymentPage from "./pages/UpdatePaymentPage";
+import UpdatePricesPage from "./pages/UpdatePricesPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import FrequentlyAskedPage from "./pages/FrequentlyAskedPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ProductLayout />,
+    element: <MainLayout />,
     children: [
       {
         path: "",
@@ -37,7 +45,37 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/product/:slug",
+        path: "/about",
+        element: (
+          <CustomerRoute>
+            <AboutPage />
+          </CustomerRoute>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <CustomerRoute>
+            <ContactPage />
+          </CustomerRoute>
+        ),
+      },
+      {
+        path: "/faq",
+        element: (
+          <CustomerRoute>
+            <FrequentlyAskedPage />
+          </CustomerRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/products",
+    element: <ProductLayout />,
+    children: [
+      {
+        path: "/products/slug/:slug",
         element: (
           <CustomerRoute>
             <ProductPage />
@@ -79,7 +117,7 @@ const router = createBrowserRouter([
         element: <UpdateProfilePage />,
       },
       {
-        path: "/user/order/shipping",
+        path: "/user/orders/shipping",
         element: (
           <CustomerRoute>
             <ShippingPage />
@@ -87,7 +125,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/user/order/place-order",
+        path: "/user/orders/place-order",
         element: (
           <CustomerRoute>
             <PlaceOrderPage />
@@ -95,11 +133,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/user/order/:id",
+        path: "/user/orders/:id",
         element: <OrderPage />,
       },
       {
-        path: "/user/order/history",
+        path: "/user/orders/update/delivery/:id",
+        element: <UpdateDeliveryPage />,
+      },
+      {
+        path: "/user/orders/history",
         element: (
           <CustomerRoute>
             <OrdersHistoryPage />
@@ -137,6 +179,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/admin/products/update/prices",
+        element: (
+          <ProtectedRoute>
+            <UpdatePricesPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
         path: "/admin/users/",
         element: (
           <ProtectedRoute>
@@ -152,7 +202,15 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/admin/orders/update/payment/:id",
+        element: <UpdatePaymentPage />,
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 

@@ -33,7 +33,7 @@ const UpdateProductPage = () => {
     {
       onSuccess: (data) =>
         queryClient.setQueryData(["product"], (old) => {
-          return { ...old, stocks: data.stocks };
+          return { ...old, stocks: data.stocks, category: data.category };
         }),
     }
   );
@@ -59,117 +59,37 @@ const UpdateProductPage = () => {
       ) : (
         <>
           <Helmet>
-            <title>Update {product.name}</title>
+            <title>Add {product.name} Stocks</title>
           </Helmet>
           <div className="custom-container flex justify-center">
-            <form
-              onSubmit={handleSubmit(submitHandler)}
-              className="border rounded px-6 py-4 min-w-[375px] space-y-6"
-            >
-              <h1 className="text-center capitalize">Update Product</h1>
-              <div className="flex flex-col">
-                <label>Product Name</label>
-                <input
-                  type="text"
-                  {...register("name", {
-                    value: product.name,
-                  })}
-                  className="border rounded p-2"
-                  placeholder="Update the product name"
-                  name="name"
-                  disabled
-                />
-                {errors.name?.message && (
-                  <p className="border rounded p-2">{errors.name?.message}</p>
-                )}
-              </div>
-              <div className="flex flex-col">
-                <label>Product Main Image</label>
-                <input
-                  type="file"
-                  {...register("images")}
-                  className="border rounded p-2"
-                  disabled
-                  placeholder="Update the product images"
-                  name="image"
-                />
-                {errors.image?.message && (
-                  <p className="">{errors.image?.message}</p>
-                )}
-              </div>
-              <div className="flex flex-col">
-                <label>Product Images</label>
-                <input
-                  type="file"
-                  disabled
-                  {...register("images")}
-                  className="border rounded p-2"
-                  placeholder="Update the product images"
-                  name="images"
-                />
-                {errors.images?.message && (
-                  <p className="">{errors.images?.message}</p>
-                )}
-              </div>
-              <div className="flex flex-col">
-                <label>Product Category</label>
-                <select
-                  {...register("category", {
-                    value: product.category,
-                  })}
-                  disabled
-                >
-                  <option value="electronics">Electronics</option>
+            <div className="border rounded px-6 py-4 min-w-[375px] space-y-6">
+              <h1 className="text-center capitalize">Add Stocks</h1>
+
+              <form
+                className="flex items-center"
+                onSubmit={handleSubmit(submitHandler)}
+              >
+                <select {...register("stocks")}>
+                  {[...Array(100).keys()].map((stock) => (
+                    <option value={stock + 1} key={stock + 1}>
+                      {stock + 1}
+                    </option>
+                  ))}
                 </select>
-                {errors.category?.message && (
-                  <p className="">{errors.category?.message}</p>
-                )}
-              </div>
-              <div className="flex flex-col">
-                <label>Product Price</label>
-                <input
-                  type="number"
-                  step=".01"
-                  {...register("price", {
-                    value: product.price,
-                  })}
-                  className="border rounded p-2"
-                  placeholder="Update the product price"
-                  name="price"
-                  disabled
-                />
-                {errors.price?.message && (
-                  <p className="">{errors.price?.message}</p>
-                )}
-              </div>
-              <div className="flex flex-col">
-                <label>Product Stocks</label>
-                <input
-                  type="number"
-                  {...register("stocks", {
-                    value: product.stocks,
-                  })}
-                  className="border rounded p-2"
-                  placeholder="Update the product stocks"
-                  name="stocks"
-                  min="0"
-                />
                 {errors.stocks?.message && (
                   <p className="yup-error">{errors.stocks?.message}</p>
                 )}
-              </div>
-              <p className="text-red-600 text-xs">
-                Note: Only stocks can be changed
-              </p>
-              <button type="submit" className="btn-primary">
-                Update Product
-              </button>
+                &nbsp;
+                <button type="submit" className="btn-primary">
+                  Add
+                </button>
+              </form>
               {isLoading ? (
                 <Loading />
               ) : isSuccess ? (
                 navigate("/admin/products")
               ) : null}
-            </form>
+            </div>
           </div>
         </>
       )}

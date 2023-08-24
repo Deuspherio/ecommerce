@@ -33,7 +33,7 @@ const PlaceOrderPage = () => {
         ctxDispatch({ type: "CART_CLEAR" });
         localStorage.removeItem("cartItems");
         toast.success(data.message);
-        navigate(`/user/order/${data.order._id}`);
+        navigate(`/user/orders/${data.order._id}`);
       },
       onError: () => {
         toast.error(error.message);

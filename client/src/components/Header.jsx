@@ -11,12 +11,16 @@ const navItems = [
     link: "/",
   },
   {
-    option: "About",
-    link: "/",
+    option: "About Us",
+    link: "/about",
   },
   {
     option: "Contact Us",
-    link: "/",
+    link: "/contact",
+  },
+  {
+    option: "FAQ",
+    link: "/faq",
   },
 ];
 
@@ -38,7 +42,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full shadow-md fixed top-0 right-0 left-0 z-[999] bg-white">
+    <div className="w-full shadow-md fixed top-0 right-0 left-0 z-[999] backdrop-blur">
       <div className="w-full container px-6 py-4 mx-auto flex items-center justify-between relative z-20">
         <Link to="/" title="Home" className="font-logo text-2xl">
           bayesian-ecommerce
@@ -47,7 +51,12 @@ const Header = () => {
           <ul className="flex space-x-6 items-center">
             {navItems.map((item, i) => (
               <li key={i}>
-                <Link to={item.link}>{item.option}</Link>
+                <Link
+                  to={item.link}
+                  className="transition-color hover:text-primary"
+                >
+                  {item.option}
+                </Link>
               </li>
             ))}
           </ul>

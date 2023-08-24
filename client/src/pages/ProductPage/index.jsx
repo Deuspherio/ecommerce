@@ -70,7 +70,9 @@ const ProductPage = () => {
       toast.error("Please sign in");
       return;
     }
-    mutate(values);
+    if (window.confirm("Are you sure?")) {
+      mutate(values);
+    }
   };
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -153,7 +155,7 @@ const ProductPage = () => {
                       <p className="text-red-700">Out of stock</p>
                     )}
                   </div>
-                  {product.stocks > 1 ? (
+                  {product.stocks > 0 ? (
                     <button
                       type="button"
                       className="btn-primary flex items-center justify-center gap-1"

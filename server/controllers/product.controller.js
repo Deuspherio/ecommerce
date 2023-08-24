@@ -118,7 +118,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     await Product.updateOne(
       { _id: product._id },
       {
-        stocks: req.body.stocks,
+        $inc: { stocks: +req.body.stocks },
       }
     );
     const newProduct = await Product.findById(product._id);
@@ -285,6 +285,18 @@ const search = asyncHandler(async (req, res) => {
   });
 });
 
+const refreshPrediction = asyncHandler(async (req, res) => {
+  const products = await Product.find();
+
+  const refreshProduct = products.map(async (x) => {
+    await setPrediction(x._id);
+  });
+
+  const updatedProducts = await Product.find();
+
+  res.send(updatedProducts);
+});
+
 const updateProductsDiscount = asyncHandler(async (req, res) => {
   const products = await Product.find();
   const newDiscount = parseFloat(req.body.discount / 100);
@@ -343,4 +355,5 @@ module.exports = {
   updateProductsDiscount,
   updateProductsIncrease,
   updateProductsPrice,
+  refreshPrediction,
 };

@@ -135,6 +135,7 @@ const setPrediction = async (id) => {
     date.getDate(),
     date.getMonth() + 1
   );
+
   const predictionWithDiscountOrIncrease = result === 0 ? increase : -discount;
   const priceSuggestion = result === 0 ? "increase" : "decrease";
   if (product) {
