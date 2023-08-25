@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-
 const images = [
   {
     link: "https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -33,43 +30,13 @@ const images = [
 ];
 
 const Carousel = () => {
-  const [currImg, setNextImg] = useState(0);
-
-  const prevSlide = () => {
-    setNextImg(currImg === 0 ? 6 : currImg - 1);
-  };
-  const nextSlide = () => {
-    setNextImg(currImg === 6 ? 0 : currImg + 1);
-  };
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setNextImg(currImg === 6 ? 0 : currImg + 1);
-    }, 3000);
-    return () => clearTimeout(timeOut);
-  }, [currImg]);
   return (
     <div className="relative max-w-[1536px] mx-auto overflow-hidden">
-      <div className={`w-[700%] flex relative`}>
-        {images.map((image, i) => (
-          <img
-            key={i}
-            src={image.link}
-            alt={image.alt}
-            className="transition-all w-full blur"
-            style={{
-              transform: `translateX(-${currImg * 100}%)`,
-            }}
-          />
-        ))}
-      </div>
-      <div className="flex justify-center gap-6 absolute right-12 top-2/4">
-        <button className="btn-primary backdrop-blur" onClick={prevSlide}>
-          <MdNavigateBefore className="text-xl" />
-        </button>
-        <button className="btn-primary backdrop-blur" onClick={nextSlide}>
-          <MdNavigateNext className="text-xl" />
-        </button>
-      </div>
+      <img
+        src={images[0].link}
+        alt={images[0].alt}
+        className="transition-all w-full blur"
+      />
       <div className="absolute left-12 top-1/4 w-96 h-80 bg-white/30 backdrop-blur p-4 rounded">
         <h1>Lorem ipsum dolor sit amet, consectetur adipisicing.</h1>
         <p className="mb-4">
