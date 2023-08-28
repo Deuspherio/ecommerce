@@ -37,15 +37,40 @@ const userOptions = [
   },
 ];
 
+const navItems = [
+  {
+    option: "Home",
+    link: "/",
+  },
+  {
+    option: "About Us",
+    link: "/about",
+  },
+  {
+    option: "Contact Us",
+    link: "/contact",
+  },
+  {
+    option: "FAQ",
+    link: "/faq",
+  },
+];
+
+const signing = [
+  {
+    option: "SignIn",
+    link: "/user/signin",
+  },
+  {
+    option: "SignUp",
+    link: "/user/signup",
+  },
+];
+
 const UserDropDown = ({ userData, signoutHandler }) => {
   return (
     <>
       {!userData ? (
-        <div className="flex space-x-6">
-          <Link to="/user/signin">SignIn</Link>
-          <Link to="/user/signup">SignUp</Link>
-        </div>
-      ) : (
         <Menu as="div" className="relative inline-block">
           <Menu.Button
             className="inline-flex w-full justify-center focus:outline-none"
@@ -64,7 +89,66 @@ const UserDropDown = ({ userData, signoutHandler }) => {
           >
             <Menu.Items className="absolute right-0 mt-2 w-44 text-center origin-top-right divide-y divide-gray-100 rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div className="px-1 py-1">
-                {userData ? (
+                {signing.map((sign, i) => (
+                  <Menu.Item key={i}>
+                    {({ active }) => (
+                      <Link
+                        to={sign.link}
+                        className={`${
+                          active
+                            ? "bg-primary text-white transition-bg"
+                            : "text-gray-900 transition-bg"
+                        } group flex w-full items-center rounded px-2 py-2 text-base`}
+                      >
+                        {sign.option}
+                      </Link>
+                    )}
+                  </Menu.Item>
+                ))}
+              </div>
+            </Menu.Items>
+          </Transition>
+        </Menu>
+      ) : (
+        <Menu as="div" className="relative inline-block">
+          <Menu.Button
+            className="inline-flex w-full justify-center focus:outline-none"
+            title="MENU"
+          >
+            <AiOutlineMenu className="text-xl" />
+          </Menu.Button>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 mt-2 w-44 text-center origin-top-right divide-y divide-gray-100 rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              {!userData.isAdmin ? (
+                <div className="px-1 py-1 lg:hidden">
+                  {navItems.map((navItem, i) => (
+                    <Menu.Item key={i}>
+                      {({ active }) => (
+                        <Link
+                          to={navItem.link}
+                          className={`${
+                            active
+                              ? "bg-primary text-white transition-bg"
+                              : "text-gray-900 transition-bg"
+                          } group flex w-full items-center rounded px-2 py-2 text-base`}
+                        >
+                          {navItem.option}
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  ))}
+                </div>
+              ) : null}
+              {userData ? (
+                <div className="px-1 py-1">
                   <Menu.Item>
                     <div className="group w-full rounded px-2 py-2">
                       <p className="text-sm font-bold text-start">
@@ -75,8 +159,8 @@ const UserDropDown = ({ userData, signoutHandler }) => {
                       } ${userData.lastName.slice(0, 1)}.`}</p>
                     </div>
                   </Menu.Item>
-                ) : null}
-              </div>
+                </div>
+              ) : null}
               {userData.isAdmin ? (
                 <div className="px-1 py-1">
                   {adminOptions.map((admin, i) => (

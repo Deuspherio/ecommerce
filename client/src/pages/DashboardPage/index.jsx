@@ -31,8 +31,8 @@ const DashboardPage = () => {
       ) : isSuccess ? (
         <div className="custom-container">
           <h1 className="text-center">Dashboard Overview</h1>
-          <div className="grid grid-cols-3 gap-4">
-            <div className="border rounded px-6 py-4">
+          <div className="md:grid md:grid-cols-3 gap-4 lg:gap-6">
+            <div className="mb-4 md:mb-0 border rounded px-6 py-4">
               <h4 className="text-lg font-bold">Total of Users:</h4>
               <p>{`${
                 summary.users && summary.users[0] && summary.users.length !== 0
@@ -40,7 +40,7 @@ const DashboardPage = () => {
                   : 0
               } users`}</p>
             </div>
-            <div className="border rounded px-6 py-4">
+            <div className="mb-4 md:mb-0 border rounded px-6 py-4">
               <h4 className="text-lg font-bold">Total of Orders:</h4>
               <p>{`${
                 summary.orders &&
@@ -50,7 +50,7 @@ const DashboardPage = () => {
                   : 0
               } orders`}</p>
             </div>
-            <div className="border rounded px-6 py-4">
+            <div className="mb-4 md:mb-0 border rounded px-6 py-4">
               <h4 className="text-lg font-bold">Total of Profits:</h4>
               <p>{`$ ${
                 summary.orders &&

@@ -4,15 +4,15 @@ import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 const categoriesItems = [
   {
     name: "Gadgets",
-    to: "/products/search?page=1&query=all&category=gadgets&price=all&rating=all&order=newest",
+    to: "/?page=1&query=all&category=gadgets&price=all&rating=all&order=newest",
   },
   {
     name: "Accessories",
-    to: "/products/search?page=1&query=all&category=accessories&price=all&rating=all&order=newest",
+    to: "/?page=1&query=all&category=accessories&price=all&rating=all&order=newest",
   },
   {
     name: "Appliances",
-    to: "/products/search?page=1&query=all&category=appliances&price=all&rating=all&order=newest",
+    to: "/?page=1&query=all&category=appliances&price=all&rating=all&order=newest",
   },
 ];
 const linksItems = [
@@ -25,7 +25,7 @@ const linksItems = [
 const Footer = () => {
   return (
     <div className="container mx-auto px-6 py-4">
-      <div className="grid gap-4 grid-cols-4">
+      <div className="grid gap-4 grid-cols-2 lg:gap-6 lg:grid-cols-4">
         <div className="space-y-4">
           <h4 className="font-bold">Categories</h4>
           <ul className="flex flex-col space-y-2">
@@ -86,11 +86,14 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center flex-wrap justify-center space-y-4 mt-8 flex-row md:justify-between">
+      <div className="flex items-center flex-wrap justify-center gap-4 mt-8 flex-col lg:flex-row md:justify-between">
         <Link to="/" title="Home" className="font-logo text-2xl">
           bayesian-ecommerce
         </Link>
-        <div className="order-3 flex gap-4">
+        <p className="text-xs lg:order-2">
+          © Copyright 2023. All Rights Reserved
+        </p>
+        <div className="lg:order-3 flex gap-4">
           <Link to="/">
             <BsFacebook className="text-xl transition-color hover:text-primary" />
           </Link>
@@ -104,9 +107,6 @@ const Footer = () => {
             <BsInstagram className="text-xl transition-color hover:text-primary" />
           </Link>
         </div>
-        <p className="text-xs md:order-2">
-          © Copyright 2023. All Rights Reserved
-        </p>
       </div>
     </div>
   );

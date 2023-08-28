@@ -58,7 +58,7 @@ const UpdateDeliveryPage = () => {
       ) : (
         <div className="custom-container flex justify-center">
           {!order.isDelivered ? (
-            <div className="border rounded px-6 py-4 min-w-[375px] space-y-6">
+            <div className="border rounded px-6 py-4 min-w-[18.75rem] md:min-w-[23.4375rem] space-y-6">
               <h1 className="text-center">Update Order Delivery</h1>
               <form
                 onSubmit={handleSubmit(updateDeliveryOrder)}

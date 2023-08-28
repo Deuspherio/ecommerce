@@ -66,7 +66,7 @@ const UpdateProfilePage = () => {
       <div className="custom-container flex flex-col items-center">
         <form
           onSubmit={handleSubmit(submitHandler)}
-          className="border rounded px-6 py-4 min-w-[375px] space-y-6"
+          className="border rounded px-6 py-4 min-w-[18.75rem] md:min-w-[23.4375rem] space-y-4 lg:space-y-6"
         >
           <h1 className="text-center">Update Profile</h1>
           <div className="flex flex-col">

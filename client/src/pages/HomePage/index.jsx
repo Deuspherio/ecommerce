@@ -6,7 +6,7 @@ import { getProducts } from "./products.api";
 import MessageBox from "../../components/MessageBox";
 import { Link, useSearchParams } from "react-router-dom";
 import SidebarMenu from "../../components/SidebarMenu";
-import Carousel from "../../components/Carousel";
+import HomeImage from "../../components/HomeImage";
 
 const HomePage = () => {
   const [searchParams] = useSearchParams();
@@ -28,7 +28,7 @@ const HomePage = () => {
     const filterRating = filter.rating || rating;
     const filterOrder = filter.order || order;
 
-    return `/products/search/?page=${filterPage}&category=${filterCategory}&price=${filterPrice}&rating=${filterRating}&order=${filterOrder}`;
+    return `/?page=${filterPage}&category=${filterCategory}&price=${filterPrice}&rating=${filterRating}&order=${filterOrder}`;
   };
 
   return (
@@ -42,9 +42,9 @@ const HomePage = () => {
         <MessageBox danger>{error.message}</MessageBox>
       ) : (
         <>
-          <Carousel />
+          <HomeImage />
           <div className="custom-container mt-6">
-            {data.notFilteredProducts.filter(
+            {data.allProducts.filter(
               (product) =>
                 product.pricePrediction >= product.price &&
                 product.soldProducts > 0 &&
@@ -52,26 +52,25 @@ const HomePage = () => {
             ).length > 0 ? (
               <>
                 <h1>Trending Products</h1>
-                <div className="grid gap-4 mb-6 grid-cols-4">
-                  {data.notFilteredProducts
+                <div className="grid gap-4 lg:gap-6 mb-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                  {data.allProducts
                     .filter(
                       (product) =>
                         product.pricePrediction >= product.price &&
                         product.soldProducts > 0 &&
                         product.stocks > 0
                     )
-                    .splice(0, 4)
                     .map((product) => (
                       <Product product={product} key={product._id} />
                     ))}
                 </div>
               </>
             ) : null}
-            <div className="flex items-center space-x-4 mb-4">
+            <div className="flex items-center mb-4">
               <h1 className="mb-0">Featured Products</h1>
             </div>
             <div className="grid grid-cols-12 gap-4 relative">
-              <div className="col-span-3">
+              <div className="col-span-12 lg:col-span-3">
                 <SidebarMenu
                   data={data}
                   getFilterUrl={getFilterUrl}
@@ -81,11 +80,11 @@ const HomePage = () => {
                   order={order}
                 />
               </div>
-              <div className="col-span-9 mb-4">
+              <div className="col-span-12 lg:col-span-9 mb-6">
                 {data.products.length === 0 ? (
-                  <MessageBox danger>No Products Found</MessageBox>
+                  <MessageBox info>No Products Found</MessageBox>
                 ) : (
-                  <div className="grid gap-4 grid-cols-3">
+                  <div className="grid gap-4 lg:gap-6 grid-cols-2 md:grid-cols-3">
                     {data.products.map((product) => (
                       <Product product={product} key={product._id} />
                     ))}

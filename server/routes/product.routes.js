@@ -5,8 +5,6 @@ const {
   getProductId,
   updateProduct,
   productsAdmin,
-  deleteProduct,
-  createProduct,
   updateProductReviews,
   search,
   updateProductsPrice,
@@ -18,14 +16,9 @@ const {
 const router = express.Router();
 const { isAuth, isAdmin } = require("../middleware");
 
-router.route("/").get(getFilteredProducts).post(isAuth, isAdmin, createProduct);
+router.route("/").get(getFilteredProducts);
 router.route("/slug/:slug").get(getProductSlug);
-router
-  .route("/id/:id")
-  .get(getProductId)
-  .patch(isAuth, isAdmin, updateProduct)
-  .delete(isAuth, isAdmin, deleteProduct);
-
+router.route("/id/:id").get(getProductId).patch(isAuth, isAdmin, updateProduct);
 router.get("/admin", isAuth, isAdmin, getAllProducts);
 router.get("/search", search);
 router.post("/reviews/id/:id", isAuth, updateProductReviews);

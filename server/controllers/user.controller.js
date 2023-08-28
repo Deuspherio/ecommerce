@@ -115,46 +115,10 @@ const allUsers = asyncHandler(async (req, res) => {
   res.send(users);
 });
 
-const singleUser = asyncHandler(async (req, res) => {
+const getUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
   if (user) {
     return res.send(user);
-  }
-  res.status(404).send({ message: "User was Not Found" });
-});
-
-const updateSingleUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  if (user) {
-    await User.updateOne(
-      { _id: user._id },
-      {
-        $set: {
-          phoneNumber: req.body.phoneNumber,
-          address: req.body.address,
-        },
-      }
-    );
-
-    const updatedUser = await User.findById(user._id);
-    return res.send({
-      message: "User Updated Successfully",
-      user: updatedUser,
-    });
-  }
-  res.status(404).send({ message: "User was Not Found" });
-});
-
-const deleteUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  if (user) {
-    if (user.isAdmin) {
-      return res
-        .status(400)
-        .send({ message: "Not Allowed to Delete an Admin" });
-    }
-    await User.findOneAndDelete({ _id: user._id });
-    return res.send({ message: "User Deleted Successfully" });
   }
   res.status(404).send({ message: "User was Not Found" });
 });
@@ -164,7 +128,5 @@ module.exports = {
   signup,
   updateUser,
   allUsers,
-  singleUser,
-  updateSingleUser,
-  deleteUser,
+  getUser,
 };

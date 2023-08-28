@@ -53,7 +53,7 @@ const ShippingPage = () => {
           <div className="flex justify-center">
             <form
               onSubmit={handleSubmit(submitHandler)}
-              className="border rounded px-6 py-4 min-w-[375px] space-y-4"
+              className="border rounded px-6 py-4 min-w-[18.75rem] md:min-w-[23.4375rem] space-y-4"
             >
               <h1 className="text-center">Shipping Information</h1>
               <div className="flex flex-col">
@@ -64,7 +64,6 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your first name"
                   name="firstName"
-                  disabled
                 />
                 {errors.firstName?.message && (
                   <p className="yup-error">{errors.firstName?.message}</p>
@@ -78,7 +77,6 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your last name"
                   name="lastName"
-                  disabled
                 />
                 {errors.lastName?.message && (
                   <p className="yup-error">{errors.lastName?.message}</p>
@@ -92,7 +90,6 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your email"
                   name="email"
-                  disabled
                 />
                 {errors.email?.message && (
                   <p className="yup-error">{errors.email?.message}</p>
@@ -106,7 +103,6 @@ const ShippingPage = () => {
                   className="border rounded p-2"
                   placeholder="Update your address"
                   name="address"
-                  disabled
                 />
                 {errors.address?.message && (
                   <p className="yup-error">{errors.address?.message}</p>
@@ -115,7 +111,7 @@ const ShippingPage = () => {
               <div className="flex flex-col mb-6">
                 <label className="font-bold">Phone Number</label>
                 <div className="flex items-cUpdate gap-4">
-                  <button disabled>+63</button>
+                  <button>+63</button>
                   <input
                     type="tel"
                     {...register("phoneNumber", {
@@ -124,7 +120,6 @@ const ShippingPage = () => {
                     className="border rounded p-2 flex-1"
                     placeholder="Update your phone number"
                     name="phoneNumber"
-                    disabled
                   />
                 </div>
                 {errors.phoneNumber?.message && (

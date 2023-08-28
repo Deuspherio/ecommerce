@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { useContext } from "react";
 import { Store } from "../context";
-import MessageBox from "./MessageBox";
 
 const UserLayout = () => {
   const { state } = useContext(Store);
@@ -12,18 +11,11 @@ const UserLayout = () => {
   } = state;
   return (
     <>
-      <div className="custom-container lg:hidden">
-        <MessageBox info>
-          We recommend wider screen devices to view this website.
-        </MessageBox>
+      <Header />
+      <div className="pt-[4.375rem]">
+        <Outlet />
       </div>
-      <div className="hidden lg:block">
-        <Header />
-        <div className="pt-[90px]">
-          <Outlet />
-        </div>
-        {(userData && !userData.isAdmin) || !userData ? <Footer /> : null}
-      </div>
+      {(userData && !userData.isAdmin) || !userData ? <Footer /> : null}
     </>
   );
 };

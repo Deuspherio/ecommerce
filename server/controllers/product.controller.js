@@ -4,7 +4,6 @@ const {
   applyPrediction,
   setPastData,
   setPrediction,
-  salesPercentagePerProduct,
   applyDiscountPerProduct,
   applyIncreasePerProduct,
 } = require("../utilities");
@@ -17,23 +16,12 @@ const getAllProducts = asyncHandler(async (req, res) => {
 const PAGE_SIZE = 6;
 const getFilteredProducts = asyncHandler(async (req, res) => {
   const { query } = req;
-  const searchQuery = query.query || "";
   const pageSize = query.pageSize || PAGE_SIZE;
   const page = query.page || 1;
   const category = query.category || "";
   const price = query.price || "";
   const rating = query.rating || "";
   const order = query.order || "";
-
-  const queryFilter =
-    searchQuery && searchQuery !== "all"
-      ? {
-          name: {
-            $regex: searchQuery,
-            $options: "i",
-          },
-        }
-      : {};
 
   const categoryFilter = category && category !== "all" ? { category } : {};
   const ratingFilter =
@@ -65,7 +53,6 @@ const getFilteredProducts = asyncHandler(async (req, res) => {
       : { _id: -1 };
 
   const products = await Product.find({
-    ...queryFilter,
     ...categoryFilter,
     ...priceFilter,
     ...ratingFilter,
@@ -73,17 +60,13 @@ const getFilteredProducts = asyncHandler(async (req, res) => {
     .sort(sortOrder)
     .skip(pageSize * (page - 1))
     .limit(pageSize);
-
   const countProducts = await Product.countDocuments({
-    ...queryFilter,
     ...categoryFilter,
     ...priceFilter,
     ...ratingFilter,
   });
-
   const productCategories = await Product.find().distinct("category");
-
-  const notFilteredProducts = await Product.find();
+  const allProducts = await Product.find();
 
   res.send({
     products,
@@ -91,7 +74,7 @@ const getFilteredProducts = asyncHandler(async (req, res) => {
     page,
     pages: Math.ceil(countProducts / pageSize),
     productCategories,
-    notFilteredProducts,
+    allProducts,
   });
 });
 
@@ -133,37 +116,6 @@ const productsAdmin = asyncHandler(async (req, res) => {
   });
 
   res.send(products);
-});
-
-const createProduct = asyncHandler(async (req, res) => {
-  await Product.create({
-    name: req.body.name,
-    slug: req.body.name.replace(/\s+/g, "-").toLowerCase(),
-    category: req.body.category,
-    price: req.body.price,
-    currentPrice: req.body.price,
-    discount: 0,
-    pricePrediction: req.body.price,
-    stocks: req.body.stocks,
-    description: "",
-    soldProducts: 0,
-    totalSoldProducts: 0,
-    rating: 0,
-    numReviews: 0,
-    salesPercentage: 0,
-    reviews: [],
-  });
-  res.send({ message: "Product Created Successfully" });
-});
-
-const deleteProduct = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
-  if (product) {
-    await Product.findOneAndDelete({ _id: product._id });
-    const products = await Product.find();
-    return res.send(products);
-  }
-  res.status(404).send({ message: "Product was Not Found" });
 });
 
 const updateProductReviews = asyncHandler(async (req, res) => {
@@ -288,9 +240,11 @@ const search = asyncHandler(async (req, res) => {
 const refreshPrediction = asyncHandler(async (req, res) => {
   const products = await Product.find();
 
-  const refreshProduct = products.map(async (x) => {
-    await setPrediction(x._id);
-  });
+  await Promise.all(
+    products.map(async (x) => {
+      await setPrediction(x._id);
+    })
+  );
 
   const updatedProducts = await Product.find();
 
@@ -348,8 +302,6 @@ module.exports = {
   getProductId,
   updateProduct,
   productsAdmin,
-  deleteProduct,
-  createProduct,
   updateProductReviews,
   search,
   updateProductsDiscount,

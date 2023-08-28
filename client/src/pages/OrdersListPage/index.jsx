@@ -31,9 +31,8 @@ const OrdersListPage = () => {
     (id) => deleteOrder(id, userData),
     {
       onSuccess: (data) => {
-        queryClient.setQueryData(["orders"], () =>
-          data.sort((a, b) => b.createdAt - a.createdAt)
-        );
+        toast.success("Deleted Succesfully");
+        queryClient.setQueryData(["orders"], () => data);
       },
     }
   );
@@ -89,15 +88,13 @@ const OrdersListPage = () => {
               </thead>
               <tbody>
                 {orders
+                  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                   .slice(firstProductIndex, lastProductIndex)
                   .map((order) => (
                     <tr key={order._id} className="hover:bg-gray-50">
                       <td>
                         {order.user ? (
-                          <>
-                            {`${order.shippingInfo.firstName}
-                         ${order.shippingInfo.lastName}`}
-                          </>
+                          <>{order.shippingInfo.email}</>
                         ) : (
                           "Deleted User"
                         )}

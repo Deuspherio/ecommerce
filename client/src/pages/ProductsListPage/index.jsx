@@ -10,6 +10,7 @@ import Pagination from "../../components/Pagination";
 import MessageBox from "../../components/MessageBox";
 import { FiEdit } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { roundToTwo } from "../../utilities";
 
 const PAGE_SIZE = 10;
 const ProductsListPage = () => {
@@ -61,7 +62,7 @@ const ProductsListPage = () => {
           <div className="flex items-center gap-4 justify-end">
             <Link
               to="/admin/products/update/prices"
-              className="btn-primary w-auto"
+              className="btn-primary bg-green-600 w-auto"
             >
               Update Prices
             </Link>
@@ -126,7 +127,7 @@ const ProductsListPage = () => {
                       <td>{product.category}</td>
                       <td>{product.stocks}</td>
                       <td>{product.soldProducts}</td>
-                      <td>{`$ ${product.sales}`}</td>
+                      <td>{`$ ${roundToTwo(product.sales)}`}</td>
                       <td>{`$ ${product.price}`}</td>
                       <td>{`$ ${product.currentPrice}`}</td>
                       <td className="capitalize">{product.priceSuggestion}</td>
@@ -134,7 +135,7 @@ const ProductsListPage = () => {
                       <td>
                         <button
                           type="button"
-                          className="btn-primary text-2xl"
+                          className="btn-primary bg-green-600 text-2xl"
                           onClick={() =>
                             navigate(`/admin/products/${product._id}`)
                           }

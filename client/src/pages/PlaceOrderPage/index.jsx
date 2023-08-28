@@ -21,21 +21,25 @@ const PlaceOrderPage = () => {
   const itemsPrice = roundToTwo(
     cartItems.reduce((a, c) => a + c.quantity * c.currentPrice, 0)
   );
-  const shippingPrice = itemsPrice > 100 ? roundToTwo(0) : roundToTwo(40);
+  const shippingPrice = 40;
   const totalPrice = itemsPrice + shippingPrice;
   const totalItems = cartItems.reduce((a, c) => a + c.quantity, 0);
 
-  const { mutate, error, isLoading } = useMutation(
+  const { mutate, isLoading } = useMutation(
     ["order"],
     (order) => postOrder(order, userData),
     {
       onSuccess: (data) => {
-        ctxDispatch({ type: "CART_CLEAR" });
-        localStorage.removeItem("cartItems");
-        toast.success(data.message);
-        navigate(`/user/orders/${data.order._id}`);
+        if (data.message === "Order Successful") {
+          ctxDispatch({ type: "CART_CLEAR" });
+          localStorage.removeItem("cartItems");
+          toast.success(data.message);
+          navigate(`/user/orders/${data.order._id}`);
+        } else if (data.response.status === 401) {
+          toast.error(data.response.data.message);
+        }
       },
-      onError: () => {
+      onError: (error) => {
         toast.error(error.message);
       },
     }
@@ -43,6 +47,7 @@ const PlaceOrderPage = () => {
 
   const submitHandler = () => {
     mutate({
+      email: shippingData.email,
       totalOrderedProducts: totalItems,
       orderedProducts: cartItems,
       shippingInfo: shippingData,
@@ -59,8 +64,8 @@ const PlaceOrderPage = () => {
       </Helmet>
       <div className="custom-container">
         <h1 className="text-center">Place Order</h1>
-        <div className="grid grid-cols-12 gap-4 items-start">
-          <div className="col-span-8 border rounded px-6 py-4 space-y-4">
+        <div className="grid grid-cols-12 gap-4 lg:gap-6 items-start">
+          <div className="col-span-12 lg:col-span-8 border rounded px-6 py-4 space-y-4">
             <div>
               <h2 className="text-center">Shipping Information</h2>
               <p>
@@ -85,47 +90,54 @@ const PlaceOrderPage = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-center">Your Orders</h2>
-              {cartItems.map((item) => (
-                <div className="grid grid-cols-12 items-center" key={item._id}>
-                  <div className="col-span-2">
-                    <img src={item.image} alt={item.name} />
+              <h4 className="text-left">Your Orders</h4>
+              <div className="divide-y">
+                {cartItems.map((item) => (
+                  <div
+                    className="grid grid-cols-12 items-center py-4"
+                    key={item._id}
+                  >
+                    <div className="col-span-2">
+                      <img src={item.image} alt={item.name} />
+                    </div>
+                    <div className="col-span-4">{item.name}</div>
+                    <div className="col-span-2">x{item.quantity}</div>
+                    <div className="col-span-4">{`$ ${(
+                      item.currentPrice * item.quantity
+                    ).toLocaleString()}`}</div>
                   </div>
-                  <div className="col-span-4">{item.name}</div>
-                  <div className="col-span-2">x{item.quantity}</div>
-                  <div className="col-span-4">{`$ ${(
-                    item.currentPrice * item.quantity
-                  ).toLocaleString()}`}</div>
-                </div>
-              ))}
+                ))}
+              </div>
               <Link to="/products/cart" className="text-primary">
                 Edit
               </Link>
             </div>
           </div>
-          <div className="col-span-4 border rounded px-6 py-4 space-y-4">
-            <h2 className="text-center">Order Summary</h2>
-            <div className="flex justify-between">
-              <p className="font-bold">Items</p>
-              <p>{`$ ${itemsPrice.toLocaleString()}`}</p>
+          <div className="col-span-12 lg:col-span-4 flex justify-center lg:justify-start">
+            <div className="w-full md:max-w-[23.4375rem] lg:max-w-full border rounded px-6 py-4 space-y-4">
+              <h2 className="text-center">Order Summary</h2>
+              <div className="flex justify-between">
+                <p className="font-bold">Items</p>
+                <p>{`$ ${itemsPrice.toLocaleString()}`}</p>
+              </div>
+              <div className="flex justify-between">
+                <p className="font-bold">Shipping</p>
+                <p>{`$ ${roundToTwo(shippingPrice).toLocaleString()}`}</p>
+              </div>
+              <div className="flex justify-between">
+                <p className="font-bold">Order Total</p>
+                <p>{`$ ${roundToTwo(totalPrice).toLocaleString()}`}</p>
+              </div>
+              <button
+                type="button"
+                className="btn-primary"
+                disabled={cartItems.length === 0 || isLoading}
+                onClick={submitHandler}
+              >
+                Place Order
+              </button>
+              {isLoading ? <Loading /> : null}
             </div>
-            <div className="flex justify-between">
-              <p className="font-bold">Shipping</p>
-              <p>{`$ ${roundToTwo(shippingPrice).toLocaleString()}`}</p>
-            </div>
-            <div className="flex justify-between">
-              <p className="font-bold">Order Total</p>
-              <p>{`$ ${roundToTwo(totalPrice).toLocaleString()}`}</p>
-            </div>
-            <button
-              type="button"
-              className="btn-primary"
-              disabled={cartItems.length === 0 || isLoading}
-              onClick={submitHandler}
-            >
-              Place Order
-            </button>
-            {isLoading ? <Loading /> : null}
           </div>
         </div>
       </div>

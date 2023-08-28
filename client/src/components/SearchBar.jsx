@@ -20,7 +20,7 @@ const SearchBar = () => {
         id="search"
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search..."
-        className="w-16 h-8 p-2 text-sm transition-width ease-in-out duration-150 rounded focus:w-20 focus:outline-none md:w-32 md:focus:w-40"
+        className="w-16 h-8 p-2 text-sm transition-width ease-in-out duration-150 rounded focus:outline-none focus:w-20 md:w-32 md:focus:w-40"
       />
       <button type="submit" className="p-2">
         <BsSearch className="text-xl" />

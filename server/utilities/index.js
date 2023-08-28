@@ -209,7 +209,7 @@ const incrementProductSold = async (id, productSold) => {
       { _id: product._id },
       {
         $inc: {
-          sales: roundToTwo(product.price * productSold),
+          sales: roundToTwo(product.currentPrice * productSold),
           soldProducts: productSold,
           totalSoldProducts: productSold,
         },

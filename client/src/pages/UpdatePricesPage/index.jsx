@@ -84,7 +84,7 @@ const UpdatePricesPage = () => {
         <Loading />
       ) : (
         <div className="custom-container flex justify-center">
-          <div className="flex min-w-[375px] justify-center">
+          <div className="flex min-w-[18.75rem] md:min-w-[23.4375rem] justify-center">
             <div className="w-full space-y-4 px-6 py-4 border rounded">
               <h1 className="text-center">Update Prices</h1>
               <form
@@ -99,7 +99,10 @@ const UpdatePricesPage = () => {
                     </option>
                   ))}
                 </select>
-                <button className="btn-primary text-2xl w-auto">
+                <button
+                  className="btn-primary text-2xl w-auto"
+                  title="UPDATE DISCOUNT"
+                >
                   <BsCheck2 />
                 </button>
               </form>
@@ -115,13 +118,17 @@ const UpdatePricesPage = () => {
                     </option>
                   ))}
                 </select>
-                <button className="btn-primary text-2xl w-auto">
+                <button
+                  className="btn-primary text-2xl w-auto"
+                  title="UPDATE INCREASE"
+                >
                   <BsCheck2 />
                 </button>
               </form>
               <button
                 className="btn-primary"
                 onClick={updateProductsPriceHandler}
+                title="UPDATE PRICES"
               >
                 Update Prices
               </button>

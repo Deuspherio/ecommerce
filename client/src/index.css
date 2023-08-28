@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,13 +8,16 @@
 
 @layer components {
   .custom-container {
-    @apply container mx-auto py-4 px-6 space-y-6 lg:px-20;
+    @apply container mx-auto py-4 px-6 space-y-4 lg:space-y-6 lg:px-20;
   }
   .btn-primary {
     @apply w-full flex items-center justify-center px-6 py-4 rounded bg-primary text-white transition-opacity hover:opacity-80;
   }
   .yup-error {
     @apply text-red-600;
+  }
+  .home-bg {
+    @apply bg-[url('https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')] bg-cover;
   }
 }
 
@@ -25,10 +29,10 @@
     @apply transition-color font-sans;
   }
   h1 {
-    @apply text-2xl;
+    @apply text-xl lg:text-2xl;
   }
   h2 {
-    @apply text-xl;
+    @apply text-lg lg:text-xl;
   }
   h3 {
     @apply text-lg;
@@ -53,5 +57,16 @@
   }
   td {
     @apply font-medium text-gray-900 whitespace-nowrap;
+  }
+  p,
+  label,
+  span,
+  table,
+  input,
+  button,
+  select,
+  option,
+  a {
+    @apply text-sm lg:text-base;
   }
 }

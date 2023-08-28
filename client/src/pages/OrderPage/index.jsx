@@ -35,8 +35,8 @@ const OrderPage = () => {
       ) : (
         <div className="custom-container">
           <h1 className="text-center">Order Information</h1>
-          <div className="grid grid-cols-12 gap-4 items-start">
-            <div className="col-span-8 border rounded px-6 py-4 space-y-4">
+          <div className="grid grid-cols-12 gap-4 lg:gap-6 items-start">
+            <div className="col-span-12 lg:col-span-8 border rounded px-6 py-4 space-y-4">
               <h2 className="text-center">Shipping Information</h2>
               <div>
                 <p>
@@ -73,51 +73,57 @@ const OrderPage = () => {
                 </p>
               </div>
               <div>
-                <h2 className="text-center">
+                <h4 className="text-left">
                   {userData.isAdmin ? "Customer's Orders" : "Your Orders"}
-                </h2>
-                {order.orderedProducts.map((item) => (
-                  <div
-                    className="grid grid-cols-12 items-center"
-                    key={item._id}
-                  >
-                    <div className="col-span-2">
-                      <img src={item.image} alt={item.name} />
+                </h4>
+                <div className="divide-y">
+                  {order.orderedProducts.map((item) => (
+                    <div
+                      className="grid grid-cols-12 items-center py-4"
+                      key={item._id}
+                    >
+                      <div className="col-span-2">
+                        <img src={item.image} alt={item.name} />
+                      </div>
+                      <div className="col-span-4">{item.name}</div>
+                      <div className="col-span-2">x{item.quantity}</div>
+                      <div className="col-span-4">{`$ ${(
+                        item.currentPrice * item.quantity
+                      ).toLocaleString()}`}</div>
                     </div>
-                    <div className="col-span-4">{item.name}</div>
-                    <div className="col-span-2">x{item.quantity}</div>
-                    <div className="col-span-4">{`$ ${(
-                      item.currentPrice * item.quantity
-                    ).toLocaleString()}`}</div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-            <div className="col-span-4 border rounded px-6 py-4 space-y-4">
-              <h2 className="text-center">Order Summary</h2>
-              <div className="flex justify-between">
-                <p className="font-bold">Items</p>
-                <p>{`$ ${order.productsPrice.toLocaleString()}`}</p>
+            <div className="col-span-12 lg:col-span-4 flex justify-center lg:justify-start">
+              <div className="w-full md:max-w-[23.4375rem] lg:max-w-full border rounded px-6 py-4 space-y-4">
+                <h2 className="text-center">Order Summary</h2>
+                <div className="flex justify-between">
+                  <p className="font-bold">Items</p>
+                  <p>{`$ ${order.productsPrice.toLocaleString()}`}</p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="font-bold">Shipping</p>
+                  <p>{`$ ${roundToTwo(
+                    order.shippingPrice
+                  ).toLocaleString()}`}</p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="font-bold">Order Total</p>
+                  <p>{`$ ${roundToTwo(order.totalPrice).toLocaleString()}`}</p>
+                </div>
+                <button
+                  type="button"
+                  className="btn-primary"
+                  onClick={() =>
+                    userData.isAdmin
+                      ? navigate("/admin/orders")
+                      : navigate("/user/orders/history")
+                  }
+                >
+                  View Orders
+                </button>
               </div>
-              <div className="flex justify-between">
-                <p className="font-bold">Shipping</p>
-                <p>{`$ ${roundToTwo(order.shippingPrice).toLocaleString()}`}</p>
-              </div>
-              <div className="flex justify-between">
-                <p className="font-bold">Order Total</p>
-                <p>{`$ ${roundToTwo(order.totalPrice).toLocaleString()}`}</p>
-              </div>
-              <button
-                type="button"
-                className="btn-primary"
-                onClick={() =>
-                  userData.isAdmin
-                    ? navigate("/admin/orders")
-                    : navigate("/user/orders/history")
-                }
-              >
-                View Orders
-              </button>
             </div>
           </div>
         </div>

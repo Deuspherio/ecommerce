@@ -11,12 +11,12 @@ const prices = [
     value: "101-200",
   },
   {
-    option: "$201 - $300",
-    value: "201-300",
+    option: "$201 - $400",
+    value: "201-400",
   },
   {
-    option: "$301 - $1000",
-    value: "301-1000",
+    option: "$401 - $1000",
+    value: "401-1000",
   },
   {
     option: "$1001 - $2000",
@@ -26,19 +26,19 @@ const prices = [
 
 const ratings = [
   {
-    option: "4stars & up",
+    option: "4 stars & up",
     rating: 4,
   },
   {
-    option: "3stars & up",
+    option: "3 stars & up",
     rating: 3,
   },
   {
-    option: "2stars & up",
+    option: "2 stars & up",
     rating: 2,
   },
   {
-    option: "1stars & up",
+    option: "1 star & up",
     rating: 1,
   },
 ];
@@ -53,9 +53,9 @@ const SidebarMenu = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <div>
-      <div className="mb-4">
-        <h3 className="mb-2">Category</h3>
+    <div className="grid grid-cols-12 gap-4">
+      <div className="col-span-6 lg:col-span-12">
+        <h4 className="mb-2">Category</h4>
         <select
           value={category}
           onChange={(e) => navigate(getFilterUrl({ category: e.target.value }))}
@@ -68,8 +68,8 @@ const SidebarMenu = ({
           ))}
         </select>
       </div>
-      <div className="mb-4">
-        <h3 className="mb-2">Price</h3>
+      <div className="col-span-6 lg:col-span-12">
+        <h4 className="mb-2">Price</h4>
         <select
           value={price}
           onChange={(e) => navigate(getFilterUrl({ price: e.target.value }))}
@@ -82,8 +82,8 @@ const SidebarMenu = ({
           ))}
         </select>
       </div>
-      <div className="mb-4">
-        <h3 className="mb-2">Avg. Customer Review</h3>
+      <div className="col-span-6 lg:col-span-12">
+        <h4 className="mb-2">Avg. Customer Review</h4>
         <select
           value={rating}
           onChange={(e) => navigate(getFilterUrl({ rating: e.target.value }))}
@@ -96,11 +96,12 @@ const SidebarMenu = ({
           ))}
         </select>
       </div>
-      <div className="mb-4">
-        <h3 className="mb-2">Sort by</h3>
+      <div className="col-span-6 lg:col-span-12">
+        <h4 className="mb-2">Sort by</h4>
         <select
           value={order}
           onChange={(e) => navigate(getFilterUrl({ order: e.target.value }))}
+          className="w-full xl:w-auto"
         >
           <option value="newest">Newest Arrival</option>
           <option value="lowest">Price: Low to High</option>

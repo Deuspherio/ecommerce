@@ -6,33 +6,35 @@ const {
   decrementProductQuantity,
   incrementProductSold,
   roundToTwo,
-  salesPercentagePerProduct,
   setPrediction,
 } = require("../utilities");
 
 const createOrder = asyncHandler(async (req, res) => {
-  const order = await Order.create({
-    orderedProducts: req.body.orderedProducts.map((x) => ({
-      ...x,
-      product: x._id,
-    })),
-    totalOrderedProducts: req.body.totalOrderedProducts,
-    shippingInfo: { ...req.body.shippingInfo, id: req.user._id },
-    productsPrice: req.body.productsPrice,
-    shippingPrice: req.body.shippingPrice,
-    totalPrice: roundToTwo(req.body.totalPrice),
-    user: req.user._id,
-  });
+  if (req.user.email === req.body.email) {
+    const order = await Order.create({
+      orderedProducts: req.body.orderedProducts.map((x) => ({
+        ...x,
+        product: x._id,
+      })),
+      totalOrderedProducts: req.body.totalOrderedProducts,
+      shippingInfo: { ...req.body.shippingInfo, id: req.user._id },
+      productsPrice: roundToTwo(req.body.productsPrice),
+      shippingPrice: req.body.shippingPrice,
+      totalPrice: roundToTwo(req.body.totalPrice),
+      user: req.user._id,
+    });
 
-  await Promise.all(
-    order.orderedProducts.map(async (x) => {
-      await decrementProductQuantity(x._id, x.quantity);
-      await incrementProductSold(x._id, x.quantity);
-      await setPrediction(x._id);
-    })
-  );
+    await Promise.all(
+      order.orderedProducts.map(async (x) => {
+        await decrementProductQuantity(x._id, x.quantity);
+        await incrementProductSold(x._id, x.quantity);
+        await setPrediction(x._id);
+      })
+    );
 
-  res.status(201).send({ message: "Order Successful", order });
+    return res.status(201).send({ message: "Order Successful", order });
+  }
+  return res.status(401).send({ message: "Please enter your email correctly" });
 });
 
 const getOrder = asyncHandler(async (req, res) => {
@@ -93,44 +95,11 @@ const orderSummary = asyncHandler(async (req, res) => {
     { $sort: { _id: 1 } },
   ]);
 
-  const totalSoldProducts = await Product.aggregate([
-    {
-      $group: {
-        _id: null,
-        totalSoldItems: { $sum: "$totalSoldItems" },
-      },
-    },
-  ]);
-
-  const totalProductCategories = await Product.aggregate([
-    {
-      $group: {
-        _id: "$category",
-        count: { $sum: 1 },
-      },
-    },
-  ]);
-
-  const availableElectronics = await Product.aggregate([
-    {
-      $match: { category: "electronics" },
-    },
-    {
-      $group: {
-        _id: "$name",
-        stocks: { $sum: "$stocks" },
-      },
-    },
-  ]);
-
   res.send({
     orders,
     users,
     dailySales,
     monthlySales,
-    totalSoldProducts,
-    availableElectronics,
-    totalProductCategories,
   });
 });
 

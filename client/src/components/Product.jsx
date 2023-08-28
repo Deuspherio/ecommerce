@@ -19,7 +19,7 @@ const Product = ({ product }) => {
         </p>
       ) : null}
       <h4>{product.name}</h4>
-      <div className="flex flex-row w-full items-center justify-between">
+      <div className="flex flex-col md:flex-row w-full justify-center md:items-center md:justify-between">
         <div>
           <Rating rating={product.rating} />
         </div>

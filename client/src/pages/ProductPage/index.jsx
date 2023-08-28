@@ -95,8 +95,8 @@ const ProductPage = () => {
       ) : (
         <div className="custom-container">
           <h1 className="text-center">Product Information</h1>
-          <div className="grid grid-cols-12 gap-4 items-start">
-            <div className="col-span-8 grid grid-cols-2 gap-4 border rounded px-6 py-4">
+          <div className="grid grid-cols-12 gap-6 items-start">
+            <div className="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 border rounded px-6 py-4">
               <div className="space-y-4">
                 <img
                   src={product.image}
@@ -167,19 +167,19 @@ const ProductPage = () => {
                   ) : (
                     <button
                       type="button"
-                      className="btn-primary flex items-center justify-center gap-1 opacity-80"
+                      className="btn-primary bg-red-600 flex items-center justify-center gap-1 opacity-80"
                       disabled
                     >
                       <BsCartPlus className="text-xl" />
-                      Add to Cart
+                      Out of Stock
                     </button>
                   )}
                 </div>
               </div>
             </div>
-            <div className="col-span-4 flex flex-col gap-4">
+            <div className="col-span-12 lg:col-span-4 md:flex lg:flex-col gap-4 lg:gap-6">
               <form
-                className="space-y-6 border rounded px-6 py-4"
+                className="space-y-6 border rounded px-6 py-4 md:basis-2/4 lg:basis-full"
                 onSubmit={handleSubmit(submitHandler)}
               >
                 <h2 className="text-center">Rate our Product</h2>
@@ -212,7 +212,7 @@ const ProductPage = () => {
                 </button>
                 {reviewIsLoading ? <Loading /> : null}
               </form>
-              <div className="space-y-6 border rounded px-6 py-4">
+              <div className="space-y-6 border rounded px-6 py-4 md:basis-2/4 lg:basis-full">
                 <h2 className="text-center">Customers' Reviews</h2>
                 <p className="text-end text-sm">
                   {product.numReviews > 0

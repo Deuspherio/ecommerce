@@ -51,7 +51,7 @@ const SearchPage = () => {
       ) : isSuccess ? (
         <div className="custom-container">
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-3">
+            <div className="col-span-12 lg:col-span-3">
               <SidebarMenu
                 data={search}
                 getFilterUrl={getFilterUrl}
@@ -61,35 +61,37 @@ const SearchPage = () => {
                 order={order}
               />
             </div>
-            <div className="col-span-9 space-y-6">
+            <div className="col-span-12 lg:col-span-9 space-y-6">
               <div className="col-span-6">
                 <div className="flex gap-4">
-                  {search.countProducts === 0
-                    ? "No"
-                    : `${search.countProducts} results`}
-                  {query !== "all" ? " : " + query : null}
-                  {category !== "all" ? " : " + category : null}
-                  {price !== "all" ? " : $" + price : null}
-                  {rating !== "all" ? " : " + rating + " stars & up" : null}
-                  {query !== "all" ||
-                  category !== "all" ||
-                  price !== "all" ||
-                  rating !== "all" ? (
-                    <button
-                      onClick={() => navigate("/products/search")}
-                      className="text-xl border rounded-full"
-                      title="clear"
-                    >
-                      <BsX />
-                    </button>
-                  ) : null}
+                  <p className="text-sm">
+                    {search.countProducts === 0
+                      ? "No"
+                      : `${search.countProducts} results`}
+                    {query !== "all" ? " : " + query : null}
+                    {category !== "all" ? " : " + category : null}
+                    {price !== "all" ? " : $" + price : null}
+                    {rating !== "all" ? " : " + rating + " stars & up" : null}
+                    {query !== "all" ||
+                    category !== "all" ||
+                    price !== "all" ||
+                    rating !== "all" ? (
+                      <button
+                        onClick={() => navigate("/products/search")}
+                        className="text-xl border rounded-full"
+                        title="clear"
+                      >
+                        <BsX />
+                      </button>
+                    ) : null}
+                  </p>
                 </div>
               </div>
               <div>
                 {search.products.length === 0 ? (
                   <MessageBox info>No Products Found</MessageBox>
                 ) : (
-                  <div className="grid gap-4 lg:grid-cols-3">
+                  <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
                     {search.products.map((product) => (
                       <Product product={product} key={product._id} />
                     ))}

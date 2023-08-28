@@ -4,9 +4,7 @@ const {
   signup,
   updateUser,
   allUsers,
-  deleteUser,
-  singleUser,
-  updateSingleUser,
+  getUser,
 } = require("../controllers/user.controller");
 const { isAuth, isAdmin } = require("../middleware");
 const router = express.Router();
@@ -17,11 +15,7 @@ router
   .post(signup)
   .patch(isAuth, updateUser);
 
-router
-  .route("/id/:id")
-  .get(isAuth, isAdmin, singleUser)
-  .patch(isAuth, isAdmin, updateSingleUser)
-  .delete(isAuth, isAdmin, deleteUser);
+router.route("/id/:id").get(isAuth, isAdmin, getUser);
 
 router.post("/signin", signin);
 

@@ -42,7 +42,7 @@ const OrdersHistoryPage = () => {
         <div className="custom-container">
           <h1 className="text-center">Orders History</h1>
           <div className="overflow-x-auto relative">
-            <table className="w-full rounded border">
+            <table className="w-full rounded border text-sm lg:text-base">
               <thead className="text-lg w-full text-gray-700 uppercase">
                 <tr>
                   <th scope="col" rowSpan={2}>

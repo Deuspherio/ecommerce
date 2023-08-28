@@ -11,8 +11,8 @@ import {
 
 const SalesGraph = ({ summary }) => {
   return (
-    <div className="flex space-x-4">
-      <div className="border rounded px-6 py-4 w-2/4">
+    <div className="flex flex-col md:flex-row gap-4 lg:gap-6">
+      <div className="border rounded px-6 py-4 md:w-2/4">
         <h2 className="text-center">Daily Sales</h2>
         <ResponsiveContainer width="100%" height={250}>
           <AreaChart data={summary.dailySales}>
@@ -38,7 +38,7 @@ const SalesGraph = ({ summary }) => {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <div className="border rounded px-6 py-4 w-2/4">
+      <div className="border rounded px-6 py-4 md:w-2/4">
         <h2 className="text-center">Monthly Sales</h2>
         <ResponsiveContainer width="100%" height={250}>
           <AreaChart data={summary.monthlySales}>
