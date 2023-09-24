@@ -78,39 +78,55 @@ const ProductsListPage = () => {
             <table className="w-full rounded border">
               <thead className="text-lg w-full uppercase">
                 <tr>
-                  <th scope="col" rowSpan={2}>
+                  <th scope="col" rowSpan={3}>
                     NAME
                   </th>
-                  <th scope="col" rowSpan={2}>
+                  <th scope="col" rowSpan={3}>
                     IMAGE
                   </th>
-                  <th scope="col" rowSpan={2}>
+                  <th scope="col" rowSpan={3}>
                     CATEGORY
                   </th>
-                  <th scope="col" rowSpan={2}>
+                  <th scope="col" rowSpan={3}>
                     STOCKS
                   </th>
-                  <th scope="col" rowSpan={2}>
+                  <th scope="col" rowSpan={3}>
                     DEMAND
                   </th>
-                  <th scope="col" rowSpan={2}>
+                  <th scope="col" rowSpan={3}>
                     SALES
                   </th>
                   <th scope="col" className="text-center" colSpan={2}>
                     PRICE
                   </th>
-                  <th scope="col" className="text-center" colSpan={2}>
+                  <th scope="col" className="text-center" colSpan={6}>
                     PREDICTION
                   </th>
-                  <th scope="col" rowSpan={2} colSpan={2}>
+                  <th scope="col" rowSpan={3}>
                     ACTIONS
                   </th>
                 </tr>
                 <tr>
-                  <th scope="col">ORIGINAL</th>
-                  <th scope="col">CURRENT</th>
-                  <th scope="col">SUGGESTION</th>
-                  <th scope="col">PRICE</th>
+                  <th scope="col" rowSpan={2}>
+                    ORIGINAL
+                  </th>
+                  <th scope="col" rowSpan={2}>
+                    CURRENT
+                  </th>
+                  <th scope="col" colSpan={3}>
+                    SUGGESTION
+                  </th>
+                  <th scope="col" colSpan={3}>
+                    PRICE
+                  </th>
+                </tr>
+                <tr>
+                  <th scope="col">GAUSSIAN NAIVE BAYES</th>
+                  <th scope="col">DECISION TREE</th>
+                  <th scope="col">K-NEAREST NEIGHBOR</th>
+                  <th scope="col">GAUSSIAN NAIVE BAYES</th>
+                  <th scope="col">DECISION TREE</th>
+                  <th scope="col">K-NEAREST NEIGHBOR</th>
                 </tr>
               </thead>
               <tbody>
@@ -130,8 +146,16 @@ const ProductsListPage = () => {
                       <td>{`$ ${roundToTwo(product.sales)}`}</td>
                       <td>{`$ ${product.price}`}</td>
                       <td>{`$ ${product.currentPrice}`}</td>
-                      <td className="capitalize">{product.priceSuggestion}</td>
-                      <td>{`$ ${product.pricePrediction}`}</td>
+                      <td className="capitalize">
+                        {product.bayesianSuggestion}
+                      </td>
+                      <td className="capitalize">
+                        {product.decisionSuggestion}
+                      </td>
+                      <td className="capitalize">{product.knnSuggestion}</td>
+                      <td>{`$ ${product.bayesianPrediction}`}</td>
+                      <td>{`$ ${product.decisionPrediction}`}</td>
+                      <td>{`$ ${product.knnPrediction}`}</td>
                       <td>
                         <button
                           type="button"

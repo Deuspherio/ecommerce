@@ -1,677 +1,612 @@
 [{
   "_id": {
-    "$oid": "649513633e701ba81253c20a"
+    "$oid": "650b0d49d0e787b8640eaa14"
   },
   "name": "20in Monitor",
   "slug": "20in-monitor",
   "image": "/images/20in-monitor.jpg",
-  "category": "appliances",
+  "category": "electronics",
   "price": 109.99,
-  "pricePrediction": 107.79,
-  "currentPrice": 104.49,
+  "bayesianPrediction": 107.79,
+  "decisionPrediction": 107.79,
+  "knnPrediction": 107.79,
+  "currentPrice": 107.79,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 88,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 116,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.899Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:32.677Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c20b"
-  },
-  "name": "27in 4K Gaming Monitor",
-  "slug": "27in-4k-gaming-monitor",
-  "image": "/images/27in-4k-gaming-monitor.jpg",
-  "category": "appliances",
-  "price": 389.99,
-  "pricePrediction": 405.59,
-  "currentPrice": 370.49,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
-  "stocks": 97,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 104,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.909Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:30.558Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c20c"
-  },
-  "name": "27in FHD Monitor",
-  "slug": "27in-fhd-monitor",
-  "image": "/images/27in-fhd-monitor.jpg",
-  "category": "appliances",
-  "price": 149.99,
-  "pricePrediction": 155.99,
-  "currentPrice": 142.49,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
-  "stocks": 11,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 104,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.910Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:30.547Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c20d"
-  },
-  "name": "34in Ultrawide Monitor",
-  "slug": "34in-ultrawide-monitor",
-  "image": "/images/34in-ultrawide-monitor.jpg",
-  "category": "appliances",
-  "price": 379.99,
-  "pricePrediction": 372.39,
-  "currentPrice": 398.99,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 7,
-  "rating": 4,
-  "numReviews": 1,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 104,
-  "reviews": [
-    {
-      "firstName": "customer",
-      "lastName": "one",
-      "email": "customerone@email.com",
-      "rating": 4,
-      "comments": "=>",
-      "_id": {
-        "$oid": "64e9c781ef3361475754e4e9"
-      },
-      "createdAt": {
-        "$date": "2023-08-26T09:36:01.294Z"
-      },
-      "updatedAt": {
-        "$date": "2023-08-26T09:36:01.294Z"
-      }
-    }
-  ],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.911Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:31.871Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c20e"
-  },
-  "name": "Energizer AA Batteries (4-pack)",
-  "slug": "energizer-aa-batteries-4-pack",
-  "image": "/images/energizer-max-aa-battery.jpg",
-  "category": "accessories",
-  "price": 3.84,
-  "pricePrediction": 3.76,
-  "currentPrice": 3.65,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 1,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 100,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.912Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:32.536Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c20f"
-  },
-  "name": "Energizer AAA Batteries (4-pack)",
-  "slug": "energizer-aaa-batteries-4-pack",
-  "image": "/images/energizer-max-aaa-battery.jpg",
-  "category": "accessories",
-  "price": 2.99,
-  "pricePrediction": 3.11,
-  "currentPrice": 3.14,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
-  "stocks": 0,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 101,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.913Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:32.919Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c210"
-  },
-  "name": "Apple Airpods Headphones",
-  "slug": "apple-airpods-headphones",
-  "image": "/images/apple-airpods-headphones.jpg",
-  "category": "accessories",
-  "price": 150,
-  "pricePrediction": 156,
-  "currentPrice": 157.5,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
-  "stocks": 1,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 100,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.914Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:31.990Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c211"
-  },
-  "name": "Bose SoundSport Headphones",
-  "slug": "bose-soundsport-headphones",
-  "image": "/images/bose-soundsport-headphones.jpg",
-  "category": "accessories",
-  "price": 99.99,
-  "pricePrediction": 103.99,
-  "currentPrice": 104.99,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
-  "stocks": 1,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 0,
-  "soldProducts": 0,
-  "totalSoldProducts": 100,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.914Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:26:33.609Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c212"
-  },
-  "name": "Flatscreen TV",
-  "slug": "flatscreen-tv",
-  "image": "/images/flatscreen-tv.jpg",
-  "category": "appliances",
-  "price": 300,
-  "pricePrediction": 294,
-  "currentPrice": 285,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 5,
-  "rating": 0,
-  "numReviews": 0,
-  "description": "",
-  "sales": 285,
-  "soldProducts": 1,
-  "totalSoldProducts": 101,
-  "reviews": [],
-  "__v": 0,
-  "createdAt": {
-    "$date": "2023-06-23T03:37:07.915Z"
-  },
-  "updatedAt": {
-    "$date": "2023-08-27T09:33:02.800Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "649513633e701ba81253c213"
-  },
-  "name": "Google Phone",
-  "slug": "google-phone",
-  "image": "/images/google-phone.jpg",
-  "category": "gadgets",
-  "price": 600,
-  "pricePrediction": 624,
-  "currentPrice": 630,
-  "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
   "stocks": 100,
   "rating": 0,
   "numReviews": 0,
   "description": "",
   "sales": 0,
   "soldProducts": 0,
-  "totalSoldProducts": 100,
+  "totalSoldProducts": 0,
   "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.916Z"
+    "$date": "2023-09-20T15:18:33.805Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:30.856Z"
+    "$date": "2023-09-20T15:52:18.250Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c214"
+    "$oid": "650b0d49d0e787b8640eaa15"
+  },
+  "name": "27in 4K Gaming Monitor",
+  "slug": "27in-4k-gaming-monitor",
+  "image": "/images/27in-4k-gaming-monitor.jpg",
+  "category": "electronics",
+  "price": 389.99,
+  "bayesianPrediction": 428.99,
+  "decisionPrediction": 382.19,
+  "knnPrediction": 382.19,
+  "currentPrice": 382.19,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.808Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:18.396Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa16"
+  },
+  "name": "27in FHD Monitor",
+  "slug": "27in-fhd-monitor",
+  "image": "/images/27in-fhd-monitor.jpg",
+  "category": "electronics",
+  "price": 149.99,
+  "bayesianPrediction": 164.99,
+  "decisionPrediction": 146.99,
+  "knnPrediction": 146.99,
+  "currentPrice": 146.99,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.809Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:17.137Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa17"
+  },
+  "name": "34in Ultrawide Monitor",
+  "slug": "34in-ultrawide-monitor",
+  "image": "/images/34in-ultrawide-monitor.jpg",
+  "category": "electronics",
+  "price": 379.99,
+  "bayesianPrediction": 372.39,
+  "decisionPrediction": 372.39,
+  "knnPrediction": 372.39,
+  "currentPrice": 372.39,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.810Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:17.997Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa18"
+  },
+  "name": "Energizer AA Batteries (4-pack)",
+  "slug": "energizer-aa-batteries-4-pack",
+  "image": "/images/energizer-max-aa-battery.jpg",
+  "category": "electronics",
+  "price": 3.84,
+  "bayesianPrediction": 3.76,
+  "decisionPrediction": 3.76,
+  "knnPrediction": 3.76,
+  "currentPrice": 3.76,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.811Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:17.030Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa19"
+  },
+  "name": "Energizer AAA Batteries (4-pack)",
+  "slug": "energizer-aaa-batteries-4-pack",
+  "image": "/images/energizer-max-aaa-battery.jpg",
+  "category": "electronics",
+  "price": 2.99,
+  "bayesianPrediction": 3.29,
+  "decisionPrediction": 2.93,
+  "knnPrediction": 2.93,
+  "currentPrice": 2.93,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.811Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:15.799Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa1a"
+  },
+  "name": "Apple Airpods Headphones",
+  "slug": "apple-airpods-headphones",
+  "image": "/images/apple-airpods-headphones.jpg",
+  "category": "electronics",
+  "price": 150,
+  "bayesianPrediction": 165,
+  "decisionPrediction": 147,
+  "knnPrediction": 147,
+  "currentPrice": 147,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.948Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:17.554Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa1b"
+  },
+  "name": "Bose SoundSport Headphones",
+  "slug": "bose-soundsport-headphones",
+  "image": "/images/bose-soundsport-headphones.jpg",
+  "category": "electronics",
+  "price": 99.99,
+  "bayesianPrediction": 109.99,
+  "decisionPrediction": 97.99,
+  "knnPrediction": 97.99,
+  "currentPrice": 97.99,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.954Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:16.597Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa1c"
+  },
+  "name": "Flatscreen TV",
+  "slug": "flatscreen-tv",
+  "image": "/images/flatscreen-tv.jpg",
+  "category": "electronics",
+  "price": 300,
+  "bayesianPrediction": 294,
+  "decisionPrediction": 294,
+  "knnPrediction": 294,
+  "currentPrice": 294,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.955Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:17.417Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa1d"
+  },
+  "name": "Google Phone",
+  "slug": "google-phone",
+  "image": "/images/google-phone.jpg",
+  "category": "electronics",
+  "price": 600,
+  "bayesianPrediction": 588,
+  "decisionPrediction": 588,
+  "knnPrediction": 588,
+  "currentPrice": 588,
+  "discount": 0.02,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
+  "description": "",
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2023-09-20T15:18:33.956Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-20T15:52:18.596Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "650b0d49d0e787b8640eaa1e"
   },
   "name": "IPhone",
   "slug": "iphone",
   "image": "/images/iphone.jpg",
-  "category": "gadgets",
+  "category": "electronics",
   "price": 700,
-  "pricePrediction": 686,
-  "currentPrice": 665,
+  "bayesianPrediction": 686,
+  "decisionPrediction": 686,
+  "knnPrediction": 686,
+  "currentPrice": 686,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 1,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
   "rating": 0,
   "numReviews": 0,
   "description": "",
   "sales": 0,
   "soldProducts": 0,
-  "totalSoldProducts": 101,
+  "totalSoldProducts": 0,
   "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.917Z"
+    "$date": "2023-09-20T15:18:33.957Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:32.924Z"
+    "$date": "2023-09-20T15:52:16.125Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c215"
+    "$oid": "650b0d49d0e787b8640eaa1f"
   },
   "name": "LG Dryer",
   "slug": "lg-dryer",
   "image": "/images/lg-dryer.jpg",
-  "category": "appliances",
+  "category": "electronics",
   "price": 600,
-  "pricePrediction": 624,
-  "currentPrice": 630,
+  "bayesianPrediction": 660,
+  "decisionPrediction": 660,
+  "knnPrediction": 588,
+  "currentPrice": 660,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
-  "stocks": 1,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "increase",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
   "rating": 0,
   "numReviews": 0,
   "description": "",
   "sales": 0,
   "soldProducts": 0,
-  "totalSoldProducts": 100,
+  "totalSoldProducts": 0,
   "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.917Z"
+    "$date": "2023-09-20T15:18:33.957Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:32.709Z"
+    "$date": "2023-09-20T15:52:18.009Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c216"
+    "$oid": "650b0d49d0e787b8640eaa20"
   },
   "name": "LG Washing Machine",
   "slug": "lg-washing-machien",
   "image": "/images/lg-washing-machine.jpg",
-  "category": "appliances",
+  "category": "electronics",
   "price": 600,
-  "pricePrediction": 588,
-  "currentPrice": 570,
+  "bayesianPrediction": 660,
+  "decisionPrediction": 660,
+  "knnPrediction": 588,
+  "currentPrice": 660,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 9,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "increase",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
   "rating": 0,
   "numReviews": 0,
   "description": "",
-  "sales": 570,
-  "soldProducts": 1,
-  "totalSoldProducts": 117,
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
   "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.925Z"
+    "$date": "2023-09-20T15:18:33.959Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:33.740Z"
+    "$date": "2023-09-20T15:52:17.863Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c217"
+    "$oid": "650b0d49d0e787b8640eaa21"
   },
   "name": "Lightning Charging Cable",
   "slug": "lightning-charging-cable",
   "image": "/images/lightning-charging-cable.jpg",
-  "category": "accessories",
+  "category": "electronics",
   "price": 14.95,
-  "pricePrediction": 15.55,
-  "currentPrice": 15.7,
+  "bayesianPrediction": 16.45,
+  "decisionPrediction": 14.65,
+  "knnPrediction": 14.65,
+  "currentPrice": 14.65,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "increase",
-  "stocks": 0,
-  "rating": 4,
-  "numReviews": 1,
+  "increase": 0.1,
+  "bayesianSuggestion": "increase",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
   "description": "",
   "sales": 0,
   "soldProducts": 0,
-  "totalSoldProducts": 106,
-  "reviews": [
-    {
-      "firstName": "customer",
-      "lastName": "two",
-      "email": "customertwo@email.com",
-      "rating": 4,
-      "comments": "",
-      "_id": {
-        "$oid": "64c2794f93d231e846c202eb"
-      },
-      "createdAt": {
-        "$date": "2023-07-27T14:03:59.152Z"
-      },
-      "updatedAt": {
-        "$date": "2023-07-27T14:03:59.152Z"
-      }
-    }
-  ],
+  "totalSoldProducts": 0,
+  "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.927Z"
+    "$date": "2023-09-20T15:18:33.960Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:33.778Z"
+    "$date": "2023-09-20T15:52:17.858Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c218"
+    "$oid": "650b0d49d0e787b8640eaa22"
   },
   "name": "MacBook Pro Laptop",
   "slug": "macbook-pro-laptop",
   "image": "/images/macbook-pro-laptop.jpg",
-  "category": "gadgets",
+  "category": "electronics",
   "price": 1700,
-  "pricePrediction": 1666,
-  "currentPrice": 1615,
+  "bayesianPrediction": 1666,
+  "decisionPrediction": 1870,
+  "knnPrediction": 1666,
+  "currentPrice": 1870,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 0,
-  "rating": 4,
-  "numReviews": 1,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "increase",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
   "description": "",
   "sales": 0,
   "soldProducts": 0,
-  "totalSoldProducts": 182,
-  "reviews": [
-    {
-      "firstName": "customer",
-      "lastName": "one",
-      "email": "customerone@email.com",
-      "rating": 4,
-      "comments": "",
-      "_id": {
-        "$oid": "64e5d08ea50a34cb3eabb990"
-      },
-      "createdAt": {
-        "$date": "2023-08-23T09:25:34.264Z"
-      },
-      "updatedAt": {
-        "$date": "2023-08-23T09:25:34.264Z"
-      }
-    }
-  ],
+  "totalSoldProducts": 0,
+  "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.928Z"
+    "$date": "2023-09-20T15:18:33.961Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:33.459Z"
+    "$date": "2023-09-20T15:52:18.578Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c219"
+    "$oid": "650b0d49d0e787b8640eaa23"
   },
   "name": "ThinkPad Laptop",
   "slug": "thinkpad-laptop",
   "image": "/images/thinkpad-laptop.jpg",
-  "category": "gadgets",
+  "category": "electronics",
   "price": 999.99,
-  "pricePrediction": 979.99,
-  "currentPrice": 949.99,
+  "bayesianPrediction": 979.99,
+  "decisionPrediction": 979.99,
+  "knnPrediction": 979.99,
+  "currentPrice": 979.99,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 0,
-  "rating": 5,
-  "numReviews": 1,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
   "description": "",
   "sales": 0,
   "soldProducts": 0,
-  "totalSoldProducts": 124,
-  "reviews": [
-    {
-      "user": {
-        "$oid": "64534c183dcbd228f1d6baaa"
-      },
-      "firstName": "sample",
-      "lastName": "admin",
-      "email": "admin@email.com",
-      "rating": 5,
-      "comments": "",
-      "_id": {
-        "$oid": "649518343457bfab39924420"
-      },
-      "createdAt": {
-        "$date": "2023-06-23T03:57:40.525Z"
-      },
-      "updatedAt": {
-        "$date": "2023-06-23T03:57:40.525Z"
-      }
-    }
-  ],
+  "totalSoldProducts": 0,
+  "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.928Z"
+    "$date": "2023-09-20T15:18:33.961Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:33.616Z"
+    "$date": "2023-09-20T15:52:18.207Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c21a"
+    "$oid": "650b0d49d0e787b8640eaa24"
   },
   "name": "USB-C Charging Cable",
   "slug": "usb-c-charging-cable",
   "image": "/images/usb-c-charging-cable.jpg",
-  "category": "accessories",
+  "category": "electronics",
   "price": 11.95,
-  "pricePrediction": 11.71,
-  "currentPrice": 11.35,
+  "bayesianPrediction": 11.71,
+  "decisionPrediction": 11.71,
+  "knnPrediction": 11.71,
+  "currentPrice": 11.71,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": 7,
-  "rating": 4,
-  "numReviews": 2,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
   "description": "",
   "sales": 0,
   "soldProducts": 0,
-  "totalSoldProducts": 204,
-  "reviews": [
-    {
-      "firstName": "customer",
-      "lastName": "two",
-      "email": "customertwo@email.com",
-      "rating": 4,
-      "comments": "nice",
-      "_id": {
-        "$oid": "64c2787c93d231e846c202bc"
-      },
-      "createdAt": {
-        "$date": "2023-07-27T14:00:28.406Z"
-      },
-      "updatedAt": {
-        "$date": "2023-07-27T14:00:28.406Z"
-      }
-    },
-    {
-      "firstName": "customer",
-      "lastName": "one",
-      "email": "customerone@email.com",
-      "rating": 4,
-      "comments": "",
-      "_id": {
-        "$oid": "64d2250c1ca330c56bb338a1"
-      },
-      "createdAt": {
-        "$date": "2023-08-08T11:20:44.154Z"
-      },
-      "updatedAt": {
-        "$date": "2023-08-08T11:20:44.154Z"
-      }
-    }
-  ],
+  "totalSoldProducts": 0,
+  "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.929Z"
+    "$date": "2023-09-20T15:18:33.962Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:32.697Z"
+    "$date": "2023-09-20T15:52:18.001Z"
   }
 },
 {
   "_id": {
-    "$oid": "649513633e701ba81253c21b"
+    "$oid": "650b0d49d0e787b8640eaa25"
   },
   "name": "Wired Headphones",
   "slug": "wired-headphones",
   "image": "/images/wired-headphones.png",
-  "category": "accessories",
+  "category": "electronics",
   "price": 11.99,
-  "pricePrediction": 11.75,
-  "currentPrice": 11.39,
+  "bayesianPrediction": 11.75,
+  "decisionPrediction": 11.75,
+  "knnPrediction": 11.75,
+  "currentPrice": 11.75,
   "discount": 0.02,
-  "increase": 0.04,
-  "priceSuggestion": "decrease",
-  "stocks": -2,
-  "rating": 5,
-  "numReviews": 2,
+  "increase": 0.1,
+  "bayesianSuggestion": "decrease",
+  "decisionSuggestion": "decrease",
+  "knnSuggestion": "decrease",
+  "stocks": 100,
+  "rating": 0,
+  "numReviews": 0,
   "description": "",
-  "sales": 45.56,
-  "soldProducts": 4,
-  "totalSoldProducts": 131,
-  "reviews": [
-    {
-      "firstName": "customer",
-      "lastName": "two",
-      "email": "customertwo@email.com",
-      "rating": 5,
-      "comments": "",
-      "_id": {
-        "$oid": "64c278e093d231e846c202d6"
-      },
-      "createdAt": {
-        "$date": "2023-07-27T14:02:08.440Z"
-      },
-      "updatedAt": {
-        "$date": "2023-07-27T14:02:08.440Z"
-      }
-    },
-    {
-      "firstName": "customer",
-      "lastName": "one",
-      "email": "customerone@email.com",
-      "rating": 5,
-      "comments": "",
-      "_id": {
-        "$oid": "64d220ec1ca330c56bb3384c"
-      },
-      "createdAt": {
-        "$date": "2023-08-08T11:03:08.636Z"
-      },
-      "updatedAt": {
-        "$date": "2023-08-08T11:03:08.636Z"
-      }
-    }
-  ],
+  "sales": 0,
+  "soldProducts": 0,
+  "totalSoldProducts": 0,
+  "reviews": [],
   "__v": 0,
   "createdAt": {
-    "$date": "2023-06-23T03:37:07.930Z"
+    "$date": "2023-09-20T15:18:33.963Z"
   },
   "updatedAt": {
-    "$date": "2023-08-27T09:26:33.677Z"
+    "$date": "2023-09-20T15:52:18.688Z"
   }
 }]

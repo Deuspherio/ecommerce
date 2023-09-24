@@ -283,10 +283,11 @@ const updateProductsIncrease = asyncHandler(async (req, res) => {
 
 const updateProductsPrice = asyncHandler(async (req, res) => {
   const products = await Product.find();
+  const setAlgo = req.body.algo;
 
   await Promise.all(
     products.map(async (x) => {
-      await applyPrediction(x._id);
+      await applyPrediction(x._id, setAlgo);
       await setPastData(x._id);
       await setPrediction(x._id);
     })

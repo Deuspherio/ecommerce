@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const patchProductsPrice = async (userData) => {
+export const patchProductsPrice = async (algo, userData) => {
   const { data } = await axios.patch(
     "/api/products/update/prices",
-    {},
+    { algo: algo },
     {
       headers: { Authorization: `Bearer ${userData.token}` },
     }

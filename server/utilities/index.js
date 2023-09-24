@@ -5,15 +5,15 @@ const path = require("path");
 const absolutePath = path.resolve();
 require("dotenv").config();
 
-const sendData = async (name, soldProducts, sales, date, month) => {
+const sendData = async (name, soldProducts, sales, date, month, fileName) => {
   try {
-    const run = async (name, soldProducts, sales, date, month) =>
+    const run = async () =>
       new Promise((resolve, reject) => {
         let result = "";
         const pythonProcess =
           process.env.NODE_ENV === "production"
             ? spawn("python", [
-                path.join(absolutePath, "/server/utilities/algo.py"),
+                path.join(absolutePath, `/server/utilities/${fileName}`),
                 name,
                 soldProducts,
                 sales,
@@ -21,7 +21,7 @@ const sendData = async (name, soldProducts, sales, date, month) => {
                 month,
               ])
             : spawn("python", [
-                path.join(absolutePath, "/utilities/algo.py"),
+                path.join(absolutePath, `/utilities/${fileName}`),
                 name,
                 soldProducts,
                 sales,
@@ -123,49 +123,97 @@ const productName = (name) => {
 };
 
 const setPrediction = async (id) => {
-  const product = await Product.findById(id);
-  const { discount, increase } = product;
-  const { name, soldProducts, sales } = product;
-  const productCode = productName(name);
-  const date = new Date();
-  const result = await sendData(
-    productCode,
-    soldProducts,
-    sales,
-    date.getDate(),
-    date.getMonth() + 1
-  );
-
-  const predictionWithDiscountOrIncrease = result === 0 ? increase : -discount;
-  const priceSuggestion = result === 0 ? "increase" : "decrease";
-  if (product) {
-    const totalDiscountOrIncrease = roundToTwo(
-      product.price * predictionWithDiscountOrIncrease + product.price
+  try {
+    const product = await Product.findById(id);
+    const { discount, increase } = product;
+    const { name, soldProducts, sales } = product;
+    const productCode = productName(name);
+    const date = new Date();
+    const bayesianResult = await sendData(
+      productCode,
+      soldProducts,
+      sales,
+      date.getDate(),
+      date.getMonth() + 1,
+      "bayesian.py"
+    );
+    const decisionResult = await sendData(
+      productCode,
+      soldProducts,
+      sales,
+      date.getDate(),
+      date.getMonth() + 1,
+      "decision.py"
+    );
+    const knnResult = await sendData(
+      productCode,
+      soldProducts,
+      sales,
+      date.getDate(),
+      date.getMonth() + 1,
+      "knn.py"
     );
 
-    await Product.updateOne(
-      { _id: product._id },
-      {
-        $set: {
-          priceSuggestion: priceSuggestion,
-          pricePrediction: roundToTwo(totalDiscountOrIncrease),
-        },
-      }
-    );
+    const predictionWithBayesian = bayesianResult === 0 ? increase : -discount;
+    const predictionWithDecision = decisionResult === 0 ? increase : -discount;
+    const predictionWithKnn = knnResult === 0 ? increase : -discount;
+    const bayesianSuggestion = bayesianResult === 0 ? "increase" : "decrease";
+    const decisionSuggestion = decisionResult === 0 ? "increase" : "decrease";
+    const knnSuggestion = knnResult === 0 ? "increase" : "decrease";
+    if (product) {
+      const bayesianTotal = roundToTwo(
+        product.price * predictionWithBayesian + product.price
+      );
+      const decisionTotal = roundToTwo(
+        product.price * predictionWithDecision + product.price
+      );
+      const knnTotal = roundToTwo(
+        product.price * predictionWithKnn + product.price
+      );
+
+      await Product.updateOne(
+        { _id: product._id },
+        {
+          $set: {
+            bayesianSuggestion: bayesianSuggestion,
+            decisionSuggestion: decisionSuggestion,
+            knnSuggestion: knnSuggestion,
+            bayesianPrediction: roundToTwo(bayesianTotal),
+            decisionPrediction: roundToTwo(decisionTotal),
+            knnPrediction: roundToTwo(knnTotal),
+          },
+        }
+      );
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
-const applyPrediction = async (id) => {
-  const product = await Product.findById(id);
-  if (product) {
-    await Product.updateOne(
-      { _id: product._id },
-      {
-        $set: {
-          currentPrice: product.pricePrediction,
-        },
-      }
-    );
+const applyPrediction = async (id, algo) => {
+  try {
+    const product = await Product.findById(id);
+    if (product) {
+      const setCurrentPrice =
+        algo === "bayesian"
+          ? product.bayesianPrediction
+          : algo === "decision"
+          ? product.decisionPrediction
+          : algo === "knn"
+          ? product.knnPrediction
+          : product.bayesianPrediction;
+
+      await Product.updateOne(
+        { _id: product._id },
+        {
+          $set: {
+            currentPrice: setCurrentPrice,
+          },
+        }
+      );
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 

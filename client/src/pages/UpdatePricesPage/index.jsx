@@ -24,7 +24,7 @@ const UpdatePricesPage = () => {
 
   const queryClient = useQueryClient();
   const { mutate: patchPriceMutate, isLoading: patchPriceIsLoading } =
-    useMutation(() => patchProductsPrice(userData), {
+    useMutation((algo) => patchProductsPrice(algo, userData), {
       onSuccess: (data) => {
         queryClient.setQueryData(["products"], () => data);
         navigate("/admin/products");
@@ -50,9 +50,23 @@ const UpdatePricesPage = () => {
       },
     });
 
-  const updateProductsPriceHandler = () => {
+  const updateProductsPriceBayesianHandler = () => {
     if (window.confirm("Are you sure?")) {
-      patchPriceMutate();
+      patchPriceMutate("bayesian");
+      setProductsDiscount(1);
+      setProductsIncrease(1);
+    }
+  };
+  const updateProductsPriceDecisionHandler = () => {
+    if (window.confirm("Are you sure?")) {
+      patchPriceMutate("decision");
+      setProductsDiscount(1);
+      setProductsIncrease(1);
+    }
+  };
+  const updateProductsPriceKnnHandler = () => {
+    if (window.confirm("Are you sure?")) {
+      patchPriceMutate("knn");
       setProductsDiscount(1);
       setProductsIncrease(1);
     }
@@ -84,53 +98,76 @@ const UpdatePricesPage = () => {
         <Loading />
       ) : (
         <div className="custom-container flex justify-center">
-          <div className="flex min-w-[18.75rem] md:min-w-[23.4375rem] justify-center">
-            <div className="w-full space-y-4 px-6 py-4 border rounded">
-              <h1 className="text-center">Update Prices</h1>
-              <form
-                className="flex items-center justify-center gap-4"
-                onSubmit={updateProductsDiscountHandler}
-              >
-                <h4 className="mb-0">Update Discount</h4>
-                <select onChange={(e) => setProductsDiscount(+e.target.value)}>
-                  {[...Array(100).keys()].map((x) => (
-                    <option value={parseInt(x + 1)} key={x + 1}>
-                      {x + 1}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  className="btn-primary text-2xl w-auto"
-                  title="UPDATE DISCOUNT"
+          <div className="flex flex-col md:flex-row justify-center gap-6">
+            <div className="w-auto h-fit space-y-4 px-6 py-4 border rounded">
+              <div className="flex flex-col items-center gap-4">
+                <h2 className="text-center">Update Pricing</h2>
+                <form
+                  className="flex items-center justify-center gap-4"
+                  onSubmit={updateProductsDiscountHandler}
                 >
-                  <BsCheck2 />
-                </button>
-              </form>
-              <form
-                className="flex items-center justify-center gap-4"
-                onSubmit={updateProductsIncreaseHandler}
-              >
-                <h4 className="mb-0">Update Increase</h4>
-                <select onChange={(e) => setProductsIncrease(+e.target.value)}>
-                  {[...Array(100).keys()].map((x) => (
-                    <option value={parseInt(x + 1)} key={x + 1}>
-                      {x + 1}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  className="btn-primary text-2xl w-auto"
-                  title="UPDATE INCREASE"
+                  <h4 className="mb-0">Update Discount</h4>
+                  <select
+                    onChange={(e) => setProductsDiscount(+e.target.value)}
+                  >
+                    {[...Array(100).keys()].map((x) => (
+                      <option value={parseInt(x + 1)} key={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    className="btn-primary text-2xl w-auto"
+                    title="UPDATE DISCOUNT"
+                  >
+                    <BsCheck2 />
+                  </button>
+                </form>
+                <form
+                  className="flex items-center justify-center gap-4"
+                  onSubmit={updateProductsIncreaseHandler}
                 >
-                  <BsCheck2 />
-                </button>
-              </form>
+                  <h4 className="mb-0">Update Increase</h4>
+                  <select
+                    onChange={(e) => setProductsIncrease(+e.target.value)}
+                  >
+                    {[...Array(100).keys()].map((x) => (
+                      <option value={parseInt(x + 1)} key={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    className="btn-primary text-2xl w-auto"
+                    title="UPDATE INCREASE"
+                  >
+                    <BsCheck2 />
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div className="w-auto px-6 py-4 flex flex-col gap-4 border p-4">
+              <h2 className="text-center">Update Prices</h2>
               <button
                 className="btn-primary"
-                onClick={updateProductsPriceHandler}
+                onClick={updateProductsPriceBayesianHandler}
                 title="UPDATE PRICES"
               >
-                Update Prices
+                Update Prices with Gaussian Naive Bayes
+              </button>
+              <button
+                className="btn-primary"
+                onClick={updateProductsPriceDecisionHandler}
+                title="UPDATE PRICES"
+              >
+                Update Prices with Decision Tree
+              </button>
+              <button
+                className="btn-primary"
+                onClick={updateProductsPriceKnnHandler}
+                title="UPDATE PRICES"
+              >
+                Update Prices with K-Nearest Neighbor
               </button>
             </div>
           </div>
